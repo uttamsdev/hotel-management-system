@@ -1,0 +1,11 @@
+import express from 'express';
+import { ProductControllers } from './product.controller';
+
+const router = express.Router();
+
+router.post('/add-room', ProductControllers.addRoom);
+router.get('/rooms', ProductControllers.getAllRooms);
+router.get("/search-available-rooms", ProductControllers.searchAvailableRooms)
+router.get('/rooms/:id', ProductControllers.getSingleRoom);
+router.delete('/rooms/:id', ProductControllers.deleteRoom);
+export const ProductRoutes = router;
