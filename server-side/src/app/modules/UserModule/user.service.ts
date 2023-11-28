@@ -12,7 +12,7 @@ const storeUserToDB = async(userData: TUser) => {
    
 }
 const getSingleUserFromDB = async(email:string) => {
-    const result = await Users.find({email: email})
+    const result = await Users.findOne({email: email})
     return result;
 }
 

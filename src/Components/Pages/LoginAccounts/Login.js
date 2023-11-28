@@ -8,6 +8,7 @@ import Loading from "../Shared/Loading";
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+    const [userFomDB, setUserFromDB] = useState('')
 
   let errorMessage;
 
@@ -24,6 +25,7 @@ const Login = () => {
     return <Loading></Loading>;
   }
 
+  ///TODO: Ekhane replace true dewai home e jacche eta conflect kortese nicher navigate er sathe
   if (user) {
     navigate(from, { replace: true }); // jekhan theke login korse se khane niye jabe
     console.log("user login: ", user);
@@ -32,9 +34,13 @@ const Login = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
+     fetch(`http://localhost:5000/api/v1/users/${email}`).then(res => res.json()).then(data => setUserFromDB(data.data.role))
     await signInWithEmailAndPassword(email, password);
     console.log(email, password);
   };
+  if(userFomDB === 'user'){
+    navigate("/contact")
+  }
   return (
     <div>
       <div className="w-full h-screen pt-32 bg-[#F9FAFB]">
