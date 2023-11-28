@@ -57,6 +57,7 @@ const Navbar = () => {
                         {
                             user ? <button onClick={handleLogout} className='bg-red-600 rounded text-white px-4 py-1 ' to="/login">Logout</button> : <Link className='bg-blue-600 rounded text-white px-4 py-1 ' to="/login">Login</Link>
                         }
+                        
                     </li>
                 </ul>
             </nav>
