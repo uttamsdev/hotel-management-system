@@ -39,7 +39,7 @@ const Login = () => {
     console.log(email, password);
   };
   if(userFomDB === 'user'){
-    navigate("/contact")
+    navigate("/admin")
   }
   return (
     <div>

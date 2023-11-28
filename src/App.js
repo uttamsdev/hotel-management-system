@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './Components/Pages/Home/Home';
 import Products from './Components/Pages/Products/Products';
 import Login from './Components/Pages/LoginAccounts/Login';
@@ -13,11 +13,30 @@ import Hall from './Components/Pages/Services/Hall/Hall';
 import Food from './Components/Pages/Services/Food/Food';
 import AvailableRooms from './Components/Pages/Services/Rooms/AvailableRooms';
 import BookRoomPage from './Components/Pages/Services/Rooms/BookRoomPage';
+import AdminLayout from './Components/Pages/Roles/AdminRole/Layout/AdminLayout';
+import AdminDashboard from './Components/Pages/Roles/AdminRole/Pages/AdminDashboard';
+import Account from './Components/Pages/Roles/AdminRole/Pages/ViewOrders';
+import ViewOrders from './Components/Pages/Roles/AdminRole/Pages/ViewOrders';
+import AddRoom from './Components/Pages/Roles/AdminRole/Pages/AddRoom';
+import AllRooms from './Components/Pages/Roles/AdminRole/Pages/AllRooms';
+import AddTask from './Components/Pages/Roles/AdminRole/Pages/AddTask';
+import UserLayout from './Components/Pages/Roles/UserRole/Layout/UserLayout';
+import UserDashboard from './Components/Pages/Roles/UserRole/Pages/UserDashboard';
+import MyOrders from './Components/Pages/Roles/UserRole/Pages/MyOrders';
+import StaffLayout from './Components/Pages/Roles/StaffRole/Layout/StaffLayout';
+import StaffDashboard from './Components/Pages/Roles/StaffRole/Pages/StaffDashboard';
+import ViewTask from './Components/Pages/Roles/StaffRole/Pages/ViewTask';
+
 
 function App() {
+  const location = useLocation();
+  const hideNavbar = location.pathname.startsWith('/admin') ||
+                    location.pathname.startsWith('/user') ||
+                    location.pathname.startsWith('/staff');
+
   return (
     <div>
-      <Navbar></Navbar>
+      {!hideNavbar && <Navbar />}
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/products' element={<RequireAuth><Products></Products></RequireAuth>}></Route>
@@ -29,6 +48,15 @@ function App() {
         <Route path='/food' element={<Food></Food>}></Route>
         <Route path='/available-rooms' element={<AvailableRooms></AvailableRooms>}></Route>
         <Route path='/book-room/:roomId' element={<RequireAuth><BookRoomPage></BookRoomPage></RequireAuth>}></Route>
+        <Route path='/admin' element={<AdminLayout><AdminDashboard></AdminDashboard></AdminLayout>}></Route>
+        <Route path='/admin/view-orders' element={<AdminLayout><ViewOrders></ViewOrders></AdminLayout>}></Route>
+        <Route path='/admin/add-room' element={<AdminLayout><AddRoom></AddRoom></AdminLayout>}></Route>
+        <Route path='/admin/all-room' element={<AdminLayout><AllRooms></AllRooms></AdminLayout>}></Route>
+        <Route path='/admin/add-task' element={<AdminLayout><AddTask></AddTask></AdminLayout>}></Route>
+        <Route path='/user/' element={<UserLayout><UserDashboard></UserDashboard></UserLayout>}></Route>
+        <Route path='/user/my-orders' element={<UserLayout><MyOrders></MyOrders></UserLayout>}></Route>
+        <Route path='/staff/' element={<StaffLayout><StaffDashboard></StaffDashboard></StaffLayout>}></Route>
+        <Route path='/staff/view-task' element={<StaffLayout><ViewTask></ViewTask></StaffLayout>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>
