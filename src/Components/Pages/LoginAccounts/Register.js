@@ -7,6 +7,7 @@ import SocialLogin from './SocialLogin';
 import swal from 'sweetalert';
 
 const Register = () => {
+  let userData = {};
 
     //for creating account
     const [
@@ -37,11 +38,23 @@ const Register = () => {
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
+        userData = {
+          name: name,
+          email: email
+        }
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({displayName:name})
         console.log(email, password, name)
+        await fetch("http://localhost:5000/api/v1/users/store-user", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        }).then(res => res.json()).then(data => console.log(data))
       }
       if(user){
+       
         navigate("/");
         sendEmailVerification();
         // alert("Verification email sent")
