@@ -1,11 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MyContext } from "../../../Context/Context";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../Firebase/firebase.init";
+import swal from "sweetalert";
+
 
 const BookRoomPage = () => {
+  const [user] = useAuthState(auth);
   const [roomData, setRoomData] = useState({});
   const { searchRoomData } = useContext(MyContext);
   const { roomId } = useParams();
+  const navigate = useNavigate();
+  // const [loading, setLoading] = useState(false);
   console.log("roomData: ", roomData);
 
   const startDate = new Date(searchRoomData?.startDate);
@@ -20,6 +27,36 @@ const BookRoomPage = () => {
 
   if(daysDifference===0){
     daysDifference = 1;
+  }
+
+  const handleBookRoom = async()=> {
+    const order = {
+      roomId: roomData?.roomId,
+      email: user?.email,
+      name: roomData?.name,
+      startDate: searchRoomData?.startDate,
+      endDate: searchRoomData?.endDate,
+      price: daysDifference * roomData?.price,
+      img: roomData?.img
+    }
+
+    fetch("http://localhost:5000/api/v1/orders/order-room", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        swal({
+          title: "Room Booking Successful",
+          text: "Check your email for confirmation!",
+          icon: "success",
+          button: "Ok",
+        });
+        // event.target.reset();
+  });
   }
   console.log("day: ",startDate)
   console.log("end:",endDate)
@@ -130,7 +167,7 @@ const BookRoomPage = () => {
             <p className="text-xl">Total Price: {daysDifference * roomData?.price} BDT</p>
           </div>
           <div>
-            <button className="w-full h-10 rounded font-bold bg-blue-600 text-white mt-4">Confirm Order</button>
+            <button onClick={handleBookRoom} className="w-full h-10 rounded font-bold bg-blue-600 text-white mt-4">Confirm Order</button>
           </div>
         </div>
     </div>
