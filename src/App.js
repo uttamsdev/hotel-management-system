@@ -28,7 +28,7 @@ function App() {
         <Route path='/hall' element={<Hall></Hall>}></Route>
         <Route path='/food' element={<Food></Food>}></Route>
         <Route path='/available-rooms' element={<AvailableRooms></AvailableRooms>}></Route>
-        <Route path='/book-room/:roomId' element={<BookRoomPage></BookRoomPage>}></Route>
+        <Route path='/book-room/:roomId' element={<RequireAuth><BookRoomPage></BookRoomPage></RequireAuth>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
     </div>

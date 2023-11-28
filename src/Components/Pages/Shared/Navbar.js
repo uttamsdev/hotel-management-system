@@ -1,10 +1,19 @@
 import React from 'react'
 import { MdOutlinePhoneCallback } from "react-icons/md";
 import { MdMarkEmailUnread } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../Firebase/firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 
 
 const Navbar = () => {
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+    const handleLogout = async()=> {
+        signOut(auth);
+        navigate("/login");
+    }
   return (
     <div className='sticky top-0 shadow-lg'>
         <div className='h-8 bg-[#0F3048]'>
@@ -39,7 +48,15 @@ const Navbar = () => {
                         <Link to="/food">Foods</Link>
                         <Link>All Rooms</Link>
                         <Link to="/contact">Contact</Link>
-                        <Link to="/login">Login</Link>
+                        {
+                            user && <Link>Dashboard</Link>
+                        }
+                        {
+                            user && <p className='bg-red-200 px-2 py-1 rounded'>{user.displayName}</p>
+                        }
+                        {
+                            user ? <button onClick={handleLogout} className='bg-red-600 rounded text-white px-4 py-1 ' to="/login">Logout</button> : <Link className='bg-blue-600 rounded text-white px-4 py-1 ' to="/login">Login</Link>
+                        }
                     </li>
                 </ul>
             </nav>

@@ -27,7 +27,7 @@ const Banner = () => {
     // Update the state with the new input value
     setInputValue(event.target.value);
   };
-  const handleCheckAvailableRoom = async(event) => {
+  const handleCheckAvailableRoom = async() => {
     
     const date = {
       startDate: formattedStartDate,
