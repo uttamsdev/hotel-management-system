@@ -1,9 +1,13 @@
 import mongoose from "mongoose";
-import { TUser } from "./user.interface";
+import { TUser, UserModel } from "./user.interface";
 
-const schema = new mongoose.Schema<TUser>({
+const userSchema = new mongoose.Schema<TUser>({
     name: {type: String},
     email: {type: String},
     role: {type: String, default: "user"}
 });
-export const Users = mongoose.model<TUser>('user', schema);
+userSchema.statics.isUserExists = async function (email: string) {
+    const existingUser = await Users.findOne({ email: email });
+    return existingUser;
+  };
+export const Users = mongoose.model<TUser, UserModel>('user', userSchema);
