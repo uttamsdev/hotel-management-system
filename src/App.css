@@ -1,0 +1,71 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+ner{
+  background-size: cover;
+}
+.banner{
+  height: 600px;
+  background: url("https://hotelzakaria.com/wp-content/uploads/elementor/thumbs/Deluxe-1-min-1-p08a24f8jwmrisifsml4wlf236pxsjpk3nqd6jf6f4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  font-family: 'Rubik', sans-serif;
+}
+.banner-items{
+  /* height: 200px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* position: relative; */
+  /* background-color: blue; */
+}
+.banner::after{
+  content:'';
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  top:0;
+  left: 0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
