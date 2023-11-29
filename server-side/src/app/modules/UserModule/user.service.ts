@@ -15,8 +15,24 @@ const getSingleUserFromDB = async(email:string) => {
     const result = await Users.findOne({email: email})
     return result;
 }
+const getAllUserFromDB = async() => {
+  //This query will return unique users , if a user has more than one duplicated value it will show one value
+  const result = await Users.aggregate([
+    {
+      $group: {
+        _id: '$email',
+        user: { $first: '$$ROOT' },
+      },
+    },
+    {
+      $replaceRoot: { newRoot: '$user' },
+    },
+  ]);
+  return result;
+}
 
 export const UserServices = {
     storeUserToDB,
-    getSingleUserFromDB
+    getSingleUserFromDB,
+    getAllUserFromDB
 }

@@ -37,7 +37,24 @@ const getSingleUser = async(req : Request, res : Response)=> {
     }
 }
 
+const getAllUsers = async(req : Request, res : Response)=> {
+    try {
+    const result = await UserServices.getAllUserFromDB();
+    res.status(400).json({
+        success: true,
+        message: "User fetch Successfully",
+        data: result
+    })
+    } catch (error : any) {
+        res.status(500).json({
+            success: false,
+            message: error.message || 'Something went wrong.',
+            data: null
+        })
+    }
+}
 export const UsersControllers = {
     StoreUser,
-    getSingleUser
+    getSingleUser,
+    getAllUsers
 }

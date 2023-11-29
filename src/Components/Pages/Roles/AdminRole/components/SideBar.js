@@ -70,6 +70,17 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                         <p>Assign Task</p>
                     </div>
                 </Link>
+                <Link to='/admin/manage-users'>
+                    <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
+                    ${router.pathname === "/admin/manage-users"
+                            ? 'bg-green-100 text-green-500'
+                            : 'text-gray-400 hover:bg-green-100 hover:text-green-500'}`}>
+                        <div className='mr-2'>
+                            <CreditCardIcon className='w-5 h-5' />
+                        </div>
+                        <p>Manage Users</p>
+                    </div>
+                </Link>
             </div>
         </div>
     );

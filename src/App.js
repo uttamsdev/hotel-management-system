@@ -15,7 +15,6 @@ import AvailableRooms from './Components/Pages/Services/Rooms/AvailableRooms';
 import BookRoomPage from './Components/Pages/Services/Rooms/BookRoomPage';
 import AdminLayout from './Components/Pages/Roles/AdminRole/Layout/AdminLayout';
 import AdminDashboard from './Components/Pages/Roles/AdminRole/Pages/AdminDashboard';
-import Account from './Components/Pages/Roles/AdminRole/Pages/ViewOrders';
 import ViewOrders from './Components/Pages/Roles/AdminRole/Pages/ViewOrders';
 import AddRoom from './Components/Pages/Roles/AdminRole/Pages/AddRoom';
 import AllRooms from './Components/Pages/Roles/AdminRole/Pages/AllRooms';
@@ -26,6 +25,7 @@ import MyOrders from './Components/Pages/Roles/UserRole/Pages/MyOrders';
 import StaffLayout from './Components/Pages/Roles/StaffRole/Layout/StaffLayout';
 import StaffDashboard from './Components/Pages/Roles/StaffRole/Pages/StaffDashboard';
 import ViewTask from './Components/Pages/Roles/StaffRole/Pages/ViewTask';
+import ManageUsers from './Components/Pages/Roles/AdminRole/Pages/ManageUsers';
 
 
 function App() {
@@ -53,6 +53,7 @@ function App() {
         <Route path='/admin/add-room' element={<AdminLayout><AddRoom></AddRoom></AdminLayout>}></Route>
         <Route path='/admin/all-room' element={<AdminLayout><AllRooms></AllRooms></AdminLayout>}></Route>
         <Route path='/admin/add-task' element={<AdminLayout><AddTask></AddTask></AdminLayout>}></Route>
+        <Route path='/admin/manage-users' element={<AdminLayout><ManageUsers></ManageUsers></AdminLayout>}></Route>
         <Route path='/user/' element={<UserLayout><UserDashboard></UserDashboard></UserLayout>}></Route>
         <Route path='/user/my-orders' element={<UserLayout><MyOrders></MyOrders></UserLayout>}></Route>
         <Route path='/staff/' element={<StaffLayout><StaffDashboard></StaffDashboard></StaffLayout>}></Route>
