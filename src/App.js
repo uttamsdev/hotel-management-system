@@ -28,6 +28,7 @@ import ViewTask from './Components/Pages/Roles/StaffRole/Pages/ViewTask';
 import ManageUsers from './Components/Pages/Roles/AdminRole/Pages/ManageUsers';
 import CreateFood from './Components/Pages/Roles/AdminRole/Pages/CreateFood';
 import AllFoods from './Components/Pages/Roles/AdminRole/Pages/AllFoods';
+import MyFoodOrders from './Components/Pages/Roles/UserRole/Pages/MyFoodOrders';
 
 
 function App() {
@@ -60,6 +61,7 @@ function App() {
         <Route path='/admin/add-food' element={<AdminLayout><CreateFood></CreateFood></AdminLayout>}></Route>
         <Route path='/user/' element={<UserLayout><UserDashboard></UserDashboard></UserLayout>}></Route>
         <Route path='/user/my-orders' element={<UserLayout><MyOrders></MyOrders></UserLayout>}></Route>
+        <Route path='/user/my-food-orders' element={<UserLayout><MyFoodOrders></MyFoodOrders></UserLayout>}></Route>
         <Route path='/staff/' element={<StaffLayout><StaffDashboard></StaffDashboard></StaffLayout>}></Route>
         <Route path='/staff/view-task' element={<StaffLayout><ViewTask></ViewTask></StaffLayout>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
