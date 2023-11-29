@@ -9,7 +9,6 @@ import RequireAuth from './Components/Pages/RequireAuth/RequireAuth';
 import ForgotPassword from './Components/Pages/LoginAccounts/ForgotPassword';
 import Navbar from './Components/Pages/Shared/Navbar';
 import Contact from './Components/Pages/Services/Contact/Contact';
-import Hall from './Components/Pages/Services/Hall/Hall';
 import Food from './Components/Pages/Services/Food/Food';
 import AvailableRooms from './Components/Pages/Services/Rooms/AvailableRooms';
 import BookRoomPage from './Components/Pages/Services/Rooms/BookRoomPage';
