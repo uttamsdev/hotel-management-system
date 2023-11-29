@@ -78,7 +78,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                         <div className='mr-2'>
                             <CreditCardIcon className='w-5 h-5' />
                         </div>
-                        <p>Manage Users</p>
+                        <p>View Users</p>
                     </div>
                 </Link>
             </div>
