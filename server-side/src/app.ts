@@ -15,10 +15,7 @@ app.use("/api/v1/users", UsersRouter)
 app.use("/api/v1/foods", FoodRoutes)
 app.use("/api/v1/order-food",FoodOrderRoutes)
 app.get("/", (req : Request, res : Response)=> {
-    res.status(200).json({
-        success: true,
-        message: "Server is running... Welcome to Redison Hotel"
-    })
+    res.send("Hotel Redisons Server is running..")
 })
 
 export default app;

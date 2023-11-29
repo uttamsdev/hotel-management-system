@@ -29,6 +29,7 @@ import ManageUsers from './Components/Pages/Roles/AdminRole/Pages/ManageUsers';
 import CreateFood from './Components/Pages/Roles/AdminRole/Pages/CreateFood';
 import AllFoods from './Components/Pages/Roles/AdminRole/Pages/AllFoods';
 import MyFoodOrders from './Components/Pages/Roles/UserRole/Pages/MyFoodOrders';
+import FoodBookingPage from './Components/Pages/Services/Food/FoodBookingPage';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         <Route path='/contact' element={<Contact></Contact>}></Route>
         <Route path='/hall' element={<Hall></Hall>}></Route>
         <Route path='/food' element={<Food></Food>}></Route>
+        <Route path='/food/:foodId' element={<FoodBookingPage></FoodBookingPage>}></Route>
         <Route path='/available-rooms' element={<AvailableRooms></AvailableRooms>}></Route>
         <Route path='/book-room/:roomId' element={<RequireAuth><BookRoomPage></BookRoomPage></RequireAuth>}></Route>
         <Route path='/admin' element={<AdminLayout><AdminDashboard></AdminDashboard></AdminLayout>}></Route>
