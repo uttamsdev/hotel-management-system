@@ -47,11 +47,11 @@ const ViewOrderTable = ({order, index, setAllOrderData}) => {
         onClick={() => {
           handleDeleteOrder(roomId);
         }}
-        className="btn btn-error text-base-200"
+        className="btn btn-error text-base-200 btn-sm btn-outline"
       >
         Delete Order
       </button>
-      <button className='btn btn-success ml-2'>Update Order</button>
+      <button className='btn btn-success ml-2 btn-sm btn-outline'>Update Order</button>
     </td>
   </tr>
   )

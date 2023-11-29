@@ -8,4 +8,5 @@ router.get('/rooms', ProductControllers.getAllRooms);
 router.get("/search-available-rooms", ProductControllers.searchAvailableRooms)
 router.get('/rooms/:id', ProductControllers.getSingleRoom);
 router.delete('/rooms/:id', ProductControllers.deleteRoom);
+router.put('/rooms/:id', ProductControllers.updateRoom);
 export const ProductRoutes = router;

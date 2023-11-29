@@ -86,10 +86,30 @@ const deleteRoom = async(req : Request, res : Response)=> {
         })
     }
 }
+
+const updateRoom = async(req : Request, res : Response)=> {
+    try {
+    const {id} = req.params;
+    const updateData = req.body;
+    const result = await ProductServices.updateRoomFromDB(Number(id),updateData);
+    res.status(400).json({
+        success: true,
+        message: "Successfully updated Deleted",
+        data: result
+    })
+    } catch (error : any) {
+        res.status(500).json({
+            success: false,
+            message: error.message || 'Something went wrong.',
+            data: null
+        })
+    }
+}
 export const ProductControllers = {
     addRoom,
     getAllRooms,
     getSingleRoom,
     deleteRoom,
-    searchAvailableRooms
+    searchAvailableRooms,
+    updateRoom
 }

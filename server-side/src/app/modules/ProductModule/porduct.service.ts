@@ -33,10 +33,16 @@ const deleteRoomFromDB = async(id: Number) => {
     const result = await Room.deleteOne({roomId: id});
     return result;
 }
+
+const updateRoomFromDB = async(id: Number, updatedData : any) => {
+    const result = await Room.updateOne({roomId: id}, updatedData);
+    return result;
+}
 export const ProductServices = {
     addRoomToDB,
     getAllRoomFromDB,
     getSingleRoomFromDB,
     deleteRoomFromDB,
-    searchAvailableRoomFromDB
+    searchAvailableRoomFromDB,
+    updateRoomFromDB
 }
