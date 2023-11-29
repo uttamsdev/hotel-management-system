@@ -1,27 +1,21 @@
+import transporter from "../../sendMail";
 import { TFoodOrder } from "./foodOrder.interface";
 import { OrderFood } from "./foodOrder.model";
 
 const orderFoodToDB = async(orderFoodData : TFoodOrder) => {
     const result = await OrderFood.create(orderFoodData);
-    // if(result){
-    //     // Nodemailer setup
-    //     const info = await transporter.sendMail({
-    //       from: '"Uttam Kumar Saha" <mail@uttamsaha.com>',
-    //       to: `${result.email}`,
-    //       subject: 'Booking Room Confirmed',
-    //       html: `<p>Hello Sir, This is to inform you that your room booking is successful. Here is your order summary attached below.Thank you for being with us see you soon.. Team Hotel Redisons.
-    //        Email: ${result.email}, <br> Room ID: <b>${result.roomId}</b> <br>
-    //         Room Name: <b>${result.name}</b> <br>
-    //         Start Date: <b>${result.startDate}</b> <br>
-    //         End Date: <b>${result.endDate}</b> <br>
-    //         Total Price: <b>${result.price}</b> <br> </p>
-    //       `,
-    //     });
+    if(result){
+        // Nodemailer setup
+        const info = await transporter.sendMail({
+          from: '"Uttam Kumar Saha" <mail@uttamsaha.com>',
+          to: `${result.email}`,
+          subject: 'Food Order Confirmed',
+          text: "Your food order is successful. Thank for ordering. @Team Hotel Redisons"
+        });
   
-    //     console.log('Message sent: %s', info.messageId);
+        console.log('Message sent: %s', info.messageId);
        
-    // }
-    // console.log("emaiL: ",result.email)
+    }
     return result;
 }
 
