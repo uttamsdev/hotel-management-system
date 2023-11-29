@@ -1,116 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ShowSingleRoom from "../Services/Rooms/ShowSingleRoom";
+import { Link } from "react-router-dom";
 
 const Rooms = () => {
+  const [rooms, setRooms] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/v1/products/rooms")
+      .then((res) => res.json())
+      .then((data) => setRooms(data?.data.slice(0,6)));
+  }, []);
   return (
-    <div className="w-full xl:w-[1100px] mx-auto mt-4">
-      <div>
+    <div className="w-full xl:w-[1100px] mx-auto mt-8">
+      <div className="flex justify-between">
         <p className="text-2xl font-semibold text-[#000080] uppercase">
           Rooms we offer
         </p>
+        <p>
+          <Link className="link link-error text-[18px]" to="/rooms">Show All Rooms</Link>
+        </p>
       </div>
-      <div className="grid grid-cols-1 place-content-center place-items-center xl:grid-cols-3 gap-6">
-        <div className="w-[350px] h-[360px] shadow-xl">
-          <img
-            src="http://www.hotels.gov.bd/images/hotel_1/room_type_6/room_type_681630340018.jpg"
-            alt=""
-          />
-          <div className="p-2">
-            <p className="text-xl">AC Deluxe Double Bed Connecting Room</p>
-            <p className="text-lg">
-              Price 12000 <span className="font-bold">BDT</span>
-            </p>
-            <div className="flex justify-center">
-              <button className="text-[#000080] w-[340px] mt-2 h-10 border border-[#000080] hover:bg-[#000080] duration-500 hover:text-white">
-                Room Details
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="w-[350px] h-[360px] shadow-xl">
-          <img
-            src="http://www.hotels.gov.bd/images/hotel_1/room_type_6/room_type_681630340018.jpg"
-            alt=""
-          />
-          <div className="p-2">
-            <p className="text-xl">AC Deluxe Double Bed Connecting Room</p>
-            <p className="text-lg">
-              Price 12000 <span className="font-bold">BDT</span>
-            </p>
-            <div className="flex justify-center">
-              <button className="text-[#000080] w-[340px] mt-2 h-10 border border-[#000080] hover:bg-[#000080] duration-500 hover:text-white">
-                Room Details
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="w-[350px] h-[360px] shadow-xl">
-          <img
-            src="http://www.hotels.gov.bd/images/hotel_1/room_type_6/room_type_681630340018.jpg"
-            alt=""
-          />
-          <div className="p-2">
-            <p className="text-xl">AC Deluxe Double Bed Connecting Room</p>
-            <p className="text-lg">
-              Price 12000 <span className="font-bold">BDT</span>
-            </p>
-            <div className="flex justify-center">
-              <button className="text-[#000080] w-[340px] mt-2 h-10 border border-[#000080] hover:bg-[#000080] duration-500 hover:text-white">
-                Room Details
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="w-[350px] h-[360px] shadow-xl">
-          <img
-            src="http://www.hotels.gov.bd/images/hotel_1/room_type_6/room_type_681630340018.jpg"
-            alt=""
-          />
-          <div className="p-2">
-            <p className="text-xl">AC Deluxe Double Bed Connecting Room</p>
-            <p className="text-lg">
-              Price 12000 <span className="font-bold">BDT</span>
-            </p>
-            <div className="flex justify-center">
-              <button className="text-[#000080] w-[340px] mt-2 h-10 border border-[#000080] hover:bg-[#000080] duration-500 hover:text-white">
-                Room Details
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="w-[350px] h-[360px] shadow-xl">
-          <img
-            src="http://www.hotels.gov.bd/images/hotel_1/room_type_6/room_type_681630340018.jpg"
-            alt=""
-          />
-          <div className="p-2">
-            <p className="text-xl">AC Deluxe Double Bed Connecting Room</p>
-            <p className="text-lg">
-              Price 12000 <span className="font-bold">BDT</span>
-            </p>
-            <div className="flex justify-center">
-              <button className="text-[#000080] w-[340px] mt-2 h-10 border border-[#000080] hover:bg-[#000080] duration-500 hover:text-white">
-                Room Details
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="w-[350px] h-[360px] shadow-xl">
-          <img
-            src="http://www.hotels.gov.bd/images/hotel_1/room_type_6/room_type_681630340018.jpg"
-            alt=""
-          />
-          <div className="p-2">
-            <p className="text-xl">AC Deluxe Double Bed Connecting Room</p>
-            <p className="text-lg">
-              Price 12000 <span className="font-bold">BDT</span>
-            </p>
-            <div className="flex justify-center">
-              <button className="text-[#000080] w-[340px] mt-2 h-10 border border-[#000080] hover:bg-[#000080] duration-500 hover:text-white">
-                Room Details
-              </button>
-            </div>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 place-content-center xl:grid-cols-3 gap-6">
+        {rooms?.map((room) => (
+          <ShowSingleRoom key={room?.roomId} room={room}></ShowSingleRoom>
+        ))}
       </div>
     </div>
   );

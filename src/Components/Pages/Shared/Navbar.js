@@ -15,7 +15,7 @@ const Navbar = () => {
         navigate("/login");
     }
   return (
-    <div className='sticky top-0 shadow-lg'>
+    <div className='sticky top-0 shadow-lg z-10'>
         <div className='h-8 bg-[#0F3048]'>
             <div className='w-[1100px] mx-auto'>
             <div className='custom-container h-8  flex mx-auto justify-between items-center'>
@@ -44,9 +44,8 @@ const Navbar = () => {
                 <ul>
                     <li className='flex items-center gap-4 text-[18px] text-gray-800'>
                         <Link to="/">Home</Link>
-                        <Link to="/hall">Halls</Link>
                         <Link to="/food">Foods</Link>
-                        <Link>All Rooms</Link>
+                        <Link to="/rooms">All Rooms</Link>
                         <Link to="/contact">Contact</Link>
                         {
                             user && <Link>Dashboard</Link>

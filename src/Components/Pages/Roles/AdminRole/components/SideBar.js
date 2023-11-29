@@ -34,7 +34,18 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                         <div className='mr-2'>
                             <UserIcon className='w-5 h-5' />
                         </div>
-                        <p>View Orders</p>
+                        <p> Room Orders</p>
+                    </div>
+                </Link>
+                <Link to='/admin/view-food-orders'>
+                    <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
+                    ${router.pathname === "/admin/view-food-orders"
+                            ? 'bg-green-100 text-green-500'
+                            : 'text-gray-400 hover:bg-green-100 hover:text-green-500'}`}>
+                        <div className='mr-2'>
+                            <UserIcon className='w-5 h-5' />
+                        </div>
+                        <p>View Food Orders</p>
                     </div>
                 </Link>
                 <Link to='/admin/add-room'>
@@ -48,17 +59,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                         <p>Add Room</p>
                     </div>
                 </Link>
-                <Link to='/admin/add-food'>
-                    <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
-                    ${router.pathname === "/admin/add-food"
-                            ? 'bg-green-100 text-green-500'
-                            : 'text-gray-400 hover:bg-green-100 hover:text-green-500'}`}>
-                        <div className='mr-2'>
-                            <CreditCardIcon className='w-5 h-5' />
-                        </div>
-                        <p>Add Food</p>
-                    </div>
-                </Link>
+               
                 <Link to='/admin/all-room'>
                     <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${router.pathname === "/admin/all-room"
@@ -70,6 +71,17 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                         <p>All Rooms</p>
                     </div>
                 </Link>
+                <Link to='/admin/add-food'>
+                    <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
+                    ${router.pathname === "/admin/add-food"
+                            ? 'bg-green-100 text-green-500'
+                            : 'text-gray-400 hover:bg-green-100 hover:text-green-500'}`}>
+                        <div className='mr-2'>
+                            <CreditCardIcon className='w-5 h-5' />
+                        </div>
+                        <p>Add Food</p>
+                    </div>
+                </Link>
                 <Link to='/admin/all-food'>
                     <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${router.pathname === "/admin/all-food"
@@ -79,17 +91,6 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                             <CreditCardIcon className='w-5 h-5' />
                         </div>
                         <p>All Foods</p>
-                    </div>
-                </Link>
-                <Link to='/admin/add-task'>
-                    <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
-                    ${router.pathname === "/admin/add-task"
-                            ? 'bg-green-100 text-green-500'
-                            : 'text-gray-400 hover:bg-green-100 hover:text-green-500'}`}>
-                        <div className='mr-2'>
-                            <CreditCardIcon className='w-5 h-5' />
-                        </div>
-                        <p>Assign Task</p>
                     </div>
                 </Link>
                 <Link to='/admin/manage-users'>

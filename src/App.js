@@ -30,6 +30,9 @@ import CreateFood from './Components/Pages/Roles/AdminRole/Pages/CreateFood';
 import AllFoods from './Components/Pages/Roles/AdminRole/Pages/AllFoods';
 import MyFoodOrders from './Components/Pages/Roles/UserRole/Pages/MyFoodOrders';
 import FoodBookingPage from './Components/Pages/Services/Food/FoodBookingPage';
+import ShowAllRooms from './Components/Pages/Services/Rooms/ShowAllRooms';
+import SingleRoomDetails from './Components/Pages/Services/Rooms/SingleRoomDetails';
+import FoodOrders from './Components/Pages/Roles/AdminRole/Pages/FoodOrders';
 
 
 function App() {
@@ -48,13 +51,15 @@ function App() {
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path='/reset-password' element={<ForgotPassword></ForgotPassword>}></Route>
         <Route path='/contact' element={<Contact></Contact>}></Route>
-        <Route path='/hall' element={<Hall></Hall>}></Route>
+        <Route path='/rooms' element={<ShowAllRooms></ShowAllRooms>}></Route>
+        <Route path='room/:roomId' element={<SingleRoomDetails></SingleRoomDetails>}></Route>
         <Route path='/food' element={<Food></Food>}></Route>
         <Route path='/food/:foodId' element={<FoodBookingPage></FoodBookingPage>}></Route>
         <Route path='/available-rooms' element={<AvailableRooms></AvailableRooms>}></Route>
         <Route path='/book-room/:roomId' element={<RequireAuth><BookRoomPage></BookRoomPage></RequireAuth>}></Route>
         <Route path='/admin' element={<AdminLayout><AdminDashboard></AdminDashboard></AdminLayout>}></Route>
         <Route path='/admin/view-orders' element={<AdminLayout><ViewOrders></ViewOrders></AdminLayout>}></Route>
+        <Route path='/admin/view-food-orders' element={<AdminLayout><FoodOrders></FoodOrders></AdminLayout>}></Route>
         <Route path='/admin/add-room' element={<AdminLayout><AddRoom></AddRoom></AdminLayout>}></Route>
         <Route path='/admin/all-room' element={<AdminLayout><AllRooms></AllRooms></AdminLayout>}></Route>
         <Route path='/admin/all-food' element={<AdminLayout><AllFoods></AllFoods></AdminLayout>}></Route>
