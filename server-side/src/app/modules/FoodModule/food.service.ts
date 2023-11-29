@@ -21,9 +21,14 @@ const deleteFoodFromDB = async(foodId : number) => {
     const result = await Food.deleteOne({foodId: foodId});
     return result;
 }
+const updateFoodFromDB = async(id: Number, updatedData : any) => {
+    const result = await Food.updateOne({foodId: id}, updatedData);
+    return result;
+}
 export const FoodServices = {
     addFoodToDB,
     getAllFoodFromDB,
     getSingleFoodFromDB,
-    deleteFoodFromDB
+    deleteFoodFromDB,
+    updateFoodFromDB
 }

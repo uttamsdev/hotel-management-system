@@ -72,9 +72,28 @@ const deleteFood = async(req : Request, res : Response)=> {
     }
 }
 
+const updateFood = async(req : Request, res : Response)=> {
+    try {
+    const {id} = req.params;
+    const updateData = req.body;
+    const result = await FoodServices.updateFoodFromDB(Number(id),updateData);
+    res.status(400).json({
+        success: true,
+        message: "Successfully updated",
+        data: result
+    })
+    } catch (error : any) {
+        res.status(500).json({
+            success: false,
+            message: error.message || 'Something went wrong.',
+            data: null
+        })
+    }
+}
 export const FoodControllers = {
     addFood,
     getAllFood,
     getSingleFood,
-    deleteFood
+    deleteFood,
+    updateFood
 }
