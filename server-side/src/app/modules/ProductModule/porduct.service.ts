@@ -1,5 +1,5 @@
 import { OrderRoom } from "../OrdersModule/order.model";
-import { TProductRoom } from "./product.interfce";
+import {  TProductRoom } from "./product.interfce";
 import { Room } from "./product.model";
 
 const addRoomToDB = async(roomData : TProductRoom) => {
@@ -38,11 +38,12 @@ const updateRoomFromDB = async(id: Number, updatedData : any) => {
     const result = await Room.updateOne({roomId: id}, updatedData);
     return result;
 }
+
 export const ProductServices = {
     addRoomToDB,
     getAllRoomFromDB,
     getSingleRoomFromDB,
     deleteRoomFromDB,
     searchAvailableRoomFromDB,
-    updateRoomFromDB
+    updateRoomFromDB,
 }

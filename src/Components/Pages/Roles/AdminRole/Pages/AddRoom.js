@@ -67,14 +67,14 @@ const AddRoom = () => {
       <div className="flex justify-center">
         <form
           onSubmit={handleAddProduct}
-          className="shadow-2xl pl-12 pr-12 pt-6 pb-6 mt-4 mb-12"
+          className="shadow-2xl pl-12 pr-12 pt-6 pb-6 mt-4 mb-12 w-[600px]"
         >
           <label htmlFor="productName">Room ID:</label> <br />
           <input
             type="number"
             name="roomId"
             placeholder="Enter Room ID"
-            className="input input-bordered w-full max-w-xs mb-3"
+            className="input input-bordered w-full max-w-lg mb-3"
           />
           <br />
           <label htmlFor="price">Name</label> <br />
@@ -82,7 +82,7 @@ const AddRoom = () => {
             type="text"
             name="name"
             placeholder="Enter Room Name"
-            className="input input-bordered w-full max-w-xs mb-3"
+            className="input input-bordered w-full max-w-lg mb-3"
           />
           <br />
           <label htmlFor="minOrder">Price: </label> <br />
@@ -90,7 +90,7 @@ const AddRoom = () => {
             type="number"
             name="price"
             placeholder="Enter price"
-            className="input input-bordered w-full max-w-xs mb-3"
+            className="input input-bordered w-full max-w-lg mb-3"
           />
           <br />
           <label htmlFor="image">Upload Image:</label> <br />

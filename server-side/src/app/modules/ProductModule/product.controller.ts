@@ -105,6 +105,8 @@ const updateRoom = async(req : Request, res : Response)=> {
         })
     }
 }
+
+
 export const ProductControllers = {
     addRoom,
     getAllRooms,

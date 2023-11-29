@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import { TProductRoom } from "./product.interfce";
+import { TProductFood } from "./food.interface";
 
-const roomSchema = new mongoose.Schema<TProductRoom>({
-    roomId: {
+const foodSchema = new mongoose.Schema<TProductFood>({
+    foodId: {
         type: Number,
         required: true,
     },
@@ -19,6 +19,4 @@ const roomSchema = new mongoose.Schema<TProductRoom>({
         required: true
     }
 });
-
-
-export const Room = mongoose.model<TProductRoom>('room', roomSchema);
+export const Food = mongoose.model<TProductFood>('food', foodSchema);

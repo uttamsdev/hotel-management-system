@@ -7,3 +7,4 @@ export type TOrderRoom = {
     price: number;
     img: string;
 }
+

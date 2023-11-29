@@ -1,5 +1,5 @@
-export type TProductRoom = {
-    roomId: number;
+export type TProductFood ={
+    foodId: number;
     name: string;
     price: number;
     img: string;
