@@ -14,12 +14,12 @@ const MyOrders = () => {
     fetch(`http://localhost:5000/api/v1/orders/room/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrderData(data?.data));
-  }, [user?.email]);
+  }, [user?.email, setOrderData]);
   if(loading){
     return <Loading></Loading>
   }
   return (
-    <div className="relative -z-50">
+    <div className="relative ">
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -37,7 +37,7 @@ const MyOrders = () => {
           <tbody>
             {/* row 1 */}
             {
-              orderData.map((order, index ) => <GetOrders  key={order.roomId} index={index} order={order}></GetOrders>)
+              orderData.map((order, index ) => <GetOrders  key={order.roomId} index={index} order={order} orderData={orderData} user={user} setOrderData={setOrderData}></GetOrders>)
             }
           </tbody>
         </table>

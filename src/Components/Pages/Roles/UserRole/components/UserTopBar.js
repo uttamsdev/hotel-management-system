@@ -39,7 +39,7 @@ const StudentTopBar = ({ showNav, setShowNav }) => {
                         leaveFrom="transform scale-100"
                         leaveTo="transform scale-95"
                     >
-                        <Popover.Panel className="absolute -right-16 sm:right-4 z-50 mt-2 bg-white shadow-sm rounded max-w-xs sm:max-w-sm w-screen">
+                        <Popover.Panel className="absolute -right-16 sm:right-4 mt-2 bg-white shadow-sm rounded max-w-xs sm:max-w-sm w-screen">
                             <div className="relative p-3">
                                 <div className="flex justify-between items-center w-full">
                                     <p className="text-gray-700 font-medium">Notifications</p>
@@ -120,7 +120,7 @@ const StudentTopBar = ({ showNav, setShowNav }) => {
                         leaveFrom="transform scale-100"
                         leaveTo="transform scale-95"
                     >
-                        <Menu.Items className="absolute right-0 w-56 z-50 mt-2 origin-top-right bg-white rounded shadow-sm">
+                        <Menu.Items className="absolute right-0 w-56  mt-2 origin-top-right bg-white rounded shadow-sm">
                             <div className="p-1">
                                 <Menu.Item>
                                     <Link to="#" className="flex hover:bg-green-500 hover:text-white text-gray-700 rounded p-2 text-sm group transition-colors items-center">

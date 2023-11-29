@@ -56,6 +56,7 @@ const BookRoomPage = () => {
           button: "Ok",
         });
         // event.target.reset();
+        navigate("/user/my-orders")
   });
   }
   console.log("day: ",startDate)
