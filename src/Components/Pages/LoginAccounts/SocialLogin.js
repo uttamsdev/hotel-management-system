@@ -26,7 +26,7 @@ const SocialLogin = () => {
           name: user.user.displayName,
           email: user.user.email
         }
-        navigate(from, {replace: true}); // jekhan theke login korse se khane niye jabe
+        navigate(from, {replace: true} || '/'); // jekhan theke login korse se khane niye jabe
         fetch("http://localhost:5000/api/v1/users/store-user", {
           method: "POST",
           headers: {
