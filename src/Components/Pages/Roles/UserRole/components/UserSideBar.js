@@ -2,24 +2,37 @@
 import { forwardRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HomeIcon, CreditCardIcon, UserIcon } from '@heroicons/react/24/solid';
-import CompanyLogo from '../../../../assets/logo.png'
+import avatar from '../../../../assets/avatar.png'
+import { FaHome } from "react-icons/fa";
+import { IoFastFoodSharp } from "react-icons/io5";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../../Firebase/firebase.init';
+import Loading from '../../../Shared/Loading';
+
 
 const SideBar = forwardRef(({ showNav }, ref) => {
+    const [user, loading] = useAuthState(auth);
+   
+    const profile = user?.photoURL || avatar;
 
     const router = useLocation();
+    if(loading) {
+        return <Loading></Loading>
+    }
     return (
-        <div ref={ref} className="fixed w-56 h-full bg-white shadow-lg border-r-2 border-gray-200">
+        <div ref={ref} className="bg-[#0F172A] fixed w-56 h-full shadow-lg z-10">
             {/* Sidebar Logo */}
             <div className='flex justify-center mt-6 mb-14'>
-                <img src={CompanyLogo} className='w-20 h-auto' alt="company logo" />
+                <img src={profile} className='w-20 h-auto rounded-full ring-4 ring-offset-4' alt="company logo" />
             </div>
+            <p className='text-white mt-[-40px] font-bold text-xl text-center mb-4  rounded-full w-48  mx-auto'> User Dashboard</p>
             {/* Sidebar Menu */}
             <div className='flex flex-col'>
                 <Link to='/user'>
                     <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${router.pathname === "/faculty"
-                            ? 'bg-green-100 text-green-500'
-                            : 'text-gray-400 hover:bg-green-100 hover:text-green-500'}`}>
+                            ? 'bg-[#ea3d5a] text-white rounded-r-full'
+                            : 'text-white hover:bg-[#ea3d5a] hover:text-white rounded-r-full'}`}>
                         <div className='mr-2'>
                             <HomeIcon className='w-5 h-5' />
                         </div>
@@ -29,10 +42,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                 <Link to='/user/my-orders'>
                     <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${router.pathname === "/user/my-orders"
-                            ? 'bg-green-100 text-green-500'
-                            : 'text-gray-400 hover:bg-green-100 hover:text-green-500'}`}>
+                            ? 'bg-[#ea3d5a] text-white rounded-r-full'
+                            : 'text-white hover:bg-[#ea3d5a] hover:text-white rounded-r-full'}`}>
                         <div className='mr-2'>
-                            <UserIcon className='w-5 h-5' />
+                            <FaHome className='w-5 h-5' />
                         </div>
                         <p>My Room Orders</p>
                     </div>
@@ -40,10 +53,10 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                 <Link to='/user/my-food-orders'>
                     <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${router.pathname === "/user/my-food-orders"
-                            ? 'bg-green-100 text-green-500'
-                            : 'text-gray-400 hover:bg-green-100 hover:text-green-500'}`}>
+                            ? 'bg-[#ea3d5a] text-white rounded-r-full'
+                            : 'text-white hover:bg-[#ea3d5a] hover:text-white rounded-r-full'}`}>
                         <div className='mr-2'>
-                            <UserIcon className='w-5 h-5' />
+                            <IoFastFoodSharp className='w-5 h-5' />
                         </div>
                         <p>My Food Orders</p>
                     </div>

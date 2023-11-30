@@ -30,6 +30,9 @@
 ner{
   background-size: cover;
 }
+.calc-height{
+  height: calc(100vh - 70px)
+}
 .banner{
   height: 600px;
   background: url("https://media.radissonhotels.net/image/radisson-blu-hotel-dhaka-water-garden/meeting-room/16256-113891-f63612804_3xl.jpg");

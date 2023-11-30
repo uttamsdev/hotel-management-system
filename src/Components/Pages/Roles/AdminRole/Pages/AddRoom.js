@@ -1,5 +1,8 @@
 import React from 'react'
+import { AiOutlineDashboard } from 'react-icons/ai';
 import swal from 'sweetalert';
+import { BiSolidHomeSmile } from "react-icons/bi";
+
 
 const AddRoom = () => {
   const imageStorageKey = "52a7c30a95d000395b196c985adb3c83";
@@ -59,9 +62,10 @@ const AddRoom = () => {
     //
   };
   return (
-    <div>
+    <div className='bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50 calc-height'>
+      <p className=' border pl-12 text-xl text-black mb-8 font-bold bg-[#F8FAFC] h-14 flex items-center'><BiSolidHomeSmile className='ml-5 mr-3 w-6 h-6'/>Add New Room</p>
        <div>
-      <h2 className="text-center text-3xl font-bold m-8 text-green-500">
+      <h2 className="text-center text-3xl font-bold m-8 text-blue-500 underline">
         Add new Room
       </h2>
       <div className="flex justify-center">

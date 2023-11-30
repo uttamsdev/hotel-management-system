@@ -43,7 +43,7 @@ const AdminLayout = ({ children }) => {
                 <SideBar showNav={showNav} />
             </Transition>
             <main className={`pt-16 transition-all duration-[400ms] ${showNav && !isMobile ? "pl-56" : ""}`}>
-                <div className='px-4 md:px-16'>
+                <div className=''>
                     {children}
                 </div>
             </main>

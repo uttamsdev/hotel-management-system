@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../../Firebase/firebase.init";
 import Loading from "../../../Shared/Loading";
 import userPhoto from "../../../../assets/avatar.png";
+import { AiOutlineDashboard } from "react-icons/ai";
 
 const AdminDashboard = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -11,11 +12,11 @@ const AdminDashboard = () => {
   }
   const profilePic = user.photoURL || userPhoto;
   return (
-    <div>
+    <div className="bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50 calc-height">
       <div>
-      <p className="text-gray-700 text-3xl mb-16 font-bold">AdminDashboard</p>
+      <p className=' border pl-12 text-xl text-black mb-8 font-bold bg-[#F8FAFC] h-14 flex items-center'><AiOutlineDashboard className='ml-5 mr-3 w-6 h-6'/>Administrator Dashboard</p>
+            <p className='text-left pl-8 text-[#16728e]  text-md  md:text-xl py-3 border-l-4 border-[#5bc0de]  mb-8 bg-white rounded-md w-9/12 md:w-1/3 mx-auto  bg-gradient-to-r from-stone-100 to-blue-50 drop-shadow-md'>Hey admin, You are welcome to your dashboard.</p>
       <div>
-        <p className="text-center text-3xl mb-4 text-gray-600 "> Welcome back  to your dashboard</p>
       </div>
         <div className="flex justify-center">
           <div className="w-[450px] h-[350px] shadow-xl flex flex-col items-center justify-center">

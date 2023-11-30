@@ -34,6 +34,7 @@ const SocialLogin = () => {
           },
           body: JSON.stringify(userData),
         }).then(res => res.json()).then(data => console.log(data))
+        // navigate("/");
         // console.log("user login: ",user?.user);
         // console.log("username: ",user.user.photoURL, user.user.displayName)
         

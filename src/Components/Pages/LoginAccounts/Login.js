@@ -34,13 +34,14 @@ const Login = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-     fetch(`http://localhost:5000/api/v1/users/${email}`).then(res => res.json()).then(data => setUserFromDB(data.data.role))
+     fetch(`http://localhost:5000/api/v1/users/${email}`).then(res => res.json()).then(data => setUserFromDB(data?.data?.role))
     await signInWithEmailAndPassword(email, password);
     console.log(email, password);
   };
-  if(userFomDB === 'user'){
+  if(user && (userFomDB === 'user' || userFomDB === 'admin')){
     navigate("/")
   }
+
   return (
     <div>
       <div className="w-full h-screen pt-32 bg-[#F9FAFB]">
