@@ -10,7 +10,7 @@ const ShowSingleRoom = ({room}) => {
     }
   return (
     <div className="w-[350px] h-[360px] shadow-xl bg-white relative">
-    <img src={img} alt="" />
+    <img className='w-[350px] h-[210px]' src={img} alt="" />
     <div className="p-2">
       <p className="text-xl">{name}</p>
       <p className="text-lg">

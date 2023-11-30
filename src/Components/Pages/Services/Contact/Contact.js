@@ -19,7 +19,7 @@ const Contact = () => {
             <MdMarkEmailRead className="text-5xl mx-auto text-white" />
           </div>
           <div>
-            <p className="text-[#8B8B8B] uppercase font-bold">Email Me</p>
+            <p className="text-[#8B8B8B] uppercase font-bold">Email Us</p>
             <p>mail@uttamsaha.com</p>
             <p>uttamsdev@gmail.com</p>
           </div>
@@ -29,7 +29,7 @@ const Contact = () => {
             <PiPhoneCall className="text-5xl mx-auto text-white" />
           </div>
           <div>
-            <p className="text-[#8B8B8B] uppercase font-bold">Call Me</p>
+            <p className="text-[#8B8B8B] uppercase font-bold">Call Us</p>
             <p>+8801400014416</p>
             <p>+15654645555</p>
           </div>
@@ -59,7 +59,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="w-10/12 mx-auto xl:mx-0 xl:w-[866px] h-[580px] xl:h-[660px] bg-slate-300">
+      <div className="w-10/12 mx-auto xl:mx-0 xl:w-[866px] h-[580px] xl:h-[660px] bg-slate-300 rounded-md">
         <div className="flex justify-between items-center">
         <p className="text-5xl font-bold ml-8 pt-4 mb-8">
           Contact <span className="">Us</span>

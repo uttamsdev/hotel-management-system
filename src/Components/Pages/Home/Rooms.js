@@ -11,9 +11,9 @@ const Rooms = () => {
       .then((data) => setRooms(data?.data.slice(0,6)));
   }, []);
   return (
-    <div className="w-full xl:w-[1100px] mx-auto mt-8">
+    <div className="w-full xl:w-[1100px] mx-auto mt-12 border-t">
       <div className="flex justify-between">
-        <p className="text-2xl font-semibold text-[#000080] uppercase">
+        <p className="text-2xl font-semibold text-[#000080] uppercase mt-3 mb-2">
           Rooms we offer
         </p>
         <p>

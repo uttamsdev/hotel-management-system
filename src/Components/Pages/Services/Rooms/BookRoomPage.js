@@ -71,7 +71,7 @@ const BookRoomPage = () => {
     <div className="w-full xl:w-[1100px] mx-auto mt-4 flex">
       <div>
         <div className="mb-6">
-          <img className="w-730px h-[430px]" src={roomData?.img} alt="" />
+          <img className="w-[710px] h-[430px] rounded" src={roomData?.img} alt="" />
         </div>
 
         <div className="flex ml-2">
@@ -155,17 +155,17 @@ const BookRoomPage = () => {
         
       </div>
       {/* another div */}
-      <div className="w-[350px] h-[350px] bg-[#E3E3ED] p-4">
+      <div className="w-[350px] h-[400px] bg-[#E3E3ED] p-4 rounded-md">
           <div className="mt-4">
 
-            <p className="text-2xl font-bold text-center mb-2">Order Summary</p>
-            <p className="text-xl">RoomID: {roomData?.roomId}</p>
-            <p className="text-xl">{roomData?.name}</p>
-            <p className="text-xl">Price: {roomData?.price} BDT/day</p>
-            <p className="text-xl">Check In Date: {searchRoomData?.startDate}</p>
-            <p className="text-xl">Check Out Date: {searchRoomData?.endDate}</p>
-            <p className="text-xl">Total Person: {searchRoomData?.person}</p>
-            <p className="text-xl">Total Price: {daysDifference * roomData?.price} BDT</p>
+            <p className="text-2xl font-bold text-center mb-2 text-blue-500">Order Summary</p>
+            <p className="text-xl mb-2 text">RoomID: <span className="text-black italic border-2 border-cyan-50 ">{roomData?.roomId}</span></p>
+            <p className="text-xl mb-2"><span className="text-black italic border-2 border-cyan-50 ">{roomData?.name}</span></p>
+            <p className="text-xl mb-2">Price: <span className="text-black italic border-2 border-cyan-50 ">{roomData?.price} BDT/day</span></p>
+            <p className="text-xl mb-2">Check In Date: <span className="text-black italic border-2 border-cyan-50 ">{searchRoomData?.startDate}</span></p>
+            <p className="text-xl mb-2">Check Out Date: <span className="text-black italic border-2 border-cyan-50">{searchRoomData?.endDate}</span></p>
+            <p className="text-xl mb-2">Total Person: <span className="text-black italic border-2 border-cyan-50">{searchRoomData?.person || 1}</span></p>
+            <p className="text-xl mb-2">Total Price: <span className="text-black italic border-2 border-cyan-50 ">{daysDifference * roomData?.price} BDT</span></p>
           </div>
           <div>
             <button onClick={handleBookRoom} className="w-full h-10 rounded font-bold bg-blue-600 text-white mt-4">Confirm Order</button>

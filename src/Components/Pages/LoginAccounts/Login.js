@@ -89,7 +89,7 @@ const Login = () => {
             <div>
               <p className="text-gray-500 mt-2">
                 New to Redison?
-                <Link className="text-blue-800" to="/register">
+                <Link className="text-blue-800 " to="/register">
                   Create Account
                 </Link>
               </p>

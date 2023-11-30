@@ -31,7 +31,7 @@ const AvailableRooms = () => {
                 <FaPersonCircleCheck className="text-3xl"></FaPersonCircleCheck>
                 <div>
                     <p className="text-lg font-bold">Persons</p>
-                    <p className="text-lg">{searchRoomData?.person}</p>
+                    <p className="text-lg">{searchRoomData?.person || 1}</p>
                 </div>
             </div>
         </div>

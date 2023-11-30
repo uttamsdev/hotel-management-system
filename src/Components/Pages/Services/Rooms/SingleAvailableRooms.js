@@ -11,6 +11,7 @@ const SingleAvailableRooms = ({ room }) => {
   return (
         <div className="w-[350px] h-[360px] shadow-xl bg-white relative">
           <img
+          className="w-[350px] h-[210px]"
             src={img}
             alt=""
           />

@@ -54,10 +54,10 @@ const Navbar = () => {
                             admin ? <Link to="/admin">Admin Dashboard</Link> : <Link to="/user">Dashboard</Link>
                         }
                         {
-                            user && <p className='bg-red-200 px-2 py-1 rounded'>{user.displayName}</p>
+                            user && <p className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>{user.displayName}</p>
                         }
                         {
-                            user ? <button onClick={handleLogout} className='bg-red-600 rounded text-white px-4 py-1 ' to="/login">Logout</button> : <Link className='bg-blue-600 rounded text-white px-4 py-1 ' to="/login">Login</Link>
+                            user ? <button onClick={handleLogout} className='bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ' to="/login">Logout</button> : <Link className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ' to="/login">Login</Link>
                         }
                         
                     </li>
