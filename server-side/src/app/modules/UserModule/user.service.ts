@@ -31,8 +31,16 @@ const getAllUserFromDB = async() => {
   return result;
 }
 
+const checkAdminFromDB = async(email: string) => {
+  const user =  Users.findOne({email: email},{role: true});
+  // console.log(user)
+  // const isAdmin = user === 'admin';
+  return user;
+}
+
 export const UserServices = {
     storeUserToDB,
     getSingleUserFromDB,
-    getAllUserFromDB
+    getAllUserFromDB,
+    checkAdminFromDB
 }

@@ -53,8 +53,23 @@ const getAllUsers = async(req : Request, res : Response)=> {
         })
     }
 }
+const checkAdmin = async(req : Request, res : Response)=> {
+    try {
+    const {email} = req.params;
+    const result = await UserServices.checkAdminFromDB(email);
+    const isAdmin = result?.role === 'admin';
+    res.send({ admin: isAdmin });
+    } catch (error : any) {
+        res.status(500).json({
+            success: false,
+            message: error.message || 'Something went wrong.',
+            data: null
+        })
+    }
+}
 export const UsersControllers = {
     StoreUser,
     getSingleUser,
-    getAllUsers
+    getAllUsers,
+    checkAdmin
 }

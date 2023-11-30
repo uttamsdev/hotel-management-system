@@ -32,6 +32,7 @@ import FoodBookingPage from './Components/Pages/Services/Food/FoodBookingPage';
 import ShowAllRooms from './Components/Pages/Services/Rooms/ShowAllRooms';
 import SingleRoomDetails from './Components/Pages/Services/Rooms/SingleRoomDetails';
 import FoodOrders from './Components/Pages/Roles/AdminRole/Pages/FoodOrders';
+import RequireAdmin from './Components/Pages/RequireAuth/RequireAdmin';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
   return (
     <div>
       {!hideNavbar && <Navbar />}
+      {/* <Navbar></Navbar> */}
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/products' element={<RequireAuth><Products></Products></RequireAuth>}></Route>
@@ -53,21 +55,21 @@ function App() {
         <Route path='/rooms' element={<ShowAllRooms></ShowAllRooms>}></Route>
         <Route path='room/:roomId' element={<SingleRoomDetails></SingleRoomDetails>}></Route>
         <Route path='/food' element={<Food></Food>}></Route>
-        <Route path='/food/:foodId' element={<FoodBookingPage></FoodBookingPage>}></Route>
+        <Route path='/food/:foodId' element={<RequireAuth><FoodBookingPage></FoodBookingPage></RequireAuth>}></Route>
         <Route path='/available-rooms' element={<AvailableRooms></AvailableRooms>}></Route>
         <Route path='/book-room/:roomId' element={<RequireAuth><BookRoomPage></BookRoomPage></RequireAuth>}></Route>
-        <Route path='/admin' element={<AdminLayout><AdminDashboard></AdminDashboard></AdminLayout>}></Route>
-        <Route path='/admin/view-orders' element={<AdminLayout><ViewOrders></ViewOrders></AdminLayout>}></Route>
-        <Route path='/admin/view-food-orders' element={<AdminLayout><FoodOrders></FoodOrders></AdminLayout>}></Route>
-        <Route path='/admin/add-room' element={<AdminLayout><AddRoom></AddRoom></AdminLayout>}></Route>
-        <Route path='/admin/all-room' element={<AdminLayout><AllRooms></AllRooms></AdminLayout>}></Route>
-        <Route path='/admin/all-food' element={<AdminLayout><AllFoods></AllFoods></AdminLayout>}></Route>
-        <Route path='/admin/add-task' element={<AdminLayout><AddTask></AddTask></AdminLayout>}></Route>
-        <Route path='/admin/manage-users' element={<AdminLayout><ManageUsers></ManageUsers></AdminLayout>}></Route>
-        <Route path='/admin/add-food' element={<AdminLayout><CreateFood></CreateFood></AdminLayout>}></Route>
-        <Route path='/user/' element={<UserLayout><UserDashboard></UserDashboard></UserLayout>}></Route>
-        <Route path='/user/my-orders' element={<UserLayout><MyOrders></MyOrders></UserLayout>}></Route>
-        <Route path='/user/my-food-orders' element={<UserLayout><MyFoodOrders></MyFoodOrders></UserLayout>}></Route>
+        <Route path='/admin' element={<RequireAdmin><AdminLayout><AdminDashboard></AdminDashboard></AdminLayout></RequireAdmin>}></Route>
+        <Route path='/admin/view-orders' element={<RequireAdmin><AdminLayout><ViewOrders></ViewOrders></AdminLayout></RequireAdmin>}></Route>
+        <Route path='/admin/view-food-orders' element={<RequireAdmin><AdminLayout><FoodOrders></FoodOrders></AdminLayout></RequireAdmin>}></Route>
+        <Route path='/admin/add-room' element={<RequireAdmin><AdminLayout><AddRoom></AddRoom></AdminLayout></RequireAdmin>}></Route>
+        <Route path='/admin/all-room' element={<RequireAdmin><AdminLayout><AllRooms></AllRooms></AdminLayout></RequireAdmin>}></Route>
+        <Route path='/admin/all-food' element={<RequireAdmin><AdminLayout><AllFoods></AllFoods></AdminLayout></RequireAdmin>}></Route>
+        <Route path='/admin/add-task' element={<RequireAdmin><AdminLayout><AddTask></AddTask></AdminLayout></RequireAdmin>}></Route>
+        <Route path='/admin/manage-users' element={<RequireAdmin><AdminLayout><ManageUsers></ManageUsers></AdminLayout></RequireAdmin>}></Route>
+        <Route path='/admin/add-food' element={<RequireAdmin><AdminLayout><CreateFood></CreateFood></AdminLayout></RequireAdmin>}></Route>
+        <Route path='/user/' element={<RequireAuth><UserLayout><UserDashboard></UserDashboard></UserLayout></RequireAuth>}></Route>
+        <Route path='/user/my-orders' element={<RequireAuth><UserLayout><MyOrders></MyOrders></UserLayout></RequireAuth>}></Route>
+        <Route path='/user/my-food-orders' element={<RequireAuth><UserLayout><MyFoodOrders></MyFoodOrders></UserLayout></RequireAuth>}></Route>
         <Route path='/staff/' element={<StaffLayout><StaffDashboard></StaffDashboard></StaffLayout>}></Route>
         <Route path='/staff/view-task' element={<StaffLayout><ViewTask></ViewTask></StaffLayout>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

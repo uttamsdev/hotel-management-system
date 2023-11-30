@@ -43,7 +43,7 @@ const SocialLogin = () => {
     <div>
         {errorMessage}
         <div className='flex flex-col  mx-auto'>
-            <button className='bg-orange-700  h-12 mt-4 text-white' onClick={()=>{signInWithGoogle()}}>Signin With Google</button> 
+            <button className='bg-orange-700 rounded  h-10 mt-4 text-white' onClick={()=>{signInWithGoogle()}}>Signin With Google</button> 
         </div>
     </div>
   )

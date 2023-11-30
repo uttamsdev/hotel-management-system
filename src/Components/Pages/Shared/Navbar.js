@@ -5,10 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/firebase.init';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
+import useAdmin from '../../Hooks/useAdmin';
 
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
+    const [admin, adminLoading] = useAdmin(user);
     const navigate = useNavigate();
     const handleLogout = async()=> {
         signOut(auth);
@@ -47,8 +49,9 @@ const Navbar = () => {
                         <Link to="/food">Foods</Link>
                         <Link to="/rooms">All Rooms</Link>
                         <Link to="/contact">Contact</Link>
+                       
                         {
-                            user && <Link>Dashboard</Link>
+                            admin ? <Link to="/admin">Admin Dashboard</Link> : <Link to="/user">Dashboard</Link>
                         }
                         {
                             user && <p className='bg-red-200 px-2 py-1 rounded'>{user.displayName}</p>
