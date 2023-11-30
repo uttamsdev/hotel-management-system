@@ -2,14 +2,14 @@ import React from "react";
 
 const ResturantAndBar = () => {
   return (
-    <div className="w-full xl:w-[1100px] mx-auto mt-12 border-t">
+    <div className="w-11/12 xl:w-[1100px] mx-auto mt-12 border-t">
       <p>
-        <p className="text-2xl font-semibold text-[#000080] uppercase mb-2 mt-3">
+        <p className="text-xl xl:text-2xl font-semibold text-[#000080] uppercase mb-2 mt-3">
           Restaurants and bars
         </p>
       </p>
       <div>
-        <div className="flex gap-6">
+        <div className="flex flex-col xl:flex-row gap-6">
           <img
             className="xl: w-[550px] h-[330px] rounded"
             src="https://media.radissonhotels.net/image/radisson-blu-hotel-dhaka-water-garden/restaurant/16256-113891-f63612968_3xl.jpg"

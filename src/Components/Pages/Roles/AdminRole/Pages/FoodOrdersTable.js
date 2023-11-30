@@ -35,7 +35,7 @@ const FoodOrdersTable = ({order, index, setAllOrderData}) => {
     <tr>
     <th>{index + 1}</th>
     <td>
-      <img className="w-28 h-20 rounded " src={img} alt="" />
+      <img className="w-10 xl:w-32 xl:h-20 rounded " src={img} alt="" />
     </td>
     <td>{foodId}</td>
     <td>{email}</td>

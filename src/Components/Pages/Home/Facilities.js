@@ -14,7 +14,7 @@ const Facilities = () => {
             <p className='text-lg'>83-88 , Bir Uttom A.k Khandakar Sarak Mohakhali C/A, Dhaka-1212, Bangladesh</p>
         </div>
         <div>
-          <p className='text-2xl font-semibold text-[#000080] uppercase mb-2'>Facilities</p>
+          <p className='text-xl xl:text-2xl font-semibold text-[#000080] uppercase mb-2'>Facilities</p>
           <div className='grid grid-cols-2 place-content-center place-items-center xl:flex gap-4'>
             <div className='w-[113px] h-[105px] bg-[#FBE2E3] flex flex-col justify-center items-center rounded'>
               <FaWifi className='text-[#000080] text-3xl'/>

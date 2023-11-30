@@ -75,17 +75,17 @@ const SingleRoomDetails = () => {
       .then((data) => setRoomData(data.data[0]));
   }, [roomId]);
   return (
-    <div className="w-full xl:w-[1100px] mx-auto mt-6 flex">
+    <div className="w-full xl:w-[1100px] mx-auto mt-6 flex flex-col xl:flex-row">
       <div className="mx-auto">
         <div className="mb-6">
           <img
-            className="w-730px h-[430px] rounded-md"
+            className="w-[300px] h-[200px] xl:w-[710px] xl:h-[430px] rounded-md"
             src={roomData?.img}
             alt=""
           />
         </div>
 
-        <div className="flex ml-2">
+        <div className="flex gap-4 xl:gap-0 xl:ml-2 flex-col justify-center items-center xl:justify-normal xl:flex-row">
           <div className="w-[235px] h-[140px] bg-[#414159] flex items-center justify-center mr-[1px]">
             <div className="text-center">
               <p className="text-xl font-bold text-white">Size:</p>
@@ -108,13 +108,13 @@ const SingleRoomDetails = () => {
           </div>
         </div>
 
-        <div className="w-[730px]">
+        <div className="w-full xl:w-[730px] mb-4">
           <div>
             <p className="text-2xl font-semibold text-gray-900 mb-4 mt-4">
               Room Services
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
             <div className="flex items-center gap-3">
               <div>
                 <img
@@ -163,7 +163,7 @@ const SingleRoomDetails = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#E3E3ED]  h-[310px] w-1/2 mx-auto flex-col flex justify-center rounded-md">
+      <div className="bg-[#E3E3ED] w-11/12  h-[310px] xl:w-1/2 mx-auto flex-col flex justify-center rounded-md">
         <div className="">
           <div className="mb-2">
             <p className="text-2xl mb-6 text-gray-600 font-bold pt-4 text-center">

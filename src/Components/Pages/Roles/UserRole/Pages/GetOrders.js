@@ -38,7 +38,7 @@ const GetOrders = ({ order, index, orderData, user, setOrderData }) => {
     <tr>
       <th>{index + 1}</th>
       <td>
-        <img className="w-28 h-20 rounded " src={img} alt="" />
+        <img className="w-28 xl:h-20 rounded " src={img} alt="" />
       </td>
       <td>{roomId}</td>
       <td>{name}</td>

@@ -8,7 +8,7 @@ const PhotoGallery = () => {
     <div className="mt-12 mb-12">
       <div className="w-full xl:w-[1100px] mx-auto border-t">
         <div>
-          <p className="text-2xl font-semibold text-[#000080] uppercase mb-2 mt-3">
+          <p className="text-xl xl:text-2xl font-semibold text-[#000080] uppercase mb-2 mt-3">
             Photo Gallery
           </p>
         </div>

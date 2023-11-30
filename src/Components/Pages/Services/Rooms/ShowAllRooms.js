@@ -13,7 +13,7 @@ const ShowAllRooms = () => {
             <div>
                 <p className='uppercase text-[#000080] text-2xl mt-8 font-bold mb-2'>Our All Rooms</p>
             </div>
-            <div className='grid grid-cols-1 place-content-center xl:grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1 place-content-center place-items-center xl:grid-cols-3 gap-6'>
               {
                 rooms?.map(room => <ShowSingleRoom key={room?.roomId} room={room}></ShowSingleRoom>)
               }

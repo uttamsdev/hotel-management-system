@@ -62,19 +62,19 @@ const Banner = () => {
 
   return (
     <div className="banner mb-12 ">
-      <div className="h-[350px] mx-auto text-white banner-items">
-        <h1 className="text-5xl font-bold mt-10 ">Hotel Radison</h1>
-        <p className="text-7xl font-bold">Good Staff Place!</p>
+      <div className="h-[180px] xl:h-[350px] mx-auto text-white banner-items">
+        <h1 className="text-3xl xl:text-5xl font-bold  xl:mt-10 ">Hotel Radison</h1>
+        <p className="text-4xl text-center xl:text-7xl font-bold">Good Staff Place!</p>
       </div>
 
-      <div className="bg-[#485B6A]/75  h-[180px] w-1/2 mx-auto flex justify-center rounded-md">
+      <div className="bg-[#485B6A]/75 h-auto w-3/4 pb-6 xl:pb-0  xl:h-[180px] xl:w-1/2 mx-auto flex justify-center rounded-md flex-col xl:flex-row">
         <div className="">
           <div className="mb-4">
-            <p className="text-2xl text-white font-bold pt-4">
+            <p className="text-xl text-center xl:text-left xl:text-2xl text-white font-bold pt-4">
               Online Room Booking
             </p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-col xl:flex-row">
             <div>
               <p className="text-white">Check In</p>
               <DatePicker
@@ -98,7 +98,7 @@ const Banner = () => {
               <select
                 name=""
                 id=""
-                className="h-10 w-[180px] bg-white text-center rounded outline-none"
+                className="h-10 w-[200px] xl:w-[180px] bg-white text-center rounded outline-none"
                 value={inputValue}
                 onChange={handleInputChange}
               >
@@ -111,7 +111,7 @@ const Banner = () => {
             <div>
               <button
                 onClick={handleCheckAvailableRoom}
-                className="bg-[#000080] text-white h-10 mt-6 p-2 px-4 rounded"
+                className="bg-[#000080] text-white h-10 mt-2 xl:mt-6 p-2 px-4 rounded"
               >
                 Check Availability
               </button>

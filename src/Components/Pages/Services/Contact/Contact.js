@@ -47,7 +47,7 @@ const Contact = () => {
         <div>
           <div className="">
             <p className="text-xl uppercase mb-3 mt-8 text-center xl:text-left ">Social Info</p>
-            <div>
+            <div className="flex justify-center xl:justify-normal">
             <div className='flex gap-4'>
                 <Link className='text-2xl hover:scale-75 duration-500'><SiFacebook/></Link>
                 <Link className='text-2xl hover:scale-75 duration-500'><RiInstagramLine/></Link>
@@ -59,9 +59,9 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="w-10/12 mx-auto xl:mx-0 xl:w-[866px] h-[580px] xl:h-[660px] bg-slate-300 rounded-md">
+      <div className="w-10/12 mx-auto xl:mx-0 xl:w-[866px] h-[530px] xl:h-[660px] bg-slate-300 rounded-md">
         <div className="flex justify-between items-center">
-        <p className="text-5xl font-bold ml-8 pt-4 mb-8">
+        <p className="text-3xl xl:text-5xl font-bold ml-8 pt-4 mb-8">
           Contact <span className="">Us</span>
         </p>
         <img src="icon2.webp" alt="" />

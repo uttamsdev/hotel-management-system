@@ -68,42 +68,42 @@ const BookRoomPage = () => {
       .then((data) => setRoomData(data.data[0]));
   }, [roomId]);
   return (
-    <div className="w-full xl:w-[1100px] mx-auto mt-4 flex">
+    <div className="w-11/12 xl:w-[1100px] mx-auto mt-4 flex flex-col xl:flex-row">
       <div>
         <div className="mb-6">
-          <img className="w-[710px] h-[430px] rounded" src={roomData?.img} alt="" />
+          <img className="w-11/12 mx-auto h-[200px] xl:w-[710px] xl:h-[430px] rounded" src={roomData?.img} alt="" />
         </div>
 
         <div className="flex ml-2">
           <div className="w-[235px] h-[140px] bg-[#414159] flex items-center justify-center mr-[1px]">
             <div className="text-center">
-              <p className="text-xl font-bold text-white">Size:</p>
-              <p className="text-xl text-[#EDDFBA]">400 Sq-ft</p>
+              <p className="text-md xl:text-xl font-bold text-white">Size:</p>
+              <p className="text-md xl:text-xl text-[#EDDFBA]">400 Sq-ft</p>
             </div>
           </div>
           <div className="w-[235px] h-[140px] bg-[#414159] flex items-center justify-center mr-[1px]">
             <div className="text-center">
-              <p className="text-xl font-bold text-white">Capacity:</p>
-              <p className="text-xl text-[#EDDFBA]">
+              <p className="text-md xl:text-xl font-bold text-white">Capacity:</p>
+              <p className="text-md xl:text-xl text-[#EDDFBA]">
                 02 Adult & 02 Childs (below 10 Years)
               </p>
             </div>
           </div>
           <div className="w-[235px] h-[140px] bg-[#414159] flex items-center justify-center">
             <div className="text-center">
-              <p className="text-xl font-bold text-white">Bed:</p>
-              <p className="text-xl text-[#EDDFBA]">Double</p>
+              <p className="text-md xl:text-xl font-bold text-white">Bed:</p>
+              <p className="text-md xl:text-xl text-[#EDDFBA]">Double</p>
             </div>
           </div>
         </div>
 
-        <div className="w-[730px]">
+        <div className="w-11/12 xl:w-[730px] mb-6 xl:mb-0">
           <div>
             <p className="text-2xl font-semibold text-gray-900 mb-4 mt-4">
               Room Services
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 xl:grid-cols-3 gap-6">
             <div className="flex items-center gap-3">
               <div>
                 <img
@@ -155,7 +155,7 @@ const BookRoomPage = () => {
         
       </div>
       {/* another div */}
-      <div className="w-[350px] h-[400px] bg-[#E3E3ED] p-4 rounded-md">
+      <div className="w-11/12 mx-auto xl:w-[350px] h-[400px] bg-[#E3E3ED] p-4 rounded-md">
           <div className="mt-4">
 
             <p className="text-2xl font-bold text-center mb-2 text-blue-500">Order Summary</p>

@@ -53,8 +53,8 @@ const FoodBookingPage = () => {
   }
   return (
     <div className="mt-4 flex justify-center">
-      <div className="w-full xl:w-[690px] shadow-xl p-2">
-        <img className="w-full xl:w-[700px] mx-auto" src={orderData?.img} alt="" />
+      <div className="w-11/12 xl:w-[690px] shadow-xl p-2">
+        <img className="w-full xl:w-[700px] mx-auto rounded" src={orderData?.img} alt="" />
         <p className="mt-2">Food ID: {orderData?.foodId}</p>
         <p className="text-xl font-bold">{orderData?.name}</p>
         <p className="my-2 font-bold">Price: {orderData?.price}/DAY</p>
