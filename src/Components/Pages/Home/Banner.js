@@ -80,6 +80,7 @@ const Banner = () => {
               <DatePicker
                 className="h-10 text-center outline-none rounded"
                 selected={startDate}
+                minDate={new Date()}
                 onChange={(date) => setStartDate(date)}
               />
             </div>
@@ -88,6 +89,7 @@ const Banner = () => {
               <DatePicker
                 className="h-10 text-center outline-none rounded"
                 selected={endDate}
+                minDate={new Date()}
                 onChange={(date) => setEndDate(date)}
               />
             </div>
@@ -109,7 +111,7 @@ const Banner = () => {
             <div>
               <button
                 onClick={handleCheckAvailableRoom}
-                className="bg-[#000080] text-white h-10 mt-6 p-2 rounded"
+                className="bg-[#000080] text-white h-10 mt-6 p-2 px-4 rounded"
               >
                 Check Availability
               </button>

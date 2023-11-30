@@ -177,6 +177,7 @@ const SingleRoomDetails = () => {
                 <DatePicker
                   className="h-10 w-[150px] text-center outline-none rounded"
                   selected={startDate}
+                  minDate={new Date()} // Set minDate to today's date
                   onChange={(date) => setStartDate(date)}
                 />
               </div>
@@ -185,6 +186,7 @@ const SingleRoomDetails = () => {
                 <DatePicker
                   className="h-10 text-center outline-none rounded w-[150px]"
                   selected={endDate}
+                  minDate={new Date()} // Set minDate to today's date
                   onChange={(date) => setEndDate(date)}
                 />
               </div>
@@ -205,7 +207,7 @@ const SingleRoomDetails = () => {
             <div>
               <button
                 onClick={handleCheckAvailableRoom}
-                className="bg-[#000080] text-white h-10 mt-2 p-2 rounded"
+                className="bg-[#000080] text-white h-10 w-[200px] mt-2 p-2 rounded-full"
               >
                 Check Availability
               </button>
