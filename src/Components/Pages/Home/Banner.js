@@ -5,21 +5,21 @@ import { useNavigate } from "react-router-dom";
 import { MyContext } from "../../Context/Context";
 
 const Banner = () => {
-  // const [availableRooms, setAvailableRooms] 
+  // const [availableRooms, setAvailableRooms]
   const { setAvailableRooms, setSearchRoomData } = useContext(MyContext);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   // const [availableRooms, setAvailableRooms] = useState([]);
   const navigate = useNavigate();
-  
-// console.log("x is: ",x)
- 
+
+  // console.log("x is: ",x)
+
   const dateObjectStartDate = new Date(startDate);
   const dateObjectEndDate = new Date(endDate);
-  const formattedStartDate = dateObjectStartDate.toISOString().split('T')[0];
-  const formattedEndDate = dateObjectEndDate.toISOString().split('T')[0];
+  const formattedStartDate = dateObjectStartDate.toISOString().split("T")[0];
+  const formattedEndDate = dateObjectEndDate.toISOString().split("T")[0];
   // console.log(formattedStartDate);
   // console.log(formattedEndDate)
 
@@ -27,36 +27,38 @@ const Banner = () => {
     // Update the state with the new input value
     setInputValue(event.target.value);
   };
-  const handleCheckAvailableRoom = async() => {
-    
+  const handleCheckAvailableRoom = async () => {
     const date = {
       startDate: formattedStartDate,
       endDate: formattedEndDate,
-    }
+    };
 
     //searched data store
     const searchData = {
       startDate: formattedStartDate,
       endDate: formattedEndDate,
-      person: inputValue
-    }
+      person: inputValue,
+    };
 
     setSearchRoomData(searchData);
-    
-    console.log(date)
 
-    await fetch(`http://localhost:5000/api/v1/products/search-available-rooms?${new URLSearchParams(date).toString()}`)
-        .then(res => res.json())
-        .then(data => {
-          if(data){
-            setAvailableRooms(data)
-          }
-          console.log("data: ",data)
-        });
+    console.log(date);
 
-        navigate("/available-rooms")
+    await fetch(
+      `http://localhost:5000/api/v1/products/search-available-rooms?${new URLSearchParams(
+        date
+      ).toString()}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          setAvailableRooms(data);
+        }
+        console.log("data: ", data);
+      });
 
-  }
+    navigate("/available-rooms");
+  };
 
   return (
     <div className="banner mb-12 ">
@@ -91,16 +93,24 @@ const Banner = () => {
             </div>
             <div>
               <p className="text-white">Persons</p>
-              <input
-                className="h-10 text-center outline-none rounded"
-                type="number"
-                id="myInput"
+              <select
+                name=""
+                id=""
+                className="h-10 w-[180px] bg-white text-center rounded outline-none"
                 value={inputValue}
                 onChange={handleInputChange}
-              />
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
             </div>
             <div>
-              <button onClick={handleCheckAvailableRoom} className="bg-[#000080] text-white h-10 mt-6 p-2 rounded">
+              <button
+                onClick={handleCheckAvailableRoom}
+                className="bg-[#000080] text-white h-10 mt-6 p-2 rounded"
+              >
                 Check Availability
               </button>
             </div>

@@ -35,6 +35,22 @@ const searchAvailableRooms = async(req : Request, res : Response) => {
     })
 }
 
+const searchSingleAvailableRooms = async(req : Request, res : Response) => {
+   
+    const {startDate, endDate, roomId} = req.query;
+    // const {startDate, endDate} = req.body;
+    console.log(req.body);
+    
+
+    const result = await ProductServices.searchAvailableSingleRoomFromDB(startDate as string, endDate as string, roomId as string);
+    // console.log("result: ",result)
+    res.status(400).json({
+        success: true,
+        message: "Room data",
+        data: result
+    })
+}
+
 const getAllRooms = async(req : Request, res : Response)=> {
     try {
     const result = await ProductServices.getAllRoomFromDB();
@@ -113,5 +129,6 @@ export const ProductControllers = {
     getSingleRoom,
     deleteRoom,
     searchAvailableRooms,
-    updateRoom
+    updateRoom,
+    searchSingleAvailableRooms
 }

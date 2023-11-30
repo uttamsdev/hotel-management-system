@@ -19,6 +19,23 @@ const searchAvailableRoomFromDB = async(startDate : string, endDate : string) =>
     // console.log(availableRooms)
     return availableRooms;
 }
+
+const searchAvailableSingleRoomFromDB = async(startDate : string, endDate : string, roomId:string) => {
+    const bookedRoomIds = await OrderRoom.distinct('roomId', {
+        $or: [
+          { startDate: { $lte: endDate }, endDate: { $gte: startDate } },
+          { startDate: { $gte: startDate, $lte: endDate } },
+        ],
+        $and: [
+            {
+                roomId: roomId
+            }
+        ]
+      });
+    //   console.log(startDate, endDate);
+  return bookedRoomIds;
+}
+
 const getAllRoomFromDB = async() => {
     const result = await Room.find();
     return result;
@@ -46,4 +63,5 @@ export const ProductServices = {
     deleteRoomFromDB,
     searchAvailableRoomFromDB,
     updateRoomFromDB,
+    searchAvailableSingleRoomFromDB
 }
