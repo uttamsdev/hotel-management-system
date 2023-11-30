@@ -61,10 +61,10 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    }).then((willDelete) => {
+    }).then(async(willDelete) => {
       if (willDelete) {
         const url = `http://localhost:5000/api/v1/foods/${foodId}`;
-        fetch(url, {
+        await fetch(url, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -74,7 +74,7 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
         });
 
         //this second fetched is use to refresh delete data
-        fetch("http://localhost:5000/api/v1/foods/all-foods")
+        await fetch("http://localhost:5000/api/v1/foods/all-foods")
           .then((res) => res.json())
           .then((data) => setAllFoods(data?.data));
       } else {

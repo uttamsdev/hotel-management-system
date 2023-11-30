@@ -59,10 +59,10 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    }).then((willDelete) => {
+    }).then(async(willDelete) => {
       if (willDelete) {
         const url = `http://localhost:5000/api/v1/products/rooms/${roomId}`;
-        fetch(url, {
+        await fetch(url, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -72,7 +72,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
         });
 
         //this second fetched is use to refresh delete data
-        fetch("http://localhost:5000/api/v1/products/rooms")
+        await fetch("http://localhost:5000/api/v1/products/rooms")
           .then((res) => res.json())
           .then((data) => setAllRooms(data?.data));
       } else {

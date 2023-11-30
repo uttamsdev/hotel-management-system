@@ -18,7 +18,7 @@ const UserDashboard = () => {
         <div>
         </div>
         <div className="flex justify-center">
-          <div className="w-[450px] h-[350px] shadow-xl flex flex-col items-center justify-center">
+          <div className="w-11/12 xl:w-[450px] h-[350px] shadow-xl flex flex-col items-center justify-center">
             <div className="avatar online">
               <div className="w-32 mb-6 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img className="" src={profilePic} alt="" />

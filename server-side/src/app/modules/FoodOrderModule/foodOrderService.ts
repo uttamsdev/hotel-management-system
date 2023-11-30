@@ -8,7 +8,7 @@ const orderFoodToDB = async(orderFoodData : TFoodOrder) => {
         // Nodemailer setup
         const info = await transporter.sendMail({
           from: '"Uttam Kumar Saha" <mail@uttamsaha.com>',
-          to: `${result.email}`,
+          to: `${result?.email}`,
           subject: 'Food Order Confirmed',
           text: "Your food order is successful. Thank for ordering. @Team Hotel Redisons"
         });

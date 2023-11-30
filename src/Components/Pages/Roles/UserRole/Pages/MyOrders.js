@@ -30,6 +30,7 @@ const MyOrders = () => {
               <th></th>
               <th>Image</th>
               <th>RoomId</th>
+              <th>Name</th>
               <th>StartDate</th>
               <th>EndDate</th>
               <th>Price</th>

@@ -71,7 +71,7 @@ const AddRoom = () => {
       <div className="flex justify-center">
         <form
           onSubmit={handleAddProduct}
-          className="shadow-2xl pl-12 pr-12 pt-6 pb-6 mt-4 mb-12 w-[600px]"
+          className="shadow-2xl pl-12 pr-12 pt-6 pb-6 mt-4 mb-12 w-11/12 xl:w-[600px]"
         >
           <label htmlFor="productName">Room ID:</label> <br />
           <input

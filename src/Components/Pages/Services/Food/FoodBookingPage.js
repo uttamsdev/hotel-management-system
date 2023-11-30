@@ -52,12 +52,12 @@ const FoodBookingPage = () => {
     return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
   }
   return (
-    <div className="w-full xl:w-[1100px] mx-auto mt-4">
-      <div>
-        <img src={orderData?.img} alt="" />
-        <p>Food ID: {orderData?.foodId}</p>
-        <p>{orderData?.name}</p>
-        <p>{orderData?.price}</p>
+    <div className="mt-4 flex justify-center">
+      <div className="w-full xl:w-[690px] shadow-xl p-2">
+        <img className="w-full xl:w-[700px] mx-auto" src={orderData?.img} alt="" />
+        <p className="mt-2">Food ID: {orderData?.foodId}</p>
+        <p className="text-xl font-bold">{orderData?.name}</p>
+        <p className="my-2 font-bold">Price: {orderData?.price}/DAY</p>
         <button onClick={handleOrder} className="btn  btn-success text-white">
           Confirm Order
         </button>

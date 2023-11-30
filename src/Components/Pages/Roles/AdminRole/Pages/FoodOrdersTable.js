@@ -12,10 +12,10 @@ const FoodOrdersTable = ({order, index, setAllOrderData}) => {
           icon: "warning",
           buttons: true,
           dangerMode: true,
-        }).then((willDelete) => {
+        }).then(async(willDelete) => {
           if (willDelete) {
             const url = `http://localhost:5000/api/v1/order-food/${foodId}`;
-            fetch(url, {
+            await fetch(url, {
               method: "DELETE",
             })
               .then((res) => res.json())
@@ -25,7 +25,7 @@ const FoodOrdersTable = ({order, index, setAllOrderData}) => {
             });
     
             //this second fetched is use to refresh delete data 
-            fetch("http://localhost:5000/api/v1/order-food/all-foods-orders").then(res => res.json()).then(data => setAllOrderData(data?.data))
+            await fetch("http://localhost:5000/api/v1/order-food/all-foods-orders").then(res => res.json()).then(data => setAllOrderData(data?.data))
           } else {
             swal("Oder not deleted. You canceled it!");
           }
