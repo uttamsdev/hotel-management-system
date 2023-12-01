@@ -12,22 +12,27 @@ const GetOrders = ({ order, index, orderData, user, setOrderData }) => {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    }).then(async(willDelete) => {
+    }).then(async (willDelete) => {
       if (willDelete) {
-        // const url = `http://localhost:5000/api/v1/orders/delete-room-order/${roomId}`;
-        await fetch(`http://localhost:5000/api/v1/orders/delete-room-order/${roomId}`, {
-          method: "DELETE",
-        })
+        // const url = `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/orders/delete-room-order/${roomId}`;
+        await fetch(
+          `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/orders/delete-room-order/${roomId}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => console.log(data));
         swal("Your order Deleted", {
           icon: "success",
         });
 
-        //this second fetched is use to refresh delete data 
-        await fetch(`http://localhost:5000/api/v1/orders/room/${user?.email}`)
-        .then((res) => res.json())
-        .then((data) => setOrderData(data?.data));
+        //this second fetched is use to refresh delete data
+        await fetch(
+          `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/orders/room/${user?.email}`
+        )
+          .then((res) => res.json())
+          .then((data) => setOrderData(data?.data));
       } else {
         swal("Oder not deleted. You canceled it!");
       }

@@ -5,7 +5,7 @@ const FoodOrdersTable = ({ order, index, orderData, user, setOrderData }) => {
   const { img, foodId, name, price } = order;
 
   const handleDeleteOrder = async (foodId) => {
-    console.log("foodID is: ",foodId);
+    console.log("foodID is: ", foodId);
     // alert(`Clicked on ${roomId}`)
     swal({
       title: "Are you sure?",
@@ -13,9 +13,9 @@ const FoodOrdersTable = ({ order, index, orderData, user, setOrderData }) => {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    }).then(async(willDelete) => {
+    }).then(async (willDelete) => {
       if (willDelete) {
-        const url = `http://localhost:5000/api/v1/order-food/${foodId}`;
+        const url = `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/order-food/${foodId}`;
         await fetch(url, {
           method: "DELETE",
         })
@@ -25,10 +25,12 @@ const FoodOrdersTable = ({ order, index, orderData, user, setOrderData }) => {
           icon: "success",
         });
 
-        //this second fetched is use to refresh delete data 
-        await fetch(`http://localhost:5000/api/v1/order-food/${user?.email}`)
-        .then((res) => res.json())
-        .then((data) => setOrderData(data?.data));
+        //this second fetched is use to refresh delete data
+        await fetch(
+          `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/order-food/${user?.email}`
+        )
+          .then((res) => res.json())
+          .then((data) => setOrderData(data?.data));
       } else {
         swal("Oder not deleted. You canceled it!");
       }

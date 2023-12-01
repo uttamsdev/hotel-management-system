@@ -2,7 +2,8 @@
 node_modules
 .env
 /node_modules
-
+sendMail.ts
+/server-sides/src/app/sendMail.ts 
 /.pnp
 .pnp.js
 

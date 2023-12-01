@@ -1,3 +1,6 @@
 node_modules
 .env
 /node_modules
+.git
+sendMail.ts
+/src/app/modules/sendMail.ts

@@ -16,32 +16,37 @@ const FoodBookingPage = () => {
 
   const handleOrder = () => {
     const orderFood = {
-        foodId: orderData?.foodId,
-        email: user?.email,
-        name: orderData?.name,
-        price: orderData?.price,
-        img: orderData?.img
-    }
-    fetch("http://localhost:5000/api/v1/order-food/create-order", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(orderFood),
-    })
+      foodId: orderData?.foodId,
+      email: user?.email,
+      name: orderData?.name,
+      price: orderData?.price,
+      img: orderData?.img,
+    };
+    fetch(
+      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/order-food/create-order",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(orderFood),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         swal({
-            title: "Order Successful",
-            text: "Your order is successful. Check email for confirmation!",
-            icon: "success",
-            button: "Ok",
-          });
+          title: "Order Successful",
+          text: "Your order is successful. Check email for confirmation!",
+          icon: "success",
+          button: "Ok",
+        });
         // event.target.reset();
       });
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/foods/${foodId}`)
+    fetch(
+      `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/foods/${foodId}`
+    )
       .then((res) => res.json())
       .then((data) => setOrderData(data?.data));
   }, [foodId]);
@@ -54,7 +59,11 @@ const FoodBookingPage = () => {
   return (
     <div className="mt-4 flex justify-center">
       <div className="w-11/12 xl:w-[690px] shadow-xl p-2">
-        <img className="w-full xl:w-[700px] mx-auto rounded" src={orderData?.img} alt="" />
+        <img
+          className="w-full xl:w-[700px] mx-auto rounded"
+          src={orderData?.img}
+          alt=""
+        />
         <p className="mt-2">Food ID: {orderData?.foodId}</p>
         <p className="text-xl font-bold">{orderData?.name}</p>
         <p className="my-2 font-bold">Price: {orderData?.price}/DAY</p>

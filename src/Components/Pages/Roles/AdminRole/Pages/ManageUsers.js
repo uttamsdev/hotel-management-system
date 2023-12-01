@@ -8,7 +8,9 @@ const ManageUsers = () => {
   console.log(users);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/users/get-users")
+    fetch(
+      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/users/get-users"
+    )
       .then((res) => res.json())
       .then((data) => setUsers(data?.data));
   }, []);

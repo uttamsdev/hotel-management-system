@@ -11,21 +11,21 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
   //   }
   const handleButtonClick = () => {
     // Perform any additional actions before or instead of form submission
-    console.log('Button clicked');
+    console.log("Button clicked");
   };
 
-  const handleUpdateRoomInfo = (roomId)=> {
+  const handleUpdateRoomInfo = (roomId) => {
     document.getElementById("my_modal_2").showModal();
-    localStorage.setItem("roomId",roomId);
-  }
+    localStorage.setItem("roomId", roomId);
+  };
   const handleUpdateRoom = async (event) => {
     // event.preventDefault();
     const rId = event.target.roomId.value;
     const rName = event.target.name.value;
     const rPrice = event.target.price.value;
 
-    if(!rId || !rName || !rPrice){
-        return;
+    if (!rId || !rName || !rPrice) {
+      return;
     }
     const updateData = {
       roomId: rId,
@@ -33,13 +33,18 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
       price: rPrice,
     };
 
-    await fetch(`http://localhost:5000/api/v1/products/rooms/${localStorage.getItem("roomId")}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateData),
-    })
+    await fetch(
+      `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms/${localStorage.getItem(
+        "roomId"
+      )}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         swal({
@@ -50,8 +55,10 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
         });
       });
 
-      //this api is called for refresh updated
-      fetch("http://localhost:5000/api/v1/products/rooms")
+    //this api is called for refresh updated
+    fetch(
+      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms"
+    )
       .then((res) => res.json())
       .then((data) => setAllRooms(data?.data));
   };
@@ -64,9 +71,9 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    }).then(async(willDelete) => {
+    }).then(async (willDelete) => {
       if (willDelete) {
-        const url = `http://localhost:5000/api/v1/products/rooms/${roomId}`;
+        const url = `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms/${roomId}`;
         await fetch(url, {
           method: "DELETE",
         })
@@ -77,7 +84,9 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
         });
 
         //this second fetched is use to refresh delete data
-        await fetch("http://localhost:5000/api/v1/products/rooms")
+        await fetch(
+          "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms"
+        )
           .then((res) => res.json())
           .then((data) => setAllRooms(data?.data));
       } else {
@@ -87,7 +96,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
   };
 
   //   useEffect(()=>{
-  //     fetch(`http://localhost:5000/api/v1/products/rooms/`).then(res => res.json()).then(data => setAllRooms(data?.data))
+  //     fetch(`https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms/`).then(res => res.json()).then(data => setAllRooms(data?.data))
   //   },[setAllRooms])
   return (
     <tr>
@@ -121,7 +130,10 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
             Update Room Information
           </p>
           <form method="dialog" onSubmit={handleUpdateRoom}>
-            <button onClick={handleButtonClick} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            <button
+              onClick={handleButtonClick}
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            >
               ✕
             </button>
             <div className=" flex justify-center mt-4">

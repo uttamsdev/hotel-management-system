@@ -14,11 +14,11 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
   //   // Perform any additional actions before or instead of form submission
   //   console.log('Button clicked');
   // };
- 
-  const handleUpdateFoods = async(foodId) => {
+
+  const handleUpdateFoods = async (foodId) => {
     document.getElementById("my_modal_2").showModal();
-    localStorage.setItem("foodId",foodId);
-  }
+    localStorage.setItem("foodId", foodId);
+  };
   const handleUpdateFood = async (event) => {
     // event.preventDefault();
     const fName = event.target.name.value;
@@ -27,21 +27,26 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
 
     // console.log(fId, fName, fPrice);
 
-    if( !fName || !fPrice){
-        return;
+    if (!fName || !fPrice) {
+      return;
     }
-     const updateData = {
+    const updateData = {
       foodId: fId,
       name: fName,
       price: fPrice,
     };
-    await fetch(`http://localhost:5000/api/v1/foods/${localStorage.getItem("foodId")}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateData),
-    })
+    await fetch(
+      `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/foods/${localStorage.getItem(
+        "foodId"
+      )}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         swal({
@@ -52,14 +57,15 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
         });
       });
 
-      //this api is called for refresh updated
-      fetch("http://localhost:5000/api/v1/foods/all-foods")
+    //this api is called for refresh updated
+    fetch(
+      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/foods/all-foods"
+    )
       .then((res) => res.json())
       .then((data) => setAllFoods(data?.data));
-      event.target.reset();
+    event.target.reset();
   };
 
- 
   const handleDeleteOrder = async (foodId) => {
     // alert(`Clicked on ${roomId}`)
     swal({
@@ -68,9 +74,9 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    }).then(async(willDelete) => {
+    }).then(async (willDelete) => {
       if (willDelete) {
-        const url = `http://localhost:5000/api/v1/foods/${foodId}`;
+        const url = `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/foods/${foodId}`;
         await fetch(url, {
           method: "DELETE",
         })
@@ -81,7 +87,9 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
         });
 
         //this second fetched is use to refresh delete data
-        await fetch("http://localhost:5000/api/v1/foods/all-foods")
+        await fetch(
+          "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/foods/all-foods"
+        )
           .then((res) => res.json())
           .then((data) => setAllFoods(data?.data));
       } else {
@@ -91,7 +99,7 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
   };
 
   //   useEffect(()=>{
-  //     fetch(`http://localhost:5000/api/v1/products/rooms/`).then(res => res.json()).then(data => setAllRooms(data?.data))
+  //     fetch(`https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms/`).then(res => res.json()).then(data => setAllRooms(data?.data))
   //   },[setAllRooms])
   return (
     <tr>

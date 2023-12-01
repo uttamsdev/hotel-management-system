@@ -9,19 +9,24 @@ const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
   const [orderData, setOrderData] = useState([]);
 
-  console.log(orderData)
-  
+  console.log(orderData);
+
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/orders/room/${user?.email}`)
+    fetch(
+      `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/orders/room/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setOrderData(data?.data));
   }, [user?.email, setOrderData]);
-  if(loading){
-    return <Loading></Loading>
+  if (loading) {
+    return <Loading></Loading>;
   }
   return (
     <div className="relative bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50 calc-height">
-      <p className=' border pl-12 text-xl text-black mb-8 font-bold bg-[#F8FAFC] h-14 flex items-center rounded-t-xl'><FaHome className='ml-5 mr-3 w-6 h-6'/>My Room Orders</p>
+      <p className=" border pl-12 text-xl text-black mb-8 font-bold bg-[#F8FAFC] h-14 flex items-center rounded-t-xl">
+        <FaHome className="ml-5 mr-3 w-6 h-6" />
+        My Room Orders
+      </p>
       <div className="overflow-x-auto">
         <table className="table w-full xl:w-11/12  mx-auto">
           {/* head */}
@@ -39,9 +44,16 @@ const MyOrders = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {
-              orderData.map((order, index ) => <GetOrders  key={order.roomId} index={index} order={order} orderData={orderData} user={user} setOrderData={setOrderData}></GetOrders>)
-            }
+            {orderData.map((order, index) => (
+              <GetOrders
+                key={order.roomId}
+                index={index}
+                order={order}
+                orderData={orderData}
+                user={user}
+                setOrderData={setOrderData}
+              ></GetOrders>
+            ))}
           </tbody>
         </table>
       </div>

@@ -6,9 +6,11 @@ const Rooms = () => {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/v1/products/rooms")
+    fetch(
+      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms"
+    )
       .then((res) => res.json())
-      .then((data) => setRooms(data?.data.slice(0,6)));
+      .then((data) => setRooms(data?.data.slice(0, 6)));
   }, []);
   return (
     <div className="w-full xl:w-[1100px] mx-auto mt-12 border-t">
@@ -17,7 +19,9 @@ const Rooms = () => {
           Rooms we offer
         </p>
         <p>
-          <Link className="link link-error text-[18px]" to="/rooms">Show All Rooms</Link>
+          <Link className="link link-error text-[18px]" to="/rooms">
+            Show All Rooms
+          </Link>
         </p>
       </div>
       <div className="grid grid-cols-1 place-content-center place-items-center xl:grid-cols-3 gap-6">

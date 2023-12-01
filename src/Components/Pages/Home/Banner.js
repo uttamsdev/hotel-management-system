@@ -45,7 +45,7 @@ const Banner = () => {
     console.log(date);
 
     await fetch(
-      `http://localhost:5000/api/v1/products/search-available-rooms?${new URLSearchParams(
+      `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/search-available-rooms?${new URLSearchParams(
         date
       ).toString()}`
     )
@@ -63,8 +63,12 @@ const Banner = () => {
   return (
     <div className="banner mb-12 ">
       <div className="h-[180px] xl:h-[350px] mx-auto text-white banner-items">
-        <h1 className="text-3xl xl:text-5xl font-bold  xl:mt-10 ">Hotel Radison</h1>
-        <p className="text-4xl text-center xl:text-7xl font-bold">Good Staff Place!</p>
+        <h1 className="text-3xl xl:text-5xl font-bold  xl:mt-10 ">
+          Hotel Radison
+        </h1>
+        <p className="text-4xl text-center xl:text-7xl font-bold">
+          Good Staff Place!
+        </p>
       </div>
 
       <div className="bg-[#485B6A]/75 h-auto w-3/4 pb-6 xl:pb-0  xl:h-[180px] xl:w-1/2 mx-auto flex justify-center rounded-md flex-col xl:flex-row">
