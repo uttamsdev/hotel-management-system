@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div className='bg-[#0E2737] h-[70px] text-gray-300'>
-        <dir className=" h-[70px] flex items-center justify-between xl:w-[1100px] mx-auto">
+    <div className='bg-[#0E2737] h-[100px] xl:h-[70px] text-gray-300'>
+        <dir className=" h-[100px] xl:h-[70px] flex flex-col xl:flex-row items-center justify-center gap-4 xl:gap-0 xl:justify-between xl:w-[1100px] mx-auto">
             <div>
                 <p>Copyright ©2023 All rights reserved</p>
             </div>

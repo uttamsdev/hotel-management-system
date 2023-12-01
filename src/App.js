@@ -33,6 +33,7 @@ import ShowAllRooms from './Components/Pages/Services/Rooms/ShowAllRooms';
 import SingleRoomDetails from './Components/Pages/Services/Rooms/SingleRoomDetails';
 import FoodOrders from './Components/Pages/Roles/AdminRole/Pages/FoodOrders';
 import RequireAdmin from './Components/Pages/RequireAuth/RequireAdmin';
+import NavbarTwo from './Components/Pages/Header/NavbarTwo';
 
 
 function App() {
@@ -43,8 +44,7 @@ function App() {
 
   return (
     <div>
-      {!hideNavbar && <Navbar />}
-      {/* <Navbar></Navbar> */}
+      {!hideNavbar && <NavbarTwo />}
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/products' element={<RequireAuth><Products></Products></RequireAuth>}></Route>
