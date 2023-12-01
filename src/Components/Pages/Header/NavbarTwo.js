@@ -44,9 +44,9 @@ const NavbarTwo = () => {
         <div className='bg-[#ECF0F4] shadow-md'> {/*className='bg-[#ECF0F4]'*/}
         <div className=' text-white mx-auto xl:rounded-2xl lg:px-28 z-10 sticky top-0 shadow-none py-2'>
             <nav className='flex h-[80px] w-full xl:w-[1100px] items-center justify-between custom-container mx-auto '>
-                <div>
+                <Link to="/">
                     <img className='w-20' src="http://www.hotels.gov.bd/forntend/img/core-img/logo.png" alt="" />
-                </div>
+                </Link>
                 <div onClick={()=>setOpen(!open)} className='absolute right-8 top-6 cursor-pointer md:hidden w-7 h-7 text-black'>
                 {
                     open ? <XMarkIcon/> : <Bars3BottomRightIcon />
