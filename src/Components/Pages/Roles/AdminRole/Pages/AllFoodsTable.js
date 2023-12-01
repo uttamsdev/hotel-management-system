@@ -1,9 +1,10 @@
 /* eslint-disable no-restricted-globals */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import swal from "sweetalert";
 
 const AllFoodsTable = ({ food, index, setAllFoods }) => {
   const { img, foodId, price, name } = food;
+  const [foodIdStore, setFoodIdStore] = useState();
 
   //   const handleGetUpdate = async()=> {
   //    ;
@@ -13,24 +14,28 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
   //   // Perform any additional actions before or instead of form submission
   //   console.log('Button clicked');
   // };
+ 
+  const handleUpdateFoods = async(foodId) => {
+    document.getElementById("my_modal_2").showModal();
+    localStorage.setItem("foodId",foodId);
+  }
   const handleUpdateFood = async (event) => {
     // event.preventDefault();
-    const fId = event.target.foodId.value;
     const fName = event.target.name.value;
+    const fId = event.target.foodId.value;
     const fPrice = event.target.price.value;
 
-    console.log(fId, fName, fPrice);
+    // console.log(fId, fName, fPrice);
 
-    if(!fId || !fName || !fPrice){
+    if( !fName || !fPrice){
         return;
     }
-    const updateData = {
+     const updateData = {
       foodId: fId,
       name: fName,
       price: fPrice,
     };
-
-    await fetch(`http://localhost:5000/api/v1/foods/${foodId}`, {
+    await fetch(`http://localhost:5000/api/v1/foods/${localStorage.getItem("foodId")}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -51,8 +56,10 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
       fetch("http://localhost:5000/api/v1/foods/all-foods")
       .then((res) => res.json())
       .then((data) => setAllFoods(data?.data));
+      event.target.reset();
   };
 
+ 
   const handleDeleteOrder = async (foodId) => {
     // alert(`Clicked on ${roomId}`)
     swal({
@@ -105,7 +112,7 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
           Delete Food
         </button>
         <button
-          onClick={() => document.getElementById("my_modal_2").showModal()}
+          onClick={() => handleUpdateFoods(foodId)}
           className="btn btn-success btn-sm btn-outline ml-2"
         >
           Update Food
@@ -123,9 +130,9 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
             </button>
             <div className=" flex justify-center mt-4">
               <div>
-                <p>Food ID: </p>
+                <p>Food Id: </p>
                 <input
-                  type="number"
+                  type="text"
                   className="input input-bordered w-full max-w-xs"
                   name="foodId"
                   placeholder="Enter food id"

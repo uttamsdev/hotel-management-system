@@ -13,6 +13,11 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
     // Perform any additional actions before or instead of form submission
     console.log('Button clicked');
   };
+
+  const handleUpdateRoomInfo = (roomId)=> {
+    document.getElementById("my_modal_2").showModal();
+    localStorage.setItem("roomId",roomId);
+  }
   const handleUpdateRoom = async (event) => {
     // event.preventDefault();
     const rId = event.target.roomId.value;
@@ -28,7 +33,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
       price: rPrice,
     };
 
-    await fetch(`http://localhost:5000/api/v1/products/rooms/${roomId}`, {
+    await fetch(`http://localhost:5000/api/v1/products/rooms/${localStorage.getItem("roomId")}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -103,7 +108,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
           Delete Room
         </button>
         <button
-          onClick={() => document.getElementById("my_modal_2").showModal()}
+          onClick={() => handleUpdateRoomInfo(roomId)}
           className="btn btn-success btn-sm btn-outline ml-2"
         >
           Update Room
@@ -125,6 +130,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
                 <input
                   type="number"
                   className="input input-bordered w-full max-w-xs"
+                  placeholder="Enter room id"
                   name="roomId"
                 />
               </div>
@@ -135,6 +141,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
                 <input
                   type="text"
                   className="input input-bordered w-full max-w-xs"
+                  placeholder="Enter room name"
                   name="name"
                 />
               </div>
@@ -145,6 +152,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
                 <input
                   className="input input-bordered w-full max-w-xs"
                   type="number"
+                  placeholder="Enter room price"
                   name="price"
                 />
               </div>
