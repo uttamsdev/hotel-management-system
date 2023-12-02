@@ -10,5 +10,5 @@ exports.default = {
     port: process.env.PORT,
     database_url: process.env.DATABASE_URL,
     host: process.env.HOST,
-    password: process.env.PASS
+    password: process.env.PASSWORD
 };

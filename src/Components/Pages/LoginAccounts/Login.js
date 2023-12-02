@@ -48,7 +48,7 @@ const Login = () => {
         <div className="">
           <form
             onSubmit={handleEmailPasswordLogin}
-            className="flex flex-col w-[460px] mx-auto shadow-xl p-8"
+            className="flex flex-col w-11/12 xl:w-[460px] mx-auto shadow-xl p-8"
           >
             <img
               className="w-24 mx-auto"
@@ -61,7 +61,7 @@ const Login = () => {
             <div>
               <p className="">Email:</p>
               <input
-                className="bg-[#e4e4e4ac] h-10 mb-2  outline-none w-[390px] pl-2 rounded"
+                className="bg-[#e4e4e4ac] h-10 mb-2  outline-none w-full xl:w-[390px] pl-2 rounded"
                 type="email"
                 name="email"
                 placeholder="Enter email"
@@ -70,7 +70,7 @@ const Login = () => {
             <div>
               <p>Password:</p>
               <input
-                className="bg-[#e4e4e4ac] h-10 mb-2 w-[390px] pl-2 outline-none rounded"
+                className="bg-[#e4e4e4ac] h-10 mb-2 w-full xl:w-[390px] pl-2 outline-none rounded"
                 type="password"
                 name="password"
                 placeholder="Enter password"
