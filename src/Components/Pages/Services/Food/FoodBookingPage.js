@@ -22,13 +22,16 @@ const FoodBookingPage = () => {
       price: orderData?.price,
       img: orderData?.img,
     };
-    fetch("http://localhost:5000/api/v1/order-food/create-order", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(orderFood),
-    })
+    fetch(
+      "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/order-food/create-order",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(orderFood),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         swal({
@@ -41,7 +44,9 @@ const FoodBookingPage = () => {
       });
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/foods/${foodId}`)
+    fetch(
+      `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/foods/${foodId}`
+    )
       .then((res) => res.json())
       .then((data) => setOrderData(data?.data));
   }, [foodId]);
@@ -61,7 +66,9 @@ const FoodBookingPage = () => {
         />
         <p className="mt-2">Food ID: {orderData?.foodId}</p>
         <p className="text-xl font-bold">{orderData?.name}</p>
-        <p className="my-2 font-bold">Price: <span className="text-red-500">{orderData?.price}TK</span>/PCS</p>
+        <p className="my-2 font-bold">
+          Price: <span className="text-red-500">{orderData?.price}TK</span>/PCS
+        </p>
         <button onClick={handleOrder} className="btn  btn-success text-white">
           Confirm Order
         </button>

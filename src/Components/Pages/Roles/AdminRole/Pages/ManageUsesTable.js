@@ -14,7 +14,7 @@ const ManageUsersTable = ({ user, index, setUsers }) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        const url = `http://localhost:5000/api/v1/orders/delete-room-order/${roomId}`;
+        const url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/delete-room-order/${roomId}`;
         fetch(url, {
           method: "DELETE",
         })
@@ -25,7 +25,9 @@ const ManageUsersTable = ({ user, index, setUsers }) => {
         });
 
         //this second fetched is use to refresh delete data
-        fetch("http://localhost:5000/api/v1/orders/room-orders")
+        fetch(
+          "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/room-orders"
+        )
           .then((res) => res.json())
           .then((data) => setUsers(data?.data));
       } else {

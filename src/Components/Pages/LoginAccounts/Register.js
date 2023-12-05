@@ -47,7 +47,7 @@ const Register = () => {
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
     console.log(email, password, name);
-    await fetch("http://localhost:5000/api/v1/users/store-user", {
+    await fetch("https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/users/store-user", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -14,7 +14,7 @@ const ViewOrderTable = ({ order, index, setAllOrderData }) => {
       dangerMode: true,
     }).then(async (willDelete) => {
       if (willDelete) {
-        const url = `http://localhost:5000/api/v1/orders/delete-room-order/${orderId}`;
+        const url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/delete-room-order/${orderId}`;
         await fetch(url, {
           method: "DELETE",
         })
@@ -25,7 +25,9 @@ const ViewOrderTable = ({ order, index, setAllOrderData }) => {
         });
 
         //this second fetched is use to refresh delete data
-        await fetch("http://localhost:5000/api/v1/orders/room-orders")
+        await fetch(
+          "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/room-orders"
+        )
           .then((res) => res.json())
           .then((data) => setAllOrderData(data?.data));
       } else {

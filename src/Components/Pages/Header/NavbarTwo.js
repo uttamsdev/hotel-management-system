@@ -45,7 +45,7 @@ const NavbarTwo = () => {
         <div className=' text-white mx-auto xl:rounded-2xl lg:px-28 z-10 sticky top-0 shadow-none py-2'>
             <nav className='flex h-[80px] w-full xl:w-[1100px] items-center justify-between custom-container mx-auto '>
                 <Link to="/">
-                    <img className='w-20' src="http://www.hotels.gov.bd/forntend/img/core-img/logo.png" alt="" />
+                    <img className='w-20' src="https://i.postimg.cc/vBD99T39/logos.png" alt="" />
                 </Link>
                 <div onClick={()=>setOpen(!open)} className='absolute right-8 top-6 cursor-pointer md:hidden w-7 h-7 text-black'>
                 {

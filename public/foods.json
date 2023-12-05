@@ -1,0 +1,38 @@
+[
+  {
+    "foodId": 2,
+    "name": "Chicken Masala",
+    "price": 1650.0,
+    "img": "https://www.deputy.com/uploads/2018/10/The-Most-Popular-Menu-Items-That-You-should-Consider-Adding-to-Your-Restaurant_Content-image1-min-1024x569.png"
+  },
+  {
+    "foodId": 2,
+    "name": "Chicken Biriyani",
+    "price": 1500.0,
+    "img": "https://naushabansw.files.wordpress.com/2014/04/mutton_biryani1.jpg"
+  },
+  {
+    "foodId": 2,
+    "name": "Chicken Burger",
+    "price": 1100.0,
+    "img": "https://i.insider.com/524c9691eab8eac9238b4569?width=1000&format=jpeg&auto=webp"
+  },
+  {
+    "foodId": 2,
+    "name": "Set Menu - 1",
+    "price": 2950.0,
+    "img": "https://www.hoteliermiddleeast.com/2021/05/j6z3czma-gulabo-restaurant.jpg"
+  },
+  {
+    "foodId": 2,
+    "name": "Chicken Lolipop",
+    "price": 500.0,
+    "img": "https://demo.techcity.com.np/restaurant/images/food3.jpg"
+  },
+  {
+    "foodId": 2,
+    "name": "Set Menu - 2",
+    "price": 890.0,
+    "img": "https://media-cdn.tripadvisor.com/media/photo-s/11/f3/39/52/sweet-and-sour-pork-rice.jpg"
+  }
+]

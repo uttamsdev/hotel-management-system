@@ -38,13 +38,16 @@ const BookRoomPage = () => {
       img: roomData?.img,
     };
 
-    fetch("http://localhost:5000/api/v1/orders/order-room", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(order),
-    })
+    fetch(
+      "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/order-room",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(order),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         swal({
@@ -61,7 +64,9 @@ const BookRoomPage = () => {
   console.log("end:", endDate);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/products/rooms/${roomId}`)
+    fetch(
+      `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/${roomId}`
+    )
       .then((res) => res.json())
       .then((data) => setRoomData(data.data[0]));
   }, [roomId]);

@@ -29,13 +29,16 @@ const SocialLogin = () => {
       email: user.user.email,
     };
     navigate(from, { replace: true } || "/"); // jekhan theke login korse se khane niye jabe
-    fetch("http://localhost:5000/api/v1/users/store-user", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
+    fetch(
+      "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/users/store-user",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => console.log(data));
     // navigate("/");

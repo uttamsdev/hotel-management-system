@@ -34,7 +34,9 @@ const Login = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    fetch(`http://localhost:5000/api/v1/users/${email}`)
+    fetch(
+      `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/users/${email}`
+    )
       .then((res) => res.json())
       .then((data) => setUserFromDB(data?.data?.role));
     await signInWithEmailAndPassword(email, password);

@@ -12,7 +12,9 @@ const MyOrders = () => {
   console.log(orderData);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/v1/orders/room/${user?.email}`)
+    fetch(
+      `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/room/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setOrderData(data?.data));
   }, [user?.email, setOrderData]);

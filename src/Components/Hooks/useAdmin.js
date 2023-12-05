@@ -7,12 +7,15 @@ const useAdmin = (user) => {
     const email = user?.email;
     console.log("user:", email);
     if (email) {
-      fetch(`http://localhost:5000/api/v1/users/admin/${email}`, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-        },
-      })
+      fetch(
+        `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/users/admin/${email}`,
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setAdmin(data.admin);

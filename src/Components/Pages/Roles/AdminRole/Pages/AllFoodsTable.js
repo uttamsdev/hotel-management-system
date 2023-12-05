@@ -36,7 +36,9 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
       price: fPrice,
     };
     await fetch(
-      `http://localhost:5000/api/v1/foods/${localStorage.getItem("foodId")}`,
+      `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/foods/${localStorage.getItem(
+        "foodId"
+      )}`,
       {
         method: "PUT",
         headers: {
@@ -56,7 +58,9 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
       });
 
     //this api is called for refresh updated
-    fetch("http://localhost:5000/api/v1/foods/all-foods")
+    fetch(
+      "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/foods/all-foods"
+    )
       .then((res) => res.json())
       .then((data) => setAllFoods(data?.data));
     event.target.reset();
@@ -72,7 +76,7 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
       dangerMode: true,
     }).then(async (willDelete) => {
       if (willDelete) {
-        const url = `http://localhost:5000/api/v1/foods/${foodId}`;
+        const url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/foods/${foodId}`;
         await fetch(url, {
           method: "DELETE",
         })
@@ -83,7 +87,9 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
         });
 
         //this second fetched is use to refresh delete data
-        await fetch("http://localhost:5000/api/v1/foods/all-foods")
+        await fetch(
+          "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/foods/all-foods"
+        )
           .then((res) => res.json())
           .then((data) => setAllFoods(data?.data));
       } else {
@@ -93,7 +99,7 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
   };
 
   //   useEffect(()=>{
-  //     fetch(`http://localhost:5000/api/v1/products/rooms/`).then(res => res.json()).then(data => setAllRooms(data?.data))
+  //     fetch(`https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/`).then(res => res.json()).then(data => setAllRooms(data?.data))
   //   },[setAllRooms])
   return (
     <tr>

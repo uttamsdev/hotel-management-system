@@ -1,0 +1,56 @@
+[
+  {
+    "roomId": 1090,
+    "name": "Family Class Room",
+    "price": 1550.0,
+    "img": "https://i.postimg.cc/gjZZS592/16256-113891-f65416992-3xl.jpg"
+  },
+  {
+    "roomId": 1091,
+    "name": "AC Deluxe Double Bed Room",
+    "price": 1850.0,
+    "img": "https://i.postimg.cc/0r1JLfxd/16256-113891-f65416992-3xl-1.jpg"
+  },
+  {
+    "roomId": 1092,
+    "name": "Business Class Room",
+    "price": 2150.0,
+    "img": "https://i.postimg.cc/63SZhKmP/16256-113891-f65416994-3xl.jpg"
+  },
+  {
+    "roomId": 1093,
+    "name": "AC Deluxe Double Bed Suite Room",
+    "price": 1150.0,
+    "img": "https://i.postimg.cc/9F9dJ4VY/Deluxe-1-min-1.jpg"
+  },
+  {
+    "roomId": 1094,
+    "name": "Family Suite Room",
+    "price": 3150.0,
+    "img": "https://i.postimg.cc/hG2TfTbc/Deluxe-2-min-1.jpg"
+  },
+  {
+    "roomId": 1095,
+    "name": "Double Class Room",
+    "price": 4150.0,
+    "img": "https://i.postimg.cc/g2Pv5Y2F/Deluxe-3-min.jpg"
+  },
+  {
+    "roomId": 1096,
+    "name": "Single Class Room",
+    "price": 5150.0,
+    "img": "https://i.postimg.cc/KYGtGJT0/Deluxe-Twin-1-min.jpg"
+  },
+  {
+    "roomId": 1097,
+    "name": "Family Suite Room",
+    "price": 4150.0,
+    "img": "https://i.postimg.cc/W16McQdD/Deluxe-Twin-5-min.jpg"
+  },
+  {
+    "roomId": 1098,
+    "name": "Deluxe Rool",
+    "price": 2150.0,
+    "img": "https://i.postimg.cc/8kjx4V5m/Premium-5-min.jpg"
+  }
+]

@@ -32,13 +32,16 @@ const AddRoom = () => {
           };
 
           //send docotr info to my database
-          fetch("http://localhost:5000/api/v1/products/add-room", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(product),
-          })
+          fetch(
+            "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/add-room",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(product),
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               if (data?.data?.roomId) {

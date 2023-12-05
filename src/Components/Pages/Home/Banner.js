@@ -45,7 +45,7 @@ const Banner = () => {
     console.log(date);
 
     await fetch(
-      `http://localhost:5000/api/v1/products/search-available-rooms?${new URLSearchParams(
+      `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/search-available-rooms?${new URLSearchParams(
         date
       ).toString()}`
     )
