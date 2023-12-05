@@ -67,7 +67,7 @@ const getRoomOrdersByEmail = (req, res) => __awaiter(void 0, void 0, void 0, fun
 const deleteRoomOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
-        const result = yield order_service_1.OrderServices.deleteOrderRoomFromDB(Number(id));
+        const result = yield order_service_1.OrderServices.deleteOrderRoomFromDB(id);
         res.status(400).json({
             success: true,
             message: "Room order successfully deleted",

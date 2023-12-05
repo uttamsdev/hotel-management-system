@@ -10,6 +10,11 @@ const orderRoomSchema = new mongoose_1.default.Schema({
         type: Number,
         required: true,
     },
+    orderId: {
+        type: String,
+        required: true,
+        unique: true
+    },
     email: {
         type: String,
         required: true,

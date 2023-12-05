@@ -47,16 +47,13 @@ const Register = () => {
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
     console.log(email, password, name);
-    await fetch(
-      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/users/store-user",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      }
-    )
+    await fetch("http://localhost:5000/api/v1/users/store-user", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
       .then((res) => res.json())
       .then((data) => console.log(data));
   };

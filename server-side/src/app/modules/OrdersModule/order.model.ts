@@ -7,6 +7,11 @@ const orderRoomSchema = new mongoose.Schema<TOrderRoom>({
         type: Number,
         required: true,
     },
+    orderId: {
+        type: String,
+        required: true,
+        unique: true
+    },
     email:{
         type: String,
         required: true,

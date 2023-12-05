@@ -13,9 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderServices = void 0;
+const randomOrderNumber_1 = require("../../../utlis/randomOrderNumber");
 const sendMail_1 = __importDefault(require("../../sendMail"));
 const order_model_1 = require("./order.model");
 const orderRoomToDB = (orderRoomData) => __awaiter(void 0, void 0, void 0, function* () {
+    orderRoomData.orderId = (0, randomOrderNumber_1.generateRandomOrderNumber)();
     const result = yield order_model_1.OrderRoom.create(orderRoomData);
     // console.log(result.email)
     // Nodemailer setup
@@ -39,7 +41,7 @@ const getOrderRoomByEmailFromDB = (email) => __awaiter(void 0, void 0, void 0, f
     return result;
 });
 const deleteOrderRoomFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield order_model_1.OrderRoom.deleteOne({ roomId: id });
+    const result = yield order_model_1.OrderRoom.deleteOne({ orderId: id });
     return result;
 });
 exports.OrderServices = {

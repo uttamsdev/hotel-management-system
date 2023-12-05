@@ -6,9 +6,7 @@ const Food = () => {
   console.log("foods: ", foods);
 
   useEffect(() => {
-    fetch(
-      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/foods/all-foods"
-    )
+    fetch("http://localhost:5000/api/v1/foods/all-foods")
       .then((res) => res.json())
       .then((data) => setFoods(data));
   }, []);

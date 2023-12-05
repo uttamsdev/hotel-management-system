@@ -1,8 +1,10 @@
+import { generateRandomOrderNumber } from "../../../utlis/randomOrderNumber";
 import transporter from "../../sendMail";
 import { TFoodOrder } from "./foodOrder.interface";
 import { OrderFood } from "./foodOrder.model";
 
 const orderFoodToDB = async(orderFoodData : TFoodOrder) => {
+    orderFoodData.orderId = generateRandomOrderNumber();
     const result = await OrderFood.create(orderFoodData);
     if(result){
         // Nodemailer setup
@@ -29,8 +31,8 @@ const getOrderFoodByEmailFromDB = async(email: string) => {
     return result;
 }
 
-const deleteOrderFoodFromDB = async(id: number) => {
-    const result = await OrderFood.deleteOne({foodId: id});
+const deleteOrderFoodFromDB = async(id: string) => {
+    const result = await OrderFood.deleteOne({orderId: id});
     return result;
 }
 

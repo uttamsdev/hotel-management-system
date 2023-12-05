@@ -8,9 +8,7 @@ const AllRooms = () => {
   // console.log(orderData)
 
   useEffect(() => {
-    fetch(
-      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms"
-    )
+    fetch("http://localhost:5000/api/v1/products/rooms")
       .then((res) => res.json())
       .then((data) => setAllRooms(data?.data));
   }, []);

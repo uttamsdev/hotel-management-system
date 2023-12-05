@@ -22,16 +22,13 @@ const FoodBookingPage = () => {
       price: orderData?.price,
       img: orderData?.img,
     };
-    fetch(
-      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/order-food/create-order",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(orderFood),
-      }
-    )
+    fetch("http://localhost:5000/api/v1/order-food/create-order", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(orderFood),
+    })
       .then((res) => res.json())
       .then((data) => {
         swal({
@@ -44,9 +41,7 @@ const FoodBookingPage = () => {
       });
   };
   useEffect(() => {
-    fetch(
-      `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/foods/${foodId}`
-    )
+    fetch(`http://localhost:5000/api/v1/foods/${foodId}`)
       .then((res) => res.json())
       .then((data) => setOrderData(data?.data));
   }, [foodId]);
@@ -58,15 +53,15 @@ const FoodBookingPage = () => {
   }
   return (
     <div className="mt-4 flex justify-center">
-      <div className="w-11/12 xl:w-[690px] shadow-xl p-2">
+      <div className="w-11/12 xl:w-[390px] shadow-xl p-2 flex flex-col items-center pb-4">
         <img
-          className="w-full xl:w-[700px] mx-auto rounded"
+          className="w-full xl:w-11/12 mx-auto rounded"
           src={orderData?.img}
           alt=""
         />
         <p className="mt-2">Food ID: {orderData?.foodId}</p>
         <p className="text-xl font-bold">{orderData?.name}</p>
-        <p className="my-2 font-bold">Price: {orderData?.price}/DAY</p>
+        <p className="my-2 font-bold">Price: <span className="text-red-500">{orderData?.price}TK</span>/PCS</p>
         <button onClick={handleOrder} className="btn  btn-success text-white">
           Confirm Order
         </button>

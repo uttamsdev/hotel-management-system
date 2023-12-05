@@ -13,9 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FoodOrderServices = void 0;
+const randomOrderNumber_1 = require("../../../utlis/randomOrderNumber");
 const sendMail_1 = __importDefault(require("../../sendMail"));
 const foodOrder_model_1 = require("./foodOrder.model");
 const orderFoodToDB = (orderFoodData) => __awaiter(void 0, void 0, void 0, function* () {
+    orderFoodData.orderId = (0, randomOrderNumber_1.generateRandomOrderNumber)();
     const result = yield foodOrder_model_1.OrderFood.create(orderFoodData);
     if (result) {
         // Nodemailer setup
@@ -38,7 +40,7 @@ const getOrderFoodByEmailFromDB = (email) => __awaiter(void 0, void 0, void 0, f
     return result;
 });
 const deleteOrderFoodFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield foodOrder_model_1.OrderFood.deleteOne({ foodId: id });
+    const result = yield foodOrder_model_1.OrderFood.deleteOne({ orderId: id });
     return result;
 });
 exports.FoodOrderServices = {

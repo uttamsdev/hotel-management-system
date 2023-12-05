@@ -8,9 +8,7 @@ const ViewOrders = () => {
   // console.log(orderData)
 
   useEffect(() => {
-    fetch(
-      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/orders/room-orders"
-    )
+    fetch("http://localhost:5000/api/v1/orders/room-orders")
       .then((res) => res.json())
       .then((data) => setAllOrderData(data?.data));
   }, []);
@@ -27,7 +25,8 @@ const ViewOrders = () => {
             <tr className="">
               <th></th>
               <th>Image</th>
-              <th>RoomId</th>
+              <th>Room ID</th>
+              <th>Order ID</th>
               <th>Email</th>
               <th>StartDate</th>
               <th>EndDate</th>

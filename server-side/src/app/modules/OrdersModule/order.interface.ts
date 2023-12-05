@@ -1,5 +1,6 @@
 export type TOrderRoom = {
     roomId: number;
+    orderId: string;
     email: string;
     name: string;
     startDate: string;

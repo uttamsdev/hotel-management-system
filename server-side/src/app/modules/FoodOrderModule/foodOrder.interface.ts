@@ -1,7 +1,8 @@
 export type TFoodOrder = {
-    foodId: string;
+    foodId: number;
+    orderId: string;
     email: string;
     name: string;
-    price: string;
+    price: number;
     img: string;
 }

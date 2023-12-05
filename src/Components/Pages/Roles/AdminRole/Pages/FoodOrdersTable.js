@@ -2,9 +2,9 @@ import React from "react";
 import swal from "sweetalert";
 
 const FoodOrdersTable = ({ order, index, setAllOrderData }) => {
-  const { img, foodId, email, name, price } = order;
+  const { img, foodId, orderId, email, name, price } = order;
 
-  const handleDeleteOrder = async (foodId) => {
+  const handleDeleteOrder = async (orderId) => {
     // alert(`Clicked on ${roomId}`)
     swal({
       title: "Are you sure?",
@@ -14,7 +14,7 @@ const FoodOrdersTable = ({ order, index, setAllOrderData }) => {
       dangerMode: true,
     }).then(async (willDelete) => {
       if (willDelete) {
-        const url = `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/order-food/${foodId}`;
+        const url = `http://localhost:5000/api/v1/order-food/${orderId}`;
         await fetch(url, {
           method: "DELETE",
         })
@@ -25,9 +25,7 @@ const FoodOrdersTable = ({ order, index, setAllOrderData }) => {
         });
 
         //this second fetched is use to refresh delete data
-        await fetch(
-          "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/order-food/all-foods-orders"
-        )
+        await fetch("http://localhost:5000/api/v1/order-food/all-foods-orders")
           .then((res) => res.json())
           .then((data) => setAllOrderData(data?.data));
       } else {
@@ -42,13 +40,14 @@ const FoodOrdersTable = ({ order, index, setAllOrderData }) => {
         <img className="w-10 xl:w-32 xl:h-20 rounded " src={img} alt="" />
       </td>
       <td>{foodId}</td>
+      <td>{orderId}</td>
       <td>{email}</td>
       <td>{name}</td>
       <td>{price}TK</td>
       <td>
         <button
           onClick={() => {
-            handleDeleteOrder(foodId);
+            handleDeleteOrder(orderId);
           }}
           className="btn btn-error text-base-200 btn-sm btn-outline"
         >

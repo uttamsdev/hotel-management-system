@@ -32,16 +32,13 @@ const CreateFood = () => {
           };
 
           //send docotr info to my database
-          fetch(
-            "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/foods/add-food",
-            {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(product),
-            }
-          )
+          fetch("http://localhost:5000/api/v1/foods/add-food", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(product),
+          })
             .then((res) => res.json())
             .then((data) => {
               if (data?.data?.foodId) {

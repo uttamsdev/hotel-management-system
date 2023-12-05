@@ -38,16 +38,13 @@ const BookRoomPage = () => {
       img: roomData?.img,
     };
 
-    fetch(
-      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/orders/order-room",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(order),
-      }
-    )
+    fetch("http://localhost:5000/api/v1/orders/order-room", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
       .then((res) => res.json())
       .then((data) => {
         swal({
@@ -64,9 +61,7 @@ const BookRoomPage = () => {
   console.log("end:", endDate);
 
   useEffect(() => {
-    fetch(
-      `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms/${roomId}`
-    )
+    fetch(`http://localhost:5000/api/v1/products/rooms/${roomId}`)
       .then((res) => res.json())
       .then((data) => setRoomData(data.data[0]));
   }, [roomId]);

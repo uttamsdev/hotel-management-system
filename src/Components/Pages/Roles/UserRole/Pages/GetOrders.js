@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import swal from "sweetalert";
 
 const GetOrders = ({ order, index, orderData, user, setOrderData }) => {
-  const { img, roomId, name, startDate, endDate, price } = order;
+  const { img, roomId, orderId, name, startDate, endDate, price } = order;
 
-  const handleDeleteOrder = async (roomId) => {
+  const handleDeleteOrder = async (orderId) => {
     // alert(`Clicked on ${roomId}`)
     swal({
       title: "Are you sure?",
@@ -14,9 +14,9 @@ const GetOrders = ({ order, index, orderData, user, setOrderData }) => {
       dangerMode: true,
     }).then(async (willDelete) => {
       if (willDelete) {
-        // const url = `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/orders/delete-room-order/${roomId}`;
+        // const url = `http://localhost:5000/api/v1/orders/delete-room-order/${roomId}`;
         await fetch(
-          `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/orders/delete-room-order/${roomId}`,
+          `http://localhost:5000/api/v1/orders/delete-room-order/${orderId}`,
           {
             method: "DELETE",
           }
@@ -28,9 +28,7 @@ const GetOrders = ({ order, index, orderData, user, setOrderData }) => {
         });
 
         //this second fetched is use to refresh delete data
-        await fetch(
-          `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/orders/room/${user?.email}`
-        )
+        await fetch(`http://localhost:5000/api/v1/orders/room/${user?.email}`)
           .then((res) => res.json())
           .then((data) => setOrderData(data?.data));
       } else {
@@ -46,6 +44,7 @@ const GetOrders = ({ order, index, orderData, user, setOrderData }) => {
         <img className="w-28 xl:h-20 rounded " src={img} alt="" />
       </td>
       <td>{roomId}</td>
+      <td>{orderId}</td>
       <td>{name}</td>
       <td>{startDate}</td>
       <td>{endDate}</td>
@@ -53,7 +52,7 @@ const GetOrders = ({ order, index, orderData, user, setOrderData }) => {
       <td>
         <button
           onClick={() => {
-            handleDeleteOrder(roomId);
+            handleDeleteOrder(orderId);
           }}
           className="btn btn-error text-base-200 btn-outline btn-sm"
         >

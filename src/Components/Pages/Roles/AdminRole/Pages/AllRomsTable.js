@@ -34,7 +34,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
     };
 
     await fetch(
-      `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms/${localStorage.getItem(
+      `http://localhost:5000/api/v1/products/rooms/${localStorage.getItem(
         "roomId"
       )}`,
       {
@@ -56,9 +56,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
       });
 
     //this api is called for refresh updated
-    fetch(
-      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms"
-    )
+    fetch("http://localhost:5000/api/v1/products/rooms")
       .then((res) => res.json())
       .then((data) => setAllRooms(data?.data));
   };
@@ -73,7 +71,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
       dangerMode: true,
     }).then(async (willDelete) => {
       if (willDelete) {
-        const url = `https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms/${roomId}`;
+        const url = `http://localhost:5000/api/v1/products/rooms/${roomId}`;
         await fetch(url, {
           method: "DELETE",
         })
@@ -84,9 +82,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
         });
 
         //this second fetched is use to refresh delete data
-        await fetch(
-          "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms"
-        )
+        await fetch("http://localhost:5000/api/v1/products/rooms")
           .then((res) => res.json())
           .then((data) => setAllRooms(data?.data));
       } else {
@@ -96,7 +92,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
   };
 
   //   useEffect(()=>{
-  //     fetch(`https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/products/rooms/`).then(res => res.json()).then(data => setAllRooms(data?.data))
+  //     fetch(`http://localhost:5000/api/v1/products/rooms/`).then(res => res.json()).then(data => setAllRooms(data?.data))
   //   },[setAllRooms])
   return (
     <tr>

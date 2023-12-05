@@ -66,8 +66,10 @@ const getFoodOrdersByEmail = (req, res) => __awaiter(void 0, void 0, void 0, fun
 });
 const deleteFoodOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { foodId } = req.params;
-        const result = yield foodOrderService_1.FoodOrderServices.deleteOrderFoodFromDB(Number(foodId));
+        const { orderId } = req.params;
+        console.log("orderID: ", orderId);
+        // console.log(req.params)
+        const result = yield foodOrderService_1.FoodOrderServices.deleteOrderFoodFromDB(orderId);
         res.status(400).json({
             success: true,
             message: "Food order successfully deleted",

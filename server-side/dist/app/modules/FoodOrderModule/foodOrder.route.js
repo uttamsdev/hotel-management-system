@@ -10,5 +10,5 @@ const router = express_1.default.Router();
 router.post("/create-order", foodOrderController_1.FoodOrderControllers.orderFood);
 router.get("/all-foods-orders", foodOrderController_1.FoodOrderControllers.getAllFoodOrders);
 router.get("/:email", foodOrderController_1.FoodOrderControllers.getFoodOrdersByEmail);
-router.delete("/:foodId", foodOrderController_1.FoodOrderControllers.deleteFoodOrder);
+router.delete("/:orderId", foodOrderController_1.FoodOrderControllers.deleteFoodOrder);
 exports.FoodOrderRoutes = router;

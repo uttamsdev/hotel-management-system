@@ -8,9 +8,7 @@ const FoodOrders = () => {
   // console.log(orderData)
 
   useEffect(() => {
-    fetch(
-      "https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/order-food/all-foods-orders"
-    )
+    fetch("http://localhost:5000/api/v1/order-food/all-foods-orders")
       .then((res) => res.json())
       .then((data) => setAllOrderData(data?.data));
   }, []);
@@ -28,6 +26,7 @@ const FoodOrders = () => {
               <th></th>
               <th>Image</th>
               <th>Food ID</th>
+              <th>Order ID</th>
               <th>Email</th>
               <th>name</th>
               <th>Price</th>

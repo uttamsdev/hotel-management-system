@@ -1,9 +1,11 @@
 
+import { generateRandomOrderNumber } from "../../../utlis/randomOrderNumber";
 import transporter from "../../sendMail";
 import { TOrderRoom } from "./order.interface"
 import { OrderRoom } from "./order.model"
 
 const orderRoomToDB = async(orderRoomData : TOrderRoom) => {
+    orderRoomData.orderId = generateRandomOrderNumber();
     const result = await OrderRoom.create(orderRoomData);
     // console.log(result.email)
         // Nodemailer setup
@@ -30,8 +32,8 @@ const getOrderRoomByEmailFromDB = async(email: string) => {
     return result;
 }
 
-const deleteOrderRoomFromDB = async(id: number) => {
-    const result = await OrderRoom.deleteOne({roomId: id});
+const deleteOrderRoomFromDB = async(id: string) => {
+    const result = await OrderRoom.deleteOne({orderId: id});
     return result;
 }
 

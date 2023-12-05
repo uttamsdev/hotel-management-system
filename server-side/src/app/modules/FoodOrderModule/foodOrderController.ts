@@ -55,8 +55,10 @@ const getFoodOrdersByEmail = async(req : Request, res : Response)=> {
 
 const deleteFoodOrder = async(req : Request, res : Response)=> {
     try {
-    const {foodId} = req.params;
-    const result = await FoodOrderServices.deleteOrderFoodFromDB(Number(foodId));
+    const {orderId} = req.params;
+    console.log("orderID: ",orderId)
+    // console.log(req.params)
+    const result = await FoodOrderServices.deleteOrderFoodFromDB(orderId);
     res.status(400).json({
         success: true,
         message: "Food order successfully deleted",

@@ -56,7 +56,7 @@ const getRoomOrdersByEmail = async(req : Request, res : Response)=> {
 const deleteRoomOrder = async(req : Request, res : Response)=> {
     try {
     const {id} = req.params;
-    const result = await OrderServices.deleteOrderRoomFromDB(Number(id));
+    const result = await OrderServices.deleteOrderRoomFromDB(id);
     res.status(400).json({
         success: true,
         message: "Room order successfully deleted",

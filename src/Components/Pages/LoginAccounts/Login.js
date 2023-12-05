@@ -8,7 +8,7 @@ import Loading from "../Shared/Loading";
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-    const [userFomDB, setUserFromDB] = useState('')
+  const [userFomDB, setUserFromDB] = useState("");
 
   let errorMessage;
 
@@ -30,16 +30,18 @@ const Login = () => {
     navigate(from, { replace: true }); // jekhan theke login korse se khane niye jabe
     console.log("user login: ", user);
   }
-  const handleEmailPasswordLogin = async(event) => {
+  const handleEmailPasswordLogin = async (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-     fetch(`https://hotel-radissons-ac92b8fd51f6.herokuapp.com/api/v1/users/${email}`).then(res => res.json()).then(data => setUserFromDB(data?.data?.role))
+    fetch(`http://localhost:5000/api/v1/users/${email}`)
+      .then((res) => res.json())
+      .then((data) => setUserFromDB(data?.data?.role));
     await signInWithEmailAndPassword(email, password);
     console.log(email, password);
   };
-  if(user && (userFomDB === 'user' || userFomDB === 'admin')){
-    navigate("/")
+  if (user && (userFomDB === "user" || userFomDB === "admin")) {
+    navigate("/");
   }
 
   return (
@@ -75,11 +77,11 @@ const Login = () => {
                 name="password"
                 placeholder="Enter password"
               />
-                <Link to="/reset-password">
-                  <p className="text-right text-blue-800 underline">
-                    Forgot Password?
-                  </p>
-                </Link>
+              <Link to="/reset-password">
+                <p className="text-right text-blue-800 underline">
+                  Forgot Password?
+                </p>
+              </Link>
               <p>{errorMessage}</p>
             </div>
             <input
