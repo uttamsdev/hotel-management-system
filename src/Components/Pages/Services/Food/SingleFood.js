@@ -18,7 +18,7 @@ const SingleFood = ({ food }) => {
   }
   return (
     <div className="w-[350px] h-[360px] shadow-xl bg-white relative">
-      <img src={img} alt="" />
+      <img className="w-full xl:w-[356px] h-[206px]" src={img} alt="" />
       <div className="p-2">
         <p className="text-xl">{name}</p>
         <p className="text-lg">
