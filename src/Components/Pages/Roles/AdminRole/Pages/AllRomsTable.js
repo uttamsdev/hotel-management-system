@@ -4,6 +4,8 @@ import swal from "sweetalert";
 
 const AllRoomsTable = ({ room, index, setAllRooms }) => {
   const { img, roomId, price, name } = room;
+  const imageStorageKey = "52a7c30a95d000395b196c985adb3c83";
+  let imgUp;
 
   //   const handleGetUpdate = async()=> {
   //    ;
@@ -23,14 +25,32 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
     const rId = event.target.roomId.value;
     const rName = event.target.name.value;
     const rPrice = event.target.price.value;
+    const image = document.querySelector("#img"); // taking image from input
+    const formData = new FormData();
+    formData.append("image", image.files[0]);
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+    await fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data : ",data)
+        if (data.success) {
+          imgUp = data.data.url; // hosted image link;
+         
+      }
+    })
 
     if (!rId || !rName || !rPrice) {
+      alert("You must enter food id, name and price uploading image is optional");
       return;
     }
     const updateData = {
       roomId: rId,
       name: rName,
       price: rPrice,
+      img: imgUp
     };
 
     await fetch(
@@ -61,6 +81,7 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
     )
       .then((res) => res.json())
       .then((data) => setAllRooms(data?.data));
+      event.target.reset();
   };
 
   const handleDeleteOrder = async (roomId) => {
@@ -166,6 +187,17 @@ const AllRoomsTable = ({ room, index, setAllRooms }) => {
                   type="number"
                   placeholder="Enter room price"
                   name="price"
+                />
+              </div>
+            </div>
+            <div className=" flex justify-center mt-4 w-[250px] mx-auto">
+              <div>
+                <p>Update Image </p>
+                <input
+                  className="input input-bordered w-full max-w-sm outline-none border-none"
+                  name="img"
+                  id="img"
+                  type="file"
                 />
               </div>
             </div>

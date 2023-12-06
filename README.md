@@ -5,6 +5,9 @@ This is a Hotel Management System Web application using MERN Stack. JavaScript i
 ## Website Live Link:
 https://hotel-redisons.web.app/
 
+## Admin Credential
+email: uttamsdev@gmail.com
+password: uttamsaha
 ## Project Features
 
 ### User and Authentication Features

@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import swal from "sweetalert";
 
 const AllFoodsTable = ({ food, index, setAllFoods }) => {
+  const imageStorageKey = "52a7c30a95d000395b196c985adb3c83";
   const { img, foodId, price, name } = food;
   const [foodIdStore, setFoodIdStore] = useState();
+  let imgUp;
 
   //   const handleGetUpdate = async()=> {
   //    ;
@@ -24,16 +26,33 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
     const fName = event.target.name.value;
     const fId = event.target.foodId.value;
     const fPrice = event.target.price.value;
-
+    const image = document.querySelector("#img"); // taking image from input
+    const formData = new FormData();
+    formData.append("image", image.files[0]);
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+    await fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data : ",data)
+        if (data.success) {
+          imgUp = data.data.url; // hosted image link;
+         
+      }
+    })
     // console.log(fId, fName, fPrice);
 
-    if (!fName || !fPrice) {
+    if (!fId || !fName || !fPrice) {
+      alert("You must enter food id, name and price uploading image is optional");
       return;
     }
     const updateData = {
       foodId: fId,
       name: fName,
       price: fPrice,
+      img: imgUp
     };
     await fetch(
       `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/foods/${localStorage.getItem(
@@ -140,7 +159,7 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
               <div>
                 <p>Food Id: </p>
                 <input
-                  type="text"
+                  type="number"
                   className="input input-bordered w-full max-w-xs"
                   name="foodId"
                   placeholder="Enter food id"
@@ -166,6 +185,17 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
                   type="number"
                   name="price"
                   placeholder="Enter price"
+                />
+              </div>
+            </div>
+            <div className=" flex justify-center mt-4 w-[250px] mx-auto">
+              <div>
+                <p>Update Image </p>
+                <input
+                  className="input input-bordered w-full max-w-sm outline-none border-none"
+                  name="img"
+                  id="img"
+                  type="file"
                 />
               </div>
             </div>
