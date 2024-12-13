@@ -1,12 +1,11 @@
-.App {
-  text-align: center;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+* {
+  font-family: "Roboto", sans-serif !important;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -27,13 +26,13 @@
 .App-link {
   color: #61dafb;
 }
-ner{
+ner {
   background-size: cover;
 }
-.calc-height{
-  min-height: calc(100vh - 70px)
+.calc-height {
+  min-height: calc(100vh - 70px);
 }
-.banner{
+.banner {
   height: 600px;
   background: url("https://media.radissonhotels.net/image/radisson-blu-hotel-dhaka-water-garden/meeting-room/16256-113891-f63612804_3xl.jpg");
   background-size: cover;
@@ -42,9 +41,9 @@ ner{
   width: 100%;
   position: relative;
   z-index: 1;
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
-.banner-items{
+.banner-items {
   /* height: 200px; */
   display: flex;
   flex-direction: column;
@@ -53,15 +52,15 @@ ner{
   /* position: relative; */
   /* background-color: blue; */
 }
-.banner::after{
-  content:'';
+.banner::after {
+  content: "";
   position: absolute;
   background: rgba(0, 0, 0, 0.5);
-  top:0;
+  top: 0;
   left: 0;
-  width:100%;
-  height:100%;
-  z-index:-1;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 @keyframes App-logo-spin {
@@ -71,4 +70,27 @@ ner{
   to {
     transform: rotate(360deg);
   }
+}
+
+.ant-pagination-item a {
+  color: #757d85 !important;
+  /* border: 1px solid #f5f5f8 !important; */
+  border-radius: 4px !important;
+}
+
+.ant-pagination-item-active a {
+  color: #25b0cf !important;
+  border: 1px solid #25b0cf;
+  /* border: none !important; */
+}
+
+.ant-pagination-item-active {
+  border: none !important;
+}
+
+table tr td {
+  padding: 8px 10px !important;
+}
+.ant-modal-content {
+  padding: 0px !important;
 }

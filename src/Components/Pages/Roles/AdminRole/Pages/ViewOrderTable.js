@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import swal from "sweetalert";
+import { DeleteIcon } from "../../../../assets/icons";
+import DefaultModal from "../../../../utils/Modal";
+import DeleteMsg from "../../../../modalContent/deleteModalContent";
 
 const ViewOrderTable = ({ order, index, setAllOrderData }) => {
   const { img, roomId, orderId, email, startDate, endDate, price } = order;
-
+  const [open, setOpen] = useState(false);
   const handleDeleteOrder = async (orderId) => {
     // alert(`Clicked on ${roomId}`)
     swal({
@@ -35,29 +38,38 @@ const ViewOrderTable = ({ order, index, setAllOrderData }) => {
       }
     });
   };
+
+  const handleDelete = (id) => {
+    setOpen(true);
+  };
+
   return (
-    <tr>
-      <th>{index + 1}</th>
-      <td>
-        <img className="w-28 h-20 rounded " src={img} alt="" />
-      </td>
-      <td>{roomId}</td>
-      <td>{orderId}</td>
-      <td>{email}</td>
-      <td>{startDate}</td>
-      <td>{endDate}</td>
-      <td>{price}TK</td>
-      <td>
-        <button
-          onClick={() => {
-            handleDeleteOrder(orderId);
-          }}
-          className="btn btn-error text-base-200 btn-sm btn-outline"
-        >
-          Delete Order
-        </button>
-      </td>
-    </tr>
+    <>
+      <tr className="hover">
+        {/* <th>{index + 1}</th> */}
+        <td>
+          <img className="w-20 h-12 rounded " src={img} alt="" />
+        </td>
+        <td>{roomId}</td>
+        <td>{orderId}</td>
+        <td>{email}</td>
+        <td>{startDate}</td>
+        <td>{endDate}</td>
+        <td>{price}TK</td>
+        <td className="">
+          <button
+            onClick={() => {
+              // handleDeleteOrder(orderId);
+              handleDelete(order)
+            }}
+            className="bg-red-500 flex justify-center p-1 rounded mx-auto"
+          >
+            <DeleteIcon />
+          </button>
+        </td>
+      </tr>
+      <DefaultModal width={430} header={false} open={open} setOpen={setOpen} modalContent={<DeleteMsg setOpen={setOpen}/>}/>
+    </>
   );
 };
 

@@ -30,19 +30,19 @@ const TopBar = ({ showNav, setShowNav }) => {
   };
   return (
     <div
-      className={`fixed z-10 w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${
+      className={`fixed z-[999] bg-white w-full h-16 flex justify-between items-center transition-all duration-[400ms] ${
         showNav ? "pl-56" : ""
       }`}
     >
       <div className="flex items-center gap-3">
-        <div className="pl-4 md:pl-16">
+        <div className="pl-4 md:pl-6">
           <Bars3CenterLeftIcon
             className="h-8 w-8 text-gray-700 cursor-pointer"
             onClick={() => setShowNav(!showNav)}
           />
         </div>
-        <Link to="/" className="btn btn-outline">
-          <FaHome className="text-xl" />
+        <Link to="/" className=" flex items-center gap-1 border rounded-md text-sm py-1.5 px-2.5 bg-transparent text-gray-700 hover:text-white hover:bg-[#35bccf]">
+          <FaHome className="text-[18px]" />
           Back To Home
         </Link>
       </div>
