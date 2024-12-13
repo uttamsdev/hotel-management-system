@@ -20,7 +20,7 @@ const Navbar = () => {
     <div className='sticky top-0 shadow-lg z-10 hidden xl:block'>
         <div className='h-8 bg-[#0F3048]'>
             <div className='w-[1100px] mx-auto'>
-            <div className='custom-container h-8  flex mx-auto justify-between items-center'>
+            <div className='custom-container h-8  flex mx-auto justify-between items-center text-sm'>
             <div className='text-white'>
                 <p>Hotel Management System</p>
             </div>
@@ -44,7 +44,7 @@ const Navbar = () => {
                     <img src="http://www.hotels.gov.bd/forntend/img/core-img/logo.png" alt="" />
                 </div>
                 <ul>
-                    <li className='flex items-center gap-4 text-[18px] text-gray-800'>
+                    <li className='flex items-center gap-4 text-[18px] text-gray-800 text-sm'>
                         <Link to="/">Home</Link>
                         <Link to="/food">Foods</Link>
                         <Link to="/rooms">All Rooms</Link>

@@ -27,6 +27,8 @@ const Banner = () => {
     // Update the state with the new input value
     setInputValue(event.target.value);
   };
+
+
   const handleCheckAvailableRoom = async () => {
     const date = {
       startDate: formattedStartDate,
@@ -40,6 +42,9 @@ const Banner = () => {
       person: inputValue,
     };
 
+    if(Object.keys(searchData).length){
+      localStorage.setItem('search',JSON.stringify(searchData))
+    }
     setSearchRoomData(searchData);
 
     console.log(date);
@@ -53,6 +58,7 @@ const Banner = () => {
       .then((data) => {
         if (data) {
           setAvailableRooms(data);
+          localStorage.setItem('rooms', JSON.stringify(data))
         }
         console.log("data: ", data);
       });

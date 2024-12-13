@@ -6,14 +6,16 @@ import Footer from "./Footer";
 import Banner from "./Banner";
 import Events from "./Events";
 import ResturantAndBar from "./ResturantAndBar";
+import Foods from "./Foods";
 
 const Home = () => {
   return (
     <div>
       <Banner></Banner>
       <Facilities></Facilities>
-      <Events></Events>
       <Rooms></Rooms>
+      <Events></Events>
+      <Foods />
       <ResturantAndBar></ResturantAndBar>
       <PhotoGallery></PhotoGallery>
       <Footer></Footer>

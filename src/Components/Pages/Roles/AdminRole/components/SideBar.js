@@ -15,11 +15,6 @@ import { IoFastFoodSharp } from "react-icons/io5";
 import { FaUserShield } from "react-icons/fa6";
 
 
-
-
-
-
-
 const SideBar = forwardRef(({ showNav }, ref) => {
     const [user, loading] = useAuthState(auth);
     const profile = user?.photoURL || avatar;
