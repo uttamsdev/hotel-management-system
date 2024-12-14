@@ -1,8 +1,11 @@
 /* eslint-disable no-restricted-globals */
 import { useEffect, useState } from "react";
 import swal from "sweetalert";
+import { DeleteIcon, EditIcon } from "../../../../assets/icons";
 
 const AllFoodsTable = ({ food, index, setAllFoods }) => {
+  const [open, setOpen] = useState(false);
+  const [url, setUrl] = useState("");
   const imageStorageKey = "52a7c30a95d000395b196c985adb3c83";
   const { img, foodId, price, name } = food;
   const [foodIdStore, setFoodIdStore] = useState();
@@ -36,23 +39,24 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("data : ",data)
+        console.log("data : ", data);
         if (data.success) {
           imgUp = data.data.url; // hosted image link;
-         
-      }
-    })
+        }
+      });
     // console.log(fId, fName, fPrice);
 
     if (!fId || !fName || !fPrice) {
-      alert("You must enter food id, name and price uploading image is optional");
+      alert(
+        "You must enter food id, name and price uploading image is optional"
+      );
       return;
     }
     const updateData = {
       foodId: fId,
       name: fName,
       price: fPrice,
-      img: imgUp
+      img: imgUp,
     };
     await fetch(
       `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/foods/${localStorage.getItem(
@@ -122,28 +126,40 @@ const AllFoodsTable = ({ food, index, setAllFoods }) => {
   //   },[setAllRooms])
   return (
     <tr>
-      <th>{index + 1}</th>
+      {/* <th>{index + 1}</th> */}
       <td>
-        <img className="w-10 xl:w-32 xl:h-20 rounded " src={img} alt="" />
+        <img className="w-20 h-12 rounded " src={img} alt="" />
       </td>
       <td>{foodId}</td>
       <td>{name}</td>
       <td>{price}TK</td>
       <td className="">
-        <button
-          onClick={() => {
-            handleDeleteOrder(foodId);
-          }}
-          className="btn btn-error btn-sm btn-outline hover:text-base-200"
-        >
-          Delete Food
-        </button>
-        <button
-          onClick={() => handleUpdateFoods(foodId)}
-          className="btn btn-success btn-sm btn-outline ml-2"
-        >
-          Update Food
-        </button>
+        <div className="flex items-center gap-2.5 justify-center">
+          <button
+            onClick={() => {
+              // handleDeleteOrder(orderId);
+              setUrl(
+                // `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/${roomId}`
+              );
+              setOpen(true);
+            }}
+            className="bg-red-500 flex justify-center p-1 rounded "
+          >
+            <DeleteIcon />
+          </button>
+          <button
+            onClick={() => {
+              // handleDeleteOrder(orderId);
+              setUrl(
+                // `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/${roomId}`
+              );
+              setOpen(true);
+            }}
+            className="bg-blue-500 flex justify-center p-1 rounded"
+          >
+            <EditIcon />
+          </button>
+        </div>
       </td>
 
       <dialog id="my_modal_2" className="modal">

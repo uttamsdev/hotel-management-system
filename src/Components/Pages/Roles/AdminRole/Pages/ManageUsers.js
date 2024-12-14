@@ -7,7 +7,6 @@ const ManageUsers = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
-  console.log(users);
 
   const getAllUsers = async () => {
     try {
@@ -21,7 +20,6 @@ const ManageUsers = () => {
       }
     } catch (error) {
       console.log("error", error);
-    } finally {
     }
   };
 
@@ -43,7 +41,7 @@ const ManageUsers = () => {
   return (
     <div className="bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50 calc-height">
       <p className=" border pl-12 text-xl text-black mb-8 font-bold bg-[#F8FAFC] h-14 flex items-center">
-        <FaUserShield className="ml-5 mr-3 w-6 h-6" />
+        <FaUserShield className="ml-2 mr-3 w-6 h-6" />
         All Users
       </p>
       <div></div>
