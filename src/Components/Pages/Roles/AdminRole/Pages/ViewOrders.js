@@ -8,10 +8,8 @@ const ViewOrders = () => {
   const [allOrderData, setAllOrderData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
-  const [loading, setLoading] = useState(false);
 
   const getAllOrders = async () => {
-    setLoading(true);
     try {
       const res = await fetch(
         "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/room-orders"
@@ -21,13 +19,11 @@ const ViewOrders = () => {
 
       console.log("res", data);
       if (data?.data?.length) {
-        setLoading(false);
         setAllOrderData(data?.data);
       }
     } catch (error) {
       console.log("error", error);
     } finally {
-      setLoading(false);
     }
   };
 
@@ -55,45 +51,40 @@ const ViewOrders = () => {
           All Rooms Orders
         </div>
       </div>
-      {loading ? (
-        <div className="mx-6">
-          <Skeleton active />
+      <div className="overflow-x-auto bg-white pb-5 mx-6 rounded  shadow-sm">
+        <table className="table w-full mx-auto">
+          <thead className="bg-[#25b0cf] text-white text-sm">
+            <tr>
+              <th className="py-3">Image</th>
+              <th className="py-3">Room ID</th>
+              <th className="py-3">Order ID</th>
+              <th className="py-3">Email</th>
+              <th className="py-3">StartDate</th>
+              <th className="py-3">EndDate</th>
+              <th className="py-3">Price</th>
+              <th className="text-center py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableData?.map((order, index) => (
+              <ViewOrderTable
+                key={index} // Ensure unique keys
+                order={order}
+                setAllOrderData={setAllOrderData}
+                refetch={getAllOrders}
+              />
+            ))}
+          </tbody>
+        </table>
+        <div className="flex justify-end pr-6 pt-5 border-t border-gray-100">
+          <ReactPagination
+            total={allOrderData?.length}
+            perPage={itemsPerPage}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
         </div>
-      ) : (
-        <div className="overflow-x-auto bg-white pb-5 mx-6 rounded  shadow-sm">
-          <table className="table w-full mx-auto">
-            <thead className="bg-[#25b0cf] text-white text-sm">
-              <tr>
-                <th className="py-3">Image</th>
-                <th className="py-3">Room ID</th>
-                <th className="py-3">Order ID</th>
-                <th className="py-3">Email</th>
-                <th className="py-3">StartDate</th>
-                <th className="py-3">EndDate</th>
-                <th className="py-3">Price</th>
-                <th className="text-center py-3">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableData?.map((order, index) => (
-                <ViewOrderTable
-                  key={index} // Ensure unique keys
-                  order={order}
-                  setAllOrderData={setAllOrderData}
-                />
-              ))}
-            </tbody>
-          </table>
-          <div className="flex justify-end pr-6 pt-5 border-t border-gray-100">
-            <ReactPagination
-              total={allOrderData?.length}
-              perPage={itemsPerPage}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-            />
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

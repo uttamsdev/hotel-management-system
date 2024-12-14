@@ -1,47 +1,11 @@
 import React, { useState } from "react";
-import swal from "sweetalert";
 import { DeleteIcon } from "../../../../assets/icons";
-import DefaultModal from "../../../../utils/Modal";
-import DeleteMsg from "../../../../modalContent/deleteModalContent";
+import DeleteModal from "../../../../utils/DeleteModal";
 
-const ViewOrderTable = ({ order, index, setAllOrderData }) => {
+const ViewOrderTable = ({ order, index, setAllOrderData, refetch }) => {
   const { img, roomId, orderId, email, startDate, endDate, price } = order;
   const [open, setOpen] = useState(false);
-  const handleDeleteOrder = async (orderId) => {
-    // alert(`Clicked on ${roomId}`)
-    swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then(async (willDelete) => {
-      if (willDelete) {
-        const url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/delete-room-order/${orderId}`;
-        await fetch(url, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data));
-        swal("The order is Deleted", {
-          icon: "success",
-        });
-
-        //this second fetched is use to refresh delete data
-        await fetch(
-          "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/room-orders"
-        )
-          .then((res) => res.json())
-          .then((data) => setAllOrderData(data?.data));
-      } else {
-        swal("Oder not deleted. You canceled it!");
-      }
-    });
-  };
-
-  const handleDelete = (id) => {
-    setOpen(true);
-  };
+  const [url, setUrl] = useState("");
 
   return (
     <>
@@ -60,7 +24,10 @@ const ViewOrderTable = ({ order, index, setAllOrderData }) => {
           <button
             onClick={() => {
               // handleDeleteOrder(orderId);
-              handleDelete(order)
+              setUrl(
+                `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/delete-room-order/${orderId}`
+              );
+              setOpen(true);
             }}
             className="bg-red-500 flex justify-center p-1 rounded mx-auto"
           >
@@ -68,7 +35,7 @@ const ViewOrderTable = ({ order, index, setAllOrderData }) => {
           </button>
         </td>
       </tr>
-      <DefaultModal width={430} header={false} open={open} setOpen={setOpen} modalContent={<DeleteMsg setOpen={setOpen}/>}/>
+      <DeleteModal setOpen={setOpen} open={open} url={url} refetch={refetch} />
     </>
   );
 };

@@ -1,8 +1,9 @@
 import React from "react";
+import { LoadingOutlined } from "@ant-design/icons";
 
-const DeleteMsg = ({ setOpen }) => {
+const DeleteMsg = ({ setOpen, isLoading, btnFun }) => {
   return (
-    <div>
+    <div className="px-6 py-5 rounded">
       <div className="flex items-center gap-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -39,11 +40,20 @@ const DeleteMsg = ({ setOpen }) => {
       <div className="mt-8 flex gap-4 justify-end">
         <button
           onClick={() => setOpen(false)}
-          className="md:px-6 md:py-1.5 font-normal "
+          className="md:px-6 md:py-1.5 font-normal border rounded border-gray-200"
         >
           Cancel
         </button>
-        <button className="md:px-6 md:py-1.5 font-normal bg-red-600 text-white rounded">Delete</button>
+        <button
+          onClick={btnFun}
+          className="md:px-6 md:py-1.5 font-normal bg-red-600 text-white rounded"
+        >
+          {isLoading ? (
+            <LoadingOutlined spin size="large" style={{ fontSize: "18px" }} />
+          ) : (
+            "Delete"
+          )}
+        </button>
       </div>
     </div>
   );
