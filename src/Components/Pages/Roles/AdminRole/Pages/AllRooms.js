@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import AllRoomsTable from "./AllRomsTable";
-import { AiOutlineDashboard } from "react-icons/ai";
 import { SiHomebridge } from "react-icons/si";
 
 const AllRooms = () => {
