@@ -91,6 +91,23 @@ ner {
 table tr td {
   padding: 8px 10px !important;
 }
+
+table tr:nth-child(even){
+  background: linear-gradient(to right, #2d7bd416, #2b76df16);
+}
 .ant-modal-content {
   padding: 0px !important;
 }
+
+input {
+  border: 1px solid #dcdcdd;
+  outline: none;
+  padding: 7px 12px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.primary-bg {
+  background: #25b0cf;
+}
+

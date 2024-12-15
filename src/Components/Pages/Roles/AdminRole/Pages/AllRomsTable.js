@@ -4,12 +4,18 @@ import swal from "sweetalert";
 import { DeleteIcon, EditIcon } from "../../../../assets/icons";
 import DeleteModal from "../../../../utils/DeleteModal";
 
-const AllRoomsTable = ({ room, index, setAllRooms, refetch }) => {
+const AllRoomsTable = ({
+  room,
+  content,
+  title,
+  modalOpen,
+  setModalOpen,
+  refetch,
+  handleEditRoom,
+}) => {
   const { img, roomId, price, name } = room;
   const [open, setOpen] = useState(false);
   const [url, setUrl] = useState("");
-  const imageStorageKey = "52a7c30a95d000395b196c985adb3c83";
-  let imgUp;
 
   //   const handleGetUpdate = async()=> {
   //    ;
@@ -148,11 +154,7 @@ const AllRoomsTable = ({ room, index, setAllRooms, refetch }) => {
           </button>
           <button
             onClick={() => {
-              // handleDeleteOrder(orderId);
-              setUrl(
-                `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/${roomId}`
-              );
-              setOpen(true);
+              handleEditRoom(room);
             }}
             className="bg-blue-500 flex justify-center p-1 rounded"
           >
@@ -161,74 +163,6 @@ const AllRoomsTable = ({ room, index, setAllRooms, refetch }) => {
         </div>
       </td>
       {/* <DeleteModal setOpen={setOpen} open={open} url={url} refetch={refetch} /> */}
-
-      {/* <dialog id="my_modal_2" className="modal">
-        <div className="modal-box w-full mx-auto">
-          <p className="text-2xl font-bold text-center">
-            Update Room Information
-          </p>
-          <form method="dialog" onSubmit={handleUpdateRoom}>
-            <button
-              onClick={handleButtonClick}
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            >
-              ✕
-            </button>
-            <div className=" flex justify-center mt-4">
-              <div>
-                <p>Room ID: </p>
-                <input
-                  type="number"
-                  className="input input-bordered w-full max-w-xs"
-                  placeholder="Enter room id"
-                  name="roomId"
-                />
-              </div>
-            </div>
-            <div className=" flex justify-center mt-4">
-              <div>
-                <p>Room Name: </p>
-                <input
-                  type="text"
-                  className="input input-bordered w-full max-w-xs"
-                  placeholder="Enter room name"
-                  name="name"
-                />
-              </div>
-            </div>
-            <div className=" flex justify-center mt-4">
-              <div>
-                <p>Room Price: </p>
-                <input
-                  className="input input-bordered w-full max-w-xs"
-                  type="number"
-                  placeholder="Enter room price"
-                  name="price"
-                />
-              </div>
-            </div>
-            <div className=" flex justify-center mt-4 w-[250px] mx-auto">
-              <div>
-                <p>Update Image </p>
-                <input
-                  className="input input-bordered w-full max-w-sm outline-none border-none"
-                  name="img"
-                  id="img"
-                  type="file"
-                />
-              </div>
-            </div>
-
-            <div className="w-full flex justify-center mt-4">
-              <input
-                className="btn btn-success text-white"
-                type="submit"
-                value="Update"
-              />
-            </div>
-          </form>
-        </div>
-      </dialog> */}
     </tr>
   );
 };
