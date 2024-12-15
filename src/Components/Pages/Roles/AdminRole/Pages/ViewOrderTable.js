@@ -10,9 +10,8 @@ const ViewOrderTable = ({ order, index, setAllOrderData, refetch }) => {
   return (
     <>
       <tr className="hover">
-        {/* <th>{index + 1}</th> */}
         <td>
-          <img className="w-20 h-12 rounded " src={img} alt="" />
+          <img className="w-20 h-[45px] rounded " src={img} alt="" />
         </td>
         <td>{roomId}</td>
         <td>{orderId}</td>
@@ -23,7 +22,6 @@ const ViewOrderTable = ({ order, index, setAllOrderData, refetch }) => {
         <td className="">
           <button
             onClick={() => {
-              // handleDeleteOrder(orderId);
               setUrl(
                 `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/delete-room-order/${orderId}`
               );

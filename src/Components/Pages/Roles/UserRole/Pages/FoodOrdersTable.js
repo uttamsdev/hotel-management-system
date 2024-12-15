@@ -10,7 +10,7 @@ const FoodOrdersTable = ({ order, index, refetch }) => {
   return (
     <tr>
       <td>
-        <img className="w-20 xl:h-12 rounded " src={img} alt="" />
+        <img className="w-20 h-[45px] rounded " src={img} alt="" />
       </td>
       <td>{foodId}</td>
       <td>{orderId}</td>

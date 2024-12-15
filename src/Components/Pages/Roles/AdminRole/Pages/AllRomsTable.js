@@ -11,7 +11,7 @@ const AllRoomsTable = ({ room, handleEditRoom , refetch}) => {
   return (
     <tr>
       <td className="w-[160px] !pl-3">
-        <img className="w-20 h-12 rounded" src={img} alt="" />
+        <img className="w-20 h-[45px] rounded" src={img} alt="" />
       </td>
       <td>{roomId}</td>
       <td>{name}</td>
