@@ -6,11 +6,11 @@ import { ImageUploader } from "../utils/ImageUploader";
 import { FiEdit } from "react-icons/fi";
 import { IoMdAdd } from "react-icons/io";
 
-const AddRoomContent = ({ refetch, editData, setOpen, btnText }) => {
+const AddEditFoodContent = ({ refetch, editData, setOpen, btnText }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [data, setData] = useState({
-    roomId: "",
+    foodId: "",
     name: "",
     price: "",
   });
@@ -25,7 +25,7 @@ const AddRoomContent = ({ refetch, editData, setOpen, btnText }) => {
     let imageUp;
     setIsLoading(true);
     try {
-      const image = document.querySelector("#img"); // taking image from input
+      const image = document.querySelector("#img2"); // taking image from input
       const formData = new FormData();
       formData.append("image", image.files[0]);
 
@@ -36,9 +36,9 @@ const AddRoomContent = ({ refetch, editData, setOpen, btnText }) => {
         img = imageUp.data.url;
       }
       if (editData) {
-        url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/${editData?.roomId}`;
+        url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/foods/${editData?.foodId}`;
       } else {
-        url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/add-room`;
+        url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/foods/add-food`;
       }
 
       const postData = {
@@ -71,7 +71,7 @@ const AddRoomContent = ({ refetch, editData, setOpen, btnText }) => {
   useEffect(() => {
     if (editData) {
       setData({
-        roomId: editData.roomId,
+        roomId: editData.foodId,
         price: editData.price,
         img: editData.price,
         name: editData.name,
@@ -86,24 +86,24 @@ const AddRoomContent = ({ refetch, editData, setOpen, btnText }) => {
         onSubmit={handleAdd}
       >
         <div className="">
-          <p>Room ID: </p>
+          <p>Food ID: </p>
           <input
             onChange={handleChange}
             type="number"
             className=""
-            placeholder="Enter room id"
-            name="roomId"
-            defaultValue={editData?.roomId}
+            placeholder="Enter food id"
+            name="foodId"
+            defaultValue={editData?.foodId}
           />
         </div>
         <div className="">
           <div>
-            <p>Room Name: </p>
+            <p>Food Name: </p>
             <input
               onChange={handleChange}
               type="text"
               className="w-full"
-              placeholder="Enter room name"
+              placeholder="Enter food name"
               name="name"
               defaultValue={editData?.name}
             />
@@ -111,19 +111,19 @@ const AddRoomContent = ({ refetch, editData, setOpen, btnText }) => {
         </div>
         <div className="">
           <div>
-            <p>Room Price: </p>
+            <p>Food Price: </p>
             <input
               onChange={handleChange}
               className=""
               type="number"
-              placeholder="Enter room price"
+              placeholder="Enter food price"
               name="price"
               defaultValue={editData?.price}
             />
           </div>
         </div>
         <div className="w-full">
-          <ImageUploader existingImageUrl={editData?.img} selector={"img"} />
+          <ImageUploader existingImageUrl={editData?.img} selector={'img2'}/>
         </div>
 
         <div className="flex justify-end">
@@ -146,4 +146,4 @@ const AddRoomContent = ({ refetch, editData, setOpen, btnText }) => {
   );
 };
 
-export default AddRoomContent;
+export default AddEditFoodContent;

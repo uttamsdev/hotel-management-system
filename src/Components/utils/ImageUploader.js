@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const ImageUploader = ({ existingImageUrl }) => {
+export const ImageUploader = ({ existingImageUrl, selector }) => {
   const [preview, setPreview] = useState(existingImageUrl);
 
   const handleImageChange = (e) => {
@@ -22,7 +22,7 @@ export const ImageUploader = ({ existingImageUrl }) => {
         <input
           className="!px-0 !py-0 !border-none"
           name="img"
-          id="img"
+          id={selector}
           type="file"
           accept="image/*"
           onChange={handleImageChange}

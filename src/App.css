@@ -92,7 +92,7 @@ table tr td {
   padding: 8px 10px !important;
 }
 
-table tr:nth-child(even){
+table tr:nth-child(even) {
   background: linear-gradient(to right, #2d7bd416, #2b76df16);
 }
 .ant-modal-content {
@@ -107,7 +107,25 @@ input {
   border-radius: 4px;
 }
 
+input:focus {
+  border-color: #827bf7;
+  background: #88b9f92f;
+}
+
 .primary-bg {
   background: #25b0cf;
 }
 
+/* Hide the arrows for number input */
+input[type="number"] {
+  -moz-appearance: textfield; /* For Firefox */
+  -webkit-appearance: none; /* For Chrome, Safari, and other WebKit browsers */
+  appearance: none; /* Standard property */
+}
+
+/* Remove spinner buttons for Chrome, Safari, and Edge */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

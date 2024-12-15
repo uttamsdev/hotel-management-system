@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-globals */
 import { useEffect, useState } from "react";
-import swal from "sweetalert";
 import { DeleteIcon, EditIcon } from "../../../../assets/icons";
 import DeleteModal from "../../../../utils/DeleteModal";
 

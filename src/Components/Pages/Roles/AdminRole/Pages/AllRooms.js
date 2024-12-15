@@ -40,6 +40,7 @@ const AllRooms = () => {
           setOpen={setOpen}
           refetch={getAllRooms}
           btnText={"Add room"}
+          
         />,
         { key: new Date().getTime() }
       )
