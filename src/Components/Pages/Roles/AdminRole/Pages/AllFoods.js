@@ -5,7 +5,7 @@ import ReactPagination from "../../../Shared/Pagination";
 import DefaultModal from "../../../../utils/Modal";
 import AddEditFoodContent from "../../../../modalContent/AddEditFoodContent";
 import BtnPrimary from "../../../../utils/BtnPrimary";
-import { SiHomebridge } from "react-icons/si";
+import { MdOutlineAdd } from "react-icons/md";
 
 const AllFoods = () => {
   const [allFoods, setAllFoods] = useState([]);
@@ -82,11 +82,11 @@ const AllFoods = () => {
     <div className="bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50 calc-height">
       <div className=" border pl-4 pr-7 text-xl text-black h-14 mb-8 font-bold bg-[#F8FAFC] flex items-center justify-between ">
         <div className=" flex">
-          <SiHomebridge className="ml-2 mr-3 w-6 h-6" />
-          All Rooms
+          <IoFastFoodSharp className="ml-2 mr-3 w-6 h-6" />
+          All Foods
         </div>
         <BtnPrimary
-          icon={<IoFastFoodSharp style={{ fontSize: "20px" }} />}
+          icon={<MdOutlineAdd style={{ fontSize: "20px" }} />}
           btnFun={handleAddFood}
         >
           Add Food
