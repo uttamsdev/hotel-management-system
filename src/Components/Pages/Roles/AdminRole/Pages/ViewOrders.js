@@ -19,7 +19,7 @@ const ViewOrders = () => {
 
       console.log("res", data);
       if (data?.data?.length) {
-        setAllOrderData(data?.data);
+        setAllOrderData(data?.data?.reverse());
       }
     } catch (error) {
       console.log("error", error);

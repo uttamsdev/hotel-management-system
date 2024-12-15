@@ -32,6 +32,7 @@ import SingleRoomDetails from './Components/Pages/Services/Rooms/SingleRoomDetai
 import FoodOrders from './Components/Pages/Roles/AdminRole/Pages/FoodOrders';
 import RequireAdmin from './Components/Pages/RequireAuth/RequireAdmin';
 import NavbarTwo from './Components/Pages/Header/NavbarTwo';
+import ViewFoodOrders from './Components/Pages/Roles/AdminRole/Pages/FoodOrders';
 
 
 function App() {
@@ -57,7 +58,7 @@ function App() {
         <Route path='/book-room/:roomId' element={<RequireAuth><BookRoomPage></BookRoomPage></RequireAuth>}></Route>
         <Route path='/admin' element={<RequireAdmin><AdminLayout><AdminDashboard></AdminDashboard></AdminLayout></RequireAdmin>}></Route>
         <Route path='/admin/view-orders' element={<RequireAdmin><AdminLayout><ViewOrders></ViewOrders></AdminLayout></RequireAdmin>}></Route>
-        <Route path='/admin/view-food-orders' element={<RequireAdmin><AdminLayout><FoodOrders></FoodOrders></AdminLayout></RequireAdmin>}></Route>
+        <Route path='/admin/view-food-orders' element={<RequireAdmin><AdminLayout><ViewFoodOrders></ViewFoodOrders></AdminLayout></RequireAdmin>}></Route>
         <Route path='/admin/add-room' element={<RequireAdmin><AdminLayout><AddRoom></AddRoom></AdminLayout></RequireAdmin>}></Route>
         <Route path='/admin/all-room' element={<RequireAdmin><AdminLayout><AllRooms></AllRooms></AdminLayout></RequireAdmin>}></Route>
         <Route path='/admin/all-food' element={<RequireAdmin><AdminLayout><AllFoods></AllFoods></AdminLayout></RequireAdmin>}></Route>

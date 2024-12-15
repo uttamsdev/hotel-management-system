@@ -13,7 +13,7 @@ export const handleDelete = async ({ url, setIsLoading, setOpen, refetch }) => {
   } catch (error) {
     console.log(error);
   } finally {
-    setIsLoading(true);
+    setIsLoading(false);
     setOpen(false);
   }
 };

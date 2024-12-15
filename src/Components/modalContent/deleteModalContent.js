@@ -1,5 +1,5 @@
 import React from "react";
-import { LoadingOutlined } from "@ant-design/icons";
+import { ImSpinner3 } from "react-icons/im";
 
 const DeleteMsg = ({ setOpen, isLoading, btnFun }) => {
   return (
@@ -49,7 +49,13 @@ const DeleteMsg = ({ setOpen, isLoading, btnFun }) => {
           className="md:px-6 md:py-1.5 font-normal bg-red-600 text-white rounded"
         >
           {isLoading ? (
-            <LoadingOutlined spin size="large" style={{ fontSize: "18px" }} />
+            <div className="flex items-center gap-[3px]">
+              <ImSpinner3
+                className="animate-spin"
+                style={{ fontSize: "18px" }}
+              />
+              <span>Deleting</span>
+            </div>
           ) : (
             "Delete"
           )}

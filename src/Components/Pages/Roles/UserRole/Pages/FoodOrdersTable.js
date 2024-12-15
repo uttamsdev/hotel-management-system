@@ -1,62 +1,36 @@
-import React, { useEffect } from "react";
-import swal from "sweetalert";
+import React, { useEffect, useState } from "react";
+import DeleteModal from "../../../../utils/DeleteModal";
+import { DeleteIcon } from "../../../../assets/icons";
 
-const FoodOrdersTable = ({ order, index, orderData, user, setOrderData }) => {
-  const { img, foodId, orderId, name, price } = order;
-
-  const handleDeleteOrder = async (orderId) => {
-    console.log("foodID is: ", foodId);
-    // alert(`Clicked on ${roomId}`)
-    swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then(async (willDelete) => {
-      if (willDelete) {
-        const url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/order-food/${orderId}`;
-        await fetch(url, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => console.log(data));
-        swal("Your order Deleted", {
-          icon: "success",
-        });
-
-        //this second fetched is use to refresh delete data
-        await fetch(
-          `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/order-food/${user?.email}`
-        )
-          .then((res) => res.json())
-          .then((data) => setOrderData(data?.data));
-      } else {
-        swal("Oder not deleted. You canceled it!");
-      }
-    });
-  };
+const FoodOrdersTable = ({ order, index, refetch }) => {
+  const { img, foodId, orderId, name, price, email } = order;
+  const [open, setOpen] = useState(false);
+  const [url, setUrl] = useState("");
 
   return (
     <tr>
-      <th>{index + 1}</th>
       <td>
-        <img className="w-28 xl:h-20 rounded " src={img} alt="" />
+        <img className="w-20 xl:h-12 rounded " src={img} alt="" />
       </td>
       <td>{foodId}</td>
       <td>{orderId}</td>
+      <td>{email}</td>
       <td>{name}</td>
       <td>{price}</td>
       <td>
         <button
           onClick={() => {
-            handleDeleteOrder(orderId);
+            setUrl(
+              `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/order-food/${orderId}`
+            );
+            setOpen(true);
           }}
-          className="btn btn-error text-base-200 btn-outline btn-sm"
+          className="bg-red-500 flex justify-center p-1 rounded mx-auto"
         >
-          Delete Order
+          <DeleteIcon />
         </button>
       </td>
+      <DeleteModal setOpen={setOpen} open={open} url={url} refetch={refetch} />
     </tr>
   );
 };
