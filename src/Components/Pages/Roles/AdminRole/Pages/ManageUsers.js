@@ -6,7 +6,7 @@ import ReactPagination from "../../../Shared/Pagination";
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 15;
 
   const getAllUsers = async () => {
     try {
@@ -40,7 +40,7 @@ const ManageUsers = () => {
 
   return (
     <div className="bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50 calc-height">
-      <p className=" border pl-12 text-xl text-black mb-8 font-bold bg-[#F8FAFC] h-14 flex items-center">
+      <p className=" border pl-5 text-xl text-black mb-6 font-bold bg-[#F8FAFC] h-14 flex items-center">
         <FaUserShield className="ml-2 mr-3 w-6 h-6" />
         All Users
       </p>
@@ -54,7 +54,7 @@ const ManageUsers = () => {
               <th className="py-3">User ID</th>
               <th className="py-3">Name</th>
               <th className="py-3">Email</th>
-              <th className="py-3">Role</th>
+              <th className="py-3 w-[100px]">Role</th>
             </tr>
           </thead>
           <tbody>

@@ -7,7 +7,7 @@ import { Skeleton } from "antd";
 const ViewOrders = () => {
   const [allOrderData, setAllOrderData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 11;
 
   const getAllOrders = async () => {
     try {
@@ -45,7 +45,7 @@ const ViewOrders = () => {
 
   return (
     <div className="bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50 calc-height">
-      <div className="border pl-4 text-xl text-black mb-5 font-bold bg-[#F8FAFC] h-14 flex items-center">
+      <div className="border pl-4 text-xl text-black mb-6 font-bold bg-[#F8FAFC] h-14 flex items-center">
         <div className="flex">
           <TbHomeBolt className="ml-2 mr-3 w-6 h-6" />
           All Rooms Orders
@@ -62,7 +62,7 @@ const ViewOrders = () => {
               <th className="py-3">StartDate</th>
               <th className="py-3">EndDate</th>
               <th className="py-3">Price</th>
-              <th className="text-center py-3">Action</th>
+              <th className="text-center py-3 w-[80px]">Action</th>
             </tr>
           </thead>
           <tbody>

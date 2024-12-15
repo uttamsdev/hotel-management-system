@@ -12,7 +12,7 @@ const AllFoodsTable = ({ food, handleEditFood, refetch }) => {
   return (
     <tr>
       <td>
-        <img className="w-20 h-12 rounded " src={img} alt="" />
+        <img className="w-20 h-[45px] rounded " src={img} alt="" />
       </td>
       <td>{foodId}</td>
       <td>{name}</td>

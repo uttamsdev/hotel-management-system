@@ -20,7 +20,7 @@ export const ImageUploader = ({ existingImageUrl, selector }) => {
           <img className="w-[52px] h-[28px] rounded" src={preview} alt="Preview" style={{ maxWidth: "200px" }} />
         )}
         <input
-          className="!px-0 !py-0 !border-none"
+          className="!px-0 !py-0  !border-transparent !outline-none"
           name="img"
           id={selector}
           type="file"

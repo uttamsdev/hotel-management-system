@@ -7,7 +7,7 @@ import FoodOrdersTable from "../../UserRole/Pages/FoodOrdersTable";
 const ViewFoodOrders = () => {
   const [allOrderData, setAllOrderData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 11;
 
   const getAllOrders = async () => {
     try {
@@ -45,7 +45,7 @@ const ViewFoodOrders = () => {
 
   return (
     <div className="bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50 calc-height">
-      <div className="border pl-4 text-xl text-black mb-5 font-bold bg-[#F8FAFC] h-14 flex items-center">
+      <div className="border pl-4 text-xl text-black mb-6 font-bold bg-[#F8FAFC] h-14 flex items-center">
         <div className="flex">
           <MdFastfood className="ml-2 mr-3 w-6 h-6" />
           All Foods Orders
@@ -61,7 +61,7 @@ const ViewFoodOrders = () => {
               <th>Email</th>
               <th>name</th>
               <th>Price</th>
-              <th className="text-center py-3">Action</th>
+              <th className="text-center py-3 w-[80px]">Action</th>
             </tr>
           </thead>
           <tbody>

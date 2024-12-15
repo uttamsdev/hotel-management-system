@@ -58,7 +58,7 @@ const DefaultModal = ({
             </button>
           </div>
         )}
-        <div className="px-2.5 pt-2.5 md:pt-4 pb-3.5 md:pb-6 md:px-6">
+        <div className="px-2.5 pt-2.5 md:pt-3 pb-3.5 md:pb-6 md:px-6">
           {modalContent ? (
             modalContent
           ) : (
