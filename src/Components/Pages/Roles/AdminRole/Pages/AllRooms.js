@@ -138,6 +138,7 @@ const AllRooms = () => {
         title={modalTitle}
         open={open}
         setOpen={setOpen}
+        
       />
     </div>
   );

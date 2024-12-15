@@ -33,7 +33,7 @@ const AllFoods = () => {
   //handle modal
   const handleAddFood = () => {
     setOpen(true);
-    setModalTitle("Add Room");
+    setModalTitle("Add Food");
     setModalContent(
       React.cloneElement(
         <AddEditFoodContent

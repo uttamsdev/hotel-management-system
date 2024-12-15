@@ -6,7 +6,7 @@ import ReactPagination from "../../../Shared/Pagination";
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 13;
 
   const getAllUsers = async () => {
     try {
