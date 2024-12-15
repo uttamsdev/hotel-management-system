@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import BtnPrimary from "../utils/BtnPrimary";
 import { handleSubmit, uploadImage } from "../lib/uploadImage";
 import { toast } from "sonner";
+import { ImageUploader } from "../utils/ImageUploader";
+import { FiEdit } from "react-icons/fi";
+import { IoMdAdd } from "react-icons/io";
 
-const AddRoomContent = ({ refetch, editData, setOpen }) => {
+const AddRoomContent = ({ refetch, editData, setOpen, btnText }) => {
   const [isLoading, setIsLoading] = useState(false);
+
   const [data, setData] = useState({
     roomId: "",
     name: "",
@@ -18,17 +22,21 @@ const AddRoomContent = ({ refetch, editData, setOpen }) => {
     e.preventDefault();
     let url;
     let img;
+    let imageUp;
     setIsLoading(true);
     try {
       const image = document.querySelector("#img"); // taking image from input
       const formData = new FormData();
       formData.append("image", image.files[0]);
-      const imageUp = await uploadImage(formData);
-      if (imageUp.success) {
+
+      if (image?.files?.length) {
+        imageUp = await uploadImage(formData);
+      }
+      if (imageUp?.success) {
         img = imageUp.data.url;
       }
       if (editData) {
-        url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms${editData?.roomId}`;
+        url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/${editData?.roomId}`;
       } else {
         url = `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/add-room`;
       }
@@ -115,20 +123,22 @@ const AddRoomContent = ({ refetch, editData, setOpen }) => {
           </div>
         </div>
         <div className="w-full">
-          <div>
-            <p>Update Image </p>
-            <input
-              className=""
-              name="img"
-              id="img"
-              type="file"
-            />
-          </div>
+          <ImageUploader existingImageUrl={editData?.img} />
         </div>
 
         <div className="flex justify-end">
-          <BtnPrimary isLoading={isLoading} customClass={"px-10 mt-2"}>
-            Add
+          <BtnPrimary
+            icon={
+              editData ? (
+                <FiEdit style={{ fontSize: "16px" }} />
+              ) : (
+                <IoMdAdd style={{ fontSize: "16px" }} />
+              )
+            }
+            isLoading={isLoading}
+            customClass={"px-5 mt-2 gap-1"}
+          >
+            {btnText}
           </BtnPrimary>
         </div>
       </form>

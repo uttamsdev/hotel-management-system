@@ -5,7 +5,6 @@ import ReactPagination from "../../../Shared/Pagination";
 import BtnPrimary from "../../../../utils/BtnPrimary";
 import DefaultModal from "../../../../utils/Modal";
 import AddRoomContent from "../../../../modalContent/AddRoomContent";
-import { CgFileAdd } from "react-icons/cg";
 import { MdOutlineAdd } from "react-icons/md";
 
 const AllRooms = () => {
@@ -37,7 +36,11 @@ const AllRooms = () => {
     setModalTitle("Add Room");
     setModalContent(
       React.cloneElement(
-        <AddRoomContent setOpen={setOpen} refetch={getAllRooms} />,
+        <AddRoomContent
+          setOpen={setOpen}
+          refetch={getAllRooms}
+          btnText={"Add room"}
+        />,
         { key: new Date().getTime() }
       )
     );
@@ -48,9 +51,17 @@ const AllRooms = () => {
     setOpen(true);
     setModalTitle("Edit Room");
     setModalContent(
-      React.cloneElement(<AddRoomContent editData={data} />, {
-        key: new Date().getTime(),
-      })
+      React.cloneElement(
+        <AddRoomContent
+          setOpen={setOpen}
+          refetch={getAllRooms}
+          editData={data}
+          btnText={"Update"}
+        />,
+        {
+          key: new Date().getTime(),
+        }
+      )
     );
   };
   // Fetch data once

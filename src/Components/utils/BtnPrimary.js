@@ -1,8 +1,10 @@
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import { Spin } from "antd";
 import React from "react";
-import { PiPlusMinusLight } from "react-icons/pi";
+import { LoadingOutlined } from "@ant-design/icons";
 import { twMerge } from "tailwind-merge";
+import { PiSpinnerGap } from "react-icons/pi";
+import { ImSpinner3 } from "react-icons/im";
 
 const BtnPrimary = ({
   customClass,
@@ -21,7 +23,7 @@ const BtnPrimary = ({
     >
       <div>
         {!isLoading && icon}
-        {isLoading && <Spin size="large" style={{ fontSize: "18px" }} />}
+        {isLoading && <ImSpinner3 className="animate-spin" style={{ fontSize: "18px" }} />}
       </div>
       {children}
     </button>
