@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { MyContext } from "../../../Context/Context";
 import SingleAvailableRooms from "./SingleAvailableRooms";
 import { MdDateRange } from "react-icons/md";
 import { FaPersonCircleCheck } from "react-icons/fa6";
 
 const AvailableRooms = () => {
-  // const { availableRooms, searchRoomData } = useContext(MyContext);
   const [searchData, setSearchData] = useState({});
 
   useEffect(() => {

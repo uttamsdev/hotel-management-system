@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import swal from "sweetalert";
 import { toast } from "sonner";
+import { ImSpinner3 } from "react-icons/im";
 
 const SingleRoomDetails = () => {
   const { roomId } = useParams();
@@ -17,7 +17,8 @@ const SingleRoomDetails = () => {
   const dateObjectEndDate = new Date(endDate);
   const formattedStartDate = dateObjectStartDate.toISOString().split("T")[0];
   const formattedEndDate = dateObjectEndDate.toISOString().split("T")[0];
-  const [available, setAvailable] = useState(false);
+  const [checking, setChecking] = useState(false);
+  const [booking, setBooking] = useState(false);
   const handleInputChange = (event) => {
     // Update the state with the new input value
     setInputValue(event.target.value);
@@ -41,6 +42,7 @@ const SingleRoomDetails = () => {
   };
 
   const handleCheckAvailableRoom = async () => {
+    setChecking(true);
     const isAvailable = await checkRoomIsAvailable();
     if (!isAvailable?.data?.length) {
       toast.success(`Congratulation room available`, {
@@ -53,17 +55,21 @@ const SingleRoomDetails = () => {
         duration: 6000,
       });
     }
+
+    setChecking(false);
   };
 
   //handle room book:
 
   const handleBookRoom = async () => {
+    setBooking(true);
     const isAvailable = await checkRoomIsAvailable();
     if (isAvailable?.data?.length) {
       toast.error("Room is not available", {
         description: `Sorry! this room is not available from ${formattedStartDate} to ${formattedEndDate}`,
         duration: 6000,
       });
+      setBooking(false);
       return;
     }
 
@@ -76,6 +82,7 @@ const SingleRoomDetails = () => {
       })
     );
 
+    setBooking(false);
     navigate(
       `/book-room/${roomId}?startDate=${formattedStartDate}&endDate=${formattedEndDate}`
     );
@@ -223,15 +230,27 @@ const SingleRoomDetails = () => {
             <div className="flex items-center  w-full gap-2.5">
               <button
                 onClick={handleCheckAvailableRoom}
-                className="bg-[#000080f1] hover:bg-[#000080]/80 text-white h-10 w-[200px] mt-2 p-2 rounded-full"
+                className="bg-[#000080f1] hover:bg-[#000080]/80 flex gap-1 items-center justify-center text-white h-10 w-[200px] mt-2 p-2 rounded-full"
               >
-                Check Availability
+                {checking && (
+                  <ImSpinner3
+                    className="animate-spin"
+                    style={{ fontSize: "18px" }}
+                  />
+                )}
+                {checking ? "Checking" : "Check Availability"}
               </button>
               <button
                 onClick={handleBookRoom}
-                className="bg-[#000080f1] hover:bg-[#000080]/80 text-white h-10 w-[200px] mt-2 p-2 rounded-full"
+                className="bg-[#000080f1] flex items-center gap-1 justify-center hover:bg-[#000080]/80 text-white h-10 w-[200px] mt-2 p-2 rounded-full"
               >
-                Book room
+                {booking && (
+                  <ImSpinner3
+                    className="animate-spin"
+                    style={{ fontSize: "18px" }}
+                  />
+                )}
+                {booking ? "Booking..." : "Book room"}
               </button>
             </div>
           </div>
