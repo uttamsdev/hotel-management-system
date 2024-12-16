@@ -112,6 +112,12 @@ input:focus {
   background: #88b9f92f;
 }
 
+textarea:focus {
+  border: 1px solid #dcdcdd;
+  border-color: #827bf7;
+  background: #88b9f92f;
+}
+
 .primary-bg {
   background: #25b0cf;
 }
@@ -129,3 +135,4 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+

@@ -1,5 +1,9 @@
 import React, { Fragment, useState } from "react";
-import { MdDashboard, MdDashboardCustomize, MdOutlinePhoneCallback } from "react-icons/md";
+import {
+  MdDashboard,
+  MdDashboardCustomize,
+  MdOutlinePhoneCallback,
+} from "react-icons/md";
 import { MdMarkEmailUnread } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../Firebase/firebase.init";
@@ -73,7 +77,7 @@ const NavbarTwo = () => {
                 open ? "top-12" : "top-[-880px]"
               }`}
             >
-              <li className="flex items-center gap-4 text-[16px] text-gray-800 flex-col xl:flex-row   lg:gap-8 text-center xl:text-left">
+              <li className="flex items-center gap-4 text-[17px] text-gray-800 flex-col xl:flex-row   lg:gap-8 text-center xl:text-left">
                 <Link
                   className="hover:underline hover:text-blue-500 duration-150"
                   to="/"
@@ -113,7 +117,7 @@ const NavbarTwo = () => {
                             user ? <button onClick={handleLogout} className='bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded ' to="/login">Logout</button> : <Link className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ' to="/login">Login</Link>
                         } */}
 
-                {(user || admin) && (
+                {user || admin ? (
                   <Menu as="div" className="relative  text-left inline-block">
                     <div className="flex items-center">
                       <Menu.Button className="inline-flex w-full justify-center items-center">
@@ -162,6 +166,13 @@ const NavbarTwo = () => {
                       </Menu.Items>
                     </Transition>
                   </Menu>
+                ) : (
+                  <Link
+                    to="/login"
+                    className="inline-block  px-6 py-[5px] text-white a text-[17px] bg-gradient-to-r from-blue-600 to-blue-700 rounded shadow-lg hover:from-blue-500 hover:to-blue-700 hover:scale-102 transition-transform duration-300"
+                  >
+                    Login
+                  </Link>
                 )}
               </li>
             </ul>

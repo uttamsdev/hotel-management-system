@@ -48,7 +48,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="w-full h-screen pt-32 bg-[#F9FAFB]">
+      <div className="w-full h-[calc(100vh_-_115px)] pt-32 bg-[#F9FAFB]">
         <div className="">
           <form
             onSubmit={handleEmailPasswordLogin}
