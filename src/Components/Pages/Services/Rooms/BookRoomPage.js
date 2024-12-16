@@ -1,39 +1,36 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { MyContext } from "../../../Context/Context";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/firebase.init";
 import swal from "sweetalert";
 
 const BookRoomPage = () => {
   const [user] = useAuthState(auth);
+  const [searchData, setSearchData] = useState(null);
   const [roomData, setRoomData] = useState({});
-  const { searchRoomData } = useContext(MyContext);
   const { roomId } = useParams();
   const navigate = useNavigate();
   // const [loading, setLoading] = useState(false);
   console.log("roomData: ", roomData);
 
-  const startDate = new Date(searchRoomData?.startDate);
-  const endDate = new Date(searchRoomData?.endDate);
+  const startDate = new Date(searchData?.startDate);
+  const endDate = new Date(searchData?.endDate);
 
   // Calculate the difference in milliseconds
   const timeDifference = endDate - startDate;
 
   // Calculate the number of days
-  let daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+  let daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) + 1;
 
-  if (daysDifference === 0) {
-    daysDifference = 1;
-  }
+  //! order confirm hole search result localstorage clear korbo search,rooms
 
   const handleBookRoom = async () => {
     const order = {
       roomId: roomData?.roomId,
       email: user?.email,
       name: roomData?.name,
-      startDate: searchRoomData?.startDate,
-      endDate: searchRoomData?.endDate,
+      startDate: searchData?.startDate,
+      endDate: searchData?.endDate,
       price: daysDifference * roomData?.price,
       img: roomData?.img,
     };
@@ -70,8 +67,12 @@ const BookRoomPage = () => {
       .then((res) => res.json())
       .then((data) => setRoomData(data.data[0]));
   }, [roomId]);
+
+  useEffect(() => {
+    setSearchData(JSON.parse(localStorage.getItem("search")));
+  }, [searchData]);
   return (
-    <div className="w-11/12 xl:w-[1100px] mx-auto mt-4 flex flex-col xl:flex-row">
+    <div className="w-11/12 xl:w-[1100px] mx-auto mt-4 flex flex-col xl:flex-row xl:items-start">
       <div>
         <div className="mb-6">
           <img
@@ -162,18 +163,19 @@ const BookRoomPage = () => {
         </div>
       </div>
       {/* another div */}
-      <div className="w-11/12 mx-auto xl:w-[350px] h-[400px] bg-[#E3E3ED] p-4 rounded-md">
+      <div className="w-11/12 mx-auto xl:w-[350px] h-auto bg-[#E3E3ED] p-4 rounded-md">
         <div className="mt-4">
           <p className="text-2xl font-bold text-center mb-2 text-blue-500">
             Order Summary
           </p>
           <p className="text-xl mb-2 text">
-            RoomID:{" "}
+            RoomID:
             <span className="text-black italic border-2 border-cyan-50 ">
               {roomData?.roomId}
             </span>
           </p>
           <p className="text-xl mb-2">
+            Room Name:
             <span className="text-black italic border-2 border-cyan-50 ">
               {roomData?.name}
             </span>
@@ -187,19 +189,19 @@ const BookRoomPage = () => {
           <p className="text-xl mb-2">
             Check In Date:{" "}
             <span className="text-black italic border-2 border-cyan-50 ">
-              {searchRoomData?.startDate}
+              {searchData?.startDate}
             </span>
           </p>
           <p className="text-xl mb-2">
             Check Out Date:{" "}
             <span className="text-black italic border-2 border-cyan-50">
-              {searchRoomData?.endDate}
+              {searchData?.endDate}
             </span>
           </p>
           <p className="text-xl mb-2">
             Total Person:{" "}
             <span className="text-black italic border-2 border-cyan-50">
-              {searchRoomData?.person || 1}
+              {searchData?.person || 1}
             </span>
           </p>
           <p className="text-xl mb-2">

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import swal from "sweetalert";
+import { toast } from "sonner";
 
 const SingleRoomDetails = () => {
   const { roomId } = useParams();
@@ -10,65 +11,75 @@ const SingleRoomDetails = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   const dateObjectStartDate = new Date(startDate);
   const dateObjectEndDate = new Date(endDate);
   const formattedStartDate = dateObjectStartDate.toISOString().split("T")[0];
   const formattedEndDate = dateObjectEndDate.toISOString().split("T")[0];
+  const [available, setAvailable] = useState(false);
   const handleInputChange = (event) => {
     // Update the state with the new input value
     setInputValue(event.target.value);
   };
-  const handleCheckAvailableRoom = async () => {
+
+  const checkRoomIsAvailable = async () => {
     const date = {
       startDate: formattedStartDate,
       endDate: formattedEndDate,
       roomId: roomId,
     };
 
-    // //searched data store
-    // const searchData = {
-    //   startDate: formattedStartDate,
-    //   endDate: formattedEndDate,
-    //   person: inputValue,
-    // };
-
-    // setSearchRoomData(searchData);
-
-    console.log(date);
-
-    await fetch(
+    const res = await fetch(
       `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/search-single-available-rooms?${new URLSearchParams(
         date
       ).toString()}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          // setAvailableRooms(data)
-          console.log("ax:", data?.data);
-          if (data?.data.length) {
-            swal({
-              title: "Opps! Room is Not Available",
-              text: `This room is not available for the selected data: ${formattedStartDate} to ${formattedEndDate}`,
-              icon: "error",
-              button: "Ok",
-            });
-          } else {
-            swal({
-              title: "Congratulations! Room Available",
-              text: `This room is available for the selected data: ${formattedStartDate} to ${formattedEndDate}`,
-              icon: "success",
-              button: "Ok",
-            });
-          }
-        }
-        console.log("data: ", data);
-      });
+    );
 
-    // navigate("/available-rooms")
+    const result = await res.json();
+    return result;
   };
 
+  const handleCheckAvailableRoom = async () => {
+    const isAvailable = await checkRoomIsAvailable();
+    if (!isAvailable?.data?.length) {
+      toast.success(`Congratulation room available`, {
+        description: `This room is available from ${formattedStartDate} to ${formattedEndDate}`,
+        duration: 6000,
+      });
+    } else {
+      toast.error("Room is not available", {
+        description: `Sorry! this room is not available from ${formattedStartDate} to ${formattedEndDate}`,
+        duration: 6000,
+      });
+    }
+  };
+
+  //handle room book:
+
+  const handleBookRoom = async () => {
+    const isAvailable = await checkRoomIsAvailable();
+    if (isAvailable?.data?.length) {
+      toast.error("Room is not available", {
+        description: `Sorry! this room is not available from ${formattedStartDate} to ${formattedEndDate}`,
+        duration: 6000,
+      });
+      return;
+    }
+
+    localStorage.setItem(
+      "search",
+      JSON.stringify({
+        startDate: formattedStartDate,
+        endDate: formattedEndDate,
+        person: inputValue ? inputValue : 1,
+      })
+    );
+
+    navigate(
+      `/book-room/${roomId}?startDate=${formattedStartDate}&endDate=${formattedEndDate}`
+    );
+  };
   useEffect(() => {
     fetch(
       `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/${roomId}`
@@ -77,8 +88,8 @@ const SingleRoomDetails = () => {
       .then((data) => setRoomData(data.data[0]));
   }, [roomId]);
   return (
-    <div className="w-full xl:w-[1100px] mx-auto mt-6 flex flex-col xl:flex-row">
-      <div className="mx-auto">
+    <div className="max-w-[1100px] w-full mx-auto mt-4 grid grid-cols-6 place-items-start">
+      <div className="mx-auto max-w-[700px] w-full col-span-4">
         <div className="mb-6">
           <img
             className="w-[300px] h-[200px] xl:w-[710px] xl:h-[430px] rounded-md"
@@ -110,7 +121,7 @@ const SingleRoomDetails = () => {
           </div>
         </div>
 
-        <div className="w-full xl:w-[730px] mb-4">
+        <div className="w-full mb-4">
           <div>
             <p className="text-2xl font-semibold text-gray-900 mb-4 mt-4">
               Room Services
@@ -165,10 +176,10 @@ const SingleRoomDetails = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#E3E3ED] w-11/12  h-[310px] xl:w-1/2 mx-auto flex-col flex justify-center rounded-md">
-        <div className="">
+      <div className="max-w-[400px] w-full col-span-2 bg-[#E3E3ED] h-auto mx-auto flex-col flex justify-center rounded-md">
+        <div className="p-4">
           <div className="mb-2">
-            <p className="text-2xl mb-6 text-gray-600 font-bold pt-4 text-center">
+            <p className="text-2xl mb-6 text-gray-600 font-bold pt-1 text-center">
               Check Room Availability
             </p>
           </div>
@@ -177,7 +188,7 @@ const SingleRoomDetails = () => {
               <div>
                 <p className="text-black">Check In</p>
                 <DatePicker
-                  className="h-10 w-[150px] text-center outline-none rounded"
+                  className="h-10  text-center outline-none rounded"
                   selected={startDate}
                   minDate={new Date()} // Set minDate to today's date
                   onChange={(date) => setStartDate(date)}
@@ -186,19 +197,22 @@ const SingleRoomDetails = () => {
               <div>
                 <p className="text-black">Check Out</p>
                 <DatePicker
-                  className="h-10 text-center outline-none rounded w-[150px]"
+                  className="h-10 text-center outline-none rounded "
                   selected={endDate}
                   minDate={new Date()} // Set minDate to today's date
                   onChange={(date) => setEndDate(date)}
                 />
               </div>
             </div>
-            <div>
+            <div className="w-full">
               <p className="text-black">Persons</p>
               <select
                 name=""
                 id=""
-                className="h-10 w-[320px] bg-white text-center rounded outline-none"
+                className="h-10 w-full bg-white text-center rounded outline-none"
+                value={inputValue}
+                defaultValue={1}
+                onChange={handleInputChange}
               >
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -206,12 +220,18 @@ const SingleRoomDetails = () => {
                 <option value="4">4</option>
               </select>
             </div>
-            <div>
+            <div className="flex items-center  w-full gap-2.5">
               <button
                 onClick={handleCheckAvailableRoom}
-                className="bg-[#000080] text-white h-10 w-[200px] mt-2 p-2 rounded-full"
+                className="bg-[#000080f1] hover:bg-[#000080]/80 text-white h-10 w-[200px] mt-2 p-2 rounded-full"
               >
                 Check Availability
+              </button>
+              <button
+                onClick={handleBookRoom}
+                className="bg-[#000080f1] hover:bg-[#000080]/80 text-white h-10 w-[200px] mt-2 p-2 rounded-full"
+              >
+                Book room
               </button>
             </div>
           </div>

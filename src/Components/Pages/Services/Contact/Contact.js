@@ -70,10 +70,10 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="w-10/12 mx-auto xl:mx-0 xl:w-[866px] h-auto pb-4 bg-slate-100 rounded-md shadow relative">
+      <div className="w-10/12 mx-auto xl:mx-0 xl:w-[866px] h-auto pb-4  rounded-md shadow-md border border-gray-100 relative">
         <div className="overlay_test">
           <div className="flex justify-between items-center">
-            <p className="text-3xl xl:text-4xl font-bold ml-8 pt-4 mb-8">
+            <p className="text-3xl xl:text-[28px] font-bold ml-8 pt-4 mb-8">
               Contact <span className="">Us</span>
             </p>
             <img src="icon2.webp" alt="" />

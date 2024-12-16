@@ -28,7 +28,6 @@ const Banner = () => {
     setInputValue(event.target.value);
   };
 
-
   const handleCheckAvailableRoom = async () => {
     const date = {
       startDate: formattedStartDate,
@@ -39,11 +38,11 @@ const Banner = () => {
     const searchData = {
       startDate: formattedStartDate,
       endDate: formattedEndDate,
-      person: inputValue,
+      person: inputValue ? inputValue : 1,
     };
 
-    if(Object.keys(searchData).length){
-      localStorage.setItem('search',JSON.stringify(searchData))
+    if (Object.keys(searchData).length) {
+      localStorage.setItem("search", JSON.stringify(searchData));
     }
     setSearchRoomData(searchData);
 
@@ -58,7 +57,7 @@ const Banner = () => {
       .then((data) => {
         if (data) {
           setAvailableRooms(data);
-          localStorage.setItem('rooms', JSON.stringify(data))
+          localStorage.setItem("rooms", JSON.stringify(data));
         }
         console.log("data: ", data);
       });
@@ -110,6 +109,7 @@ const Banner = () => {
                 id=""
                 className="h-10 w-[200px] xl:w-[180px] bg-white text-center rounded outline-none"
                 value={inputValue}
+                defaultValue={1}
                 onChange={handleInputChange}
               >
                 <option value="1">1</option>
