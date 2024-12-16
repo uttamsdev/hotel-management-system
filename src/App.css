@@ -89,7 +89,7 @@ ner {
 }
 
 table tr td {
-  padding: 8px 10px !important;
+  padding: 8px 16px !important;
 }
 
 table tr:nth-child(even) {

@@ -1,7 +1,7 @@
 import { Transition } from '@headlessui/react';
 import React, { Fragment, useEffect, useState } from 'react';
 import SideBar from '../components/UserSideBar'
-import TopBar from '../components/UserTopBar';
+import TopBar from '../../AdminRole/components/TopBar';
 
 const UserLayout = ({ children }) => {
 
