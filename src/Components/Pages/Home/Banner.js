@@ -1,35 +1,27 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { ImSpinner3 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
-import { MyContext } from "../../Context/Context";
 
 const Banner = () => {
-  // const [availableRooms, setAvailableRooms]
-  const { setAvailableRooms, setSearchRoomData } = useContext(MyContext);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [inputValue, setInputValue] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  // const [availableRooms, setAvailableRooms] = useState([]);
   const navigate = useNavigate();
-
-  // console.log("x is: ",x)
-
   const dateObjectStartDate = new Date(startDate);
   const dateObjectEndDate = new Date(endDate);
   const formattedStartDate = dateObjectStartDate.toISOString().split("T")[0];
   const formattedEndDate = dateObjectEndDate.toISOString().split("T")[0];
-  // console.log(formattedStartDate);
-  // console.log(formattedEndDate)
 
   const handleInputChange = (event) => {
-    // Update the state with the new input value
     setInputValue(event.target.value);
   };
 
-
   const handleCheckAvailableRoom = async () => {
+    setLoading(true);
     const date = {
       startDate: formattedStartDate,
       endDate: formattedEndDate,
@@ -39,16 +31,12 @@ const Banner = () => {
     const searchData = {
       startDate: formattedStartDate,
       endDate: formattedEndDate,
-      person: inputValue,
+      person: inputValue ? inputValue : 1,
     };
 
-    if(Object.keys(searchData).length){
-      localStorage.setItem('search',JSON.stringify(searchData))
+    if (Object.keys(searchData).length) {
+      localStorage.setItem("search", JSON.stringify(searchData));
     }
-    setSearchRoomData(searchData);
-
-    console.log(date);
-
     await fetch(
       `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/search-available-rooms?${new URLSearchParams(
         date
@@ -57,12 +45,11 @@ const Banner = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
-          setAvailableRooms(data);
-          localStorage.setItem('rooms', JSON.stringify(data))
+          localStorage.setItem("rooms", JSON.stringify(data));
         }
         console.log("data: ", data);
       });
-
+    setLoading(false);
     navigate("/available-rooms");
   };
 
@@ -110,6 +97,7 @@ const Banner = () => {
                 id=""
                 className="h-10 w-[200px] xl:w-[180px] bg-white text-center rounded outline-none"
                 value={inputValue}
+                defaultValue={1}
                 onChange={handleInputChange}
               >
                 <option value="1">1</option>
@@ -121,9 +109,19 @@ const Banner = () => {
             <div>
               <button
                 onClick={handleCheckAvailableRoom}
-                className="bg-[#000080] text-white h-10 mt-2 xl:mt-6 p-2 px-4 rounded"
+                className="bg-[#000080] text-white h-10 mt-2 xl:mt-6 p-2 px-4 rounded w-[156px] "
               >
-                Check Availability
+                {loading ? (
+                  <div className="flex items-center gap-1 justify-center">
+                    <ImSpinner3
+                      className="animate-spin"
+                      style={{ fontSize: "18px" }}
+                    />
+                    Checking...
+                  </div>
+                ) : (
+                  <span className="whitespace-nowrap"> Check Availability</span>
+                )}
               </button>
             </div>
           </div>

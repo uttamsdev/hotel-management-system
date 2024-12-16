@@ -20,7 +20,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
         return <Loading></Loading>
     }
     return (
-        <div ref={ref} className="bg-[#0F172A] fixed w-56 h-full shadow-lg z-10">
+        <div ref={ref} className="bg-[#0F172A] fixed w-56 h-full shadow-lg z-[9999]">
             {/* Sidebar Logo */}
             <div className='flex justify-center mt-6 mb-14'>
                 <img src={profile} className='w-20 h-auto rounded-full ring-4 ring-offset-4' alt="company logo" />
@@ -30,9 +30,9 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             <div className='flex flex-col'>
                 <Link to='/user'>
                     <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
-                    ${router.pathname === "/faculty"
-                            ? 'bg-[#ea3d5a] text-white rounded-r-full'
-                            : 'text-white hover:bg-[#ea3d5a] hover:text-white rounded-r-full'}`}>
+                    ${router.pathname === "/user"
+                            ? 'primary-bg text-white rounded-r-full'
+                            : 'text-white hover:bg-[#25b0cf] hover:text-white rounded-r-full'}`}>
                         <div className='mr-2'>
                             <HomeIcon className='w-5 h-5' />
                         </div>
@@ -42,8 +42,8 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                 <Link to='/user/my-orders'>
                     <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${router.pathname === "/user/my-orders"
-                            ? 'bg-[#ea3d5a] text-white rounded-r-full'
-                            : 'text-white hover:bg-[#ea3d5a] hover:text-white rounded-r-full'}`}>
+                            ? 'primary-bg text-white rounded-r-full'
+                            : 'text-white hover:bg-[#25b0cf] hover:text-white rounded-r-full'}`}>
                         <div className='mr-2'>
                             <FaHome className='w-5 h-5' />
                         </div>
@@ -53,8 +53,8 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                 <Link to='/user/my-food-orders'>
                     <div className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${router.pathname === "/user/my-food-orders"
-                            ? 'bg-[#ea3d5a] text-white rounded-r-full'
-                            : 'text-white hover:bg-[#ea3d5a] hover:text-white rounded-r-full'}`}>
+                            ? 'primary-bg text-white rounded-r-full'
+                            : 'text-white hover:bg-[#25b0cf] hover:text-white rounded-r-full'}`}>
                         <div className='mr-2'>
                             <IoFastFoodSharp className='w-5 h-5' />
                         </div>

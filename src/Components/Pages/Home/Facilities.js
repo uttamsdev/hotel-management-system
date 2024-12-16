@@ -16,19 +16,19 @@ const Facilities = () => {
         <div>
           <p className='text-xl xl:text-2xl font-semibold text-[#000080] uppercase mb-2'>Facilities</p>
           <div className='grid grid-cols-2 place-content-center place-items-center xl:flex gap-4'>
-            <div className='w-[113px] h-[105px] bg-[#FBE2E3] flex flex-col justify-center items-center rounded'>
+            <div className='w-[113px] h-[105px] bg-[#fbe2e3de] flex flex-col justify-center items-center rounded'>
               <FaWifi className='text-[#000080] text-3xl'/>
               <p>Wifi</p>
             </div>
-            <div className='w-[113px] h-[105px] bg-[#FBE2E3] flex flex-col justify-center items-center rounded'>
+            <div className='w-[113px] h-[105px] bg-[#fbe2e3de] flex flex-col justify-center items-center rounded'>
               <FaWater className='text-[#000080] text-3xl'/>
               <p>Hot Water</p>
             </div>
-            <div className='w-[113px] h-[105px] bg-[#FBE2E3] flex flex-col justify-center items-center rounded'>
+            <div className='w-[113px] h-[105px] bg-[#fbe2e3de] flex flex-col justify-center items-center rounded'>
               <TbAirConditioning className='text-[#000080] text-3xl'/>
               <p>Air Condition</p>
             </div>
-            <div className='w-[113px] h-[105px] bg-[#FBE2E3] flex flex-col justify-center items-center rounded'>
+            <div className='w-[113px] h-[105px] bg-[#fbe2e3de] flex flex-col justify-center items-center rounded'>
               <FaPhoneVolume className='text-[#000080] text-3xl'/>
               <p>Intercom</p>
             </div>

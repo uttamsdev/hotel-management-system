@@ -16,7 +16,7 @@ const FoodOrdersTable = ({ order, index, refetch }) => {
       <td>{orderId}</td>
       <td>{email}</td>
       <td>{name}</td>
-      <td>{price}</td>
+      <td>{price}TK</td>
       <td>
         <button
           onClick={() => {

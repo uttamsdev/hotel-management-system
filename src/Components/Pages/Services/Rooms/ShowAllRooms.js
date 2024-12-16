@@ -12,7 +12,7 @@ const ShowAllRooms = () => {
       .then((data) => setRooms(data?.data));
   }, []);
   return (
-    <div className="w-full xl:w-[1100px] mx-auto">
+    <div className="w-full xl:w-[1100px] mx-auto pb-6 xl:min-h-[100vh_-115px]">
       <div>
         <div>
           <p className="uppercase text-[#000080] text-2xl mt-8 font-bold mb-2">

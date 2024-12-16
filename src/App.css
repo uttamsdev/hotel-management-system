@@ -12,23 +12,6 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-ner {
-  background-size: cover;
-}
 .calc-height {
   min-height: calc(100vh - 70px);
 }
@@ -89,7 +72,7 @@ ner {
 }
 
 table tr td {
-  padding: 8px 10px !important;
+  padding: 8px 16px !important;
 }
 
 table tr:nth-child(even) {
@@ -108,6 +91,17 @@ input {
 }
 
 input:focus {
+  border-color: #827bf7;
+  background: #88b9f92f;
+}
+
+.react-datepicker-wrapper input:focus {
+  background: white !important;
+  border-color: gainsboro !important;
+}
+
+textarea:focus {
+  border: 1px solid #dcdcdd;
   border-color: #827bf7;
   background: #88b9f92f;
 }

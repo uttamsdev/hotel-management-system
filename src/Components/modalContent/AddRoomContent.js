@@ -23,9 +23,46 @@ const AddRoomContent = ({ refetch, editData, setOpen, btnText }) => {
     let url;
     let img;
     let imageUp;
+    const image = document.querySelector("#img"); // taking image from input
+
+    if (!data.roomId) {
+      toast.error("Room ID filed is required", {
+        description: "Please enter your room ID",
+      });
+      return;
+    }
+
+    if (!data.name) {
+      toast.error("Name filed is required", {
+        description: "Please enter room name",
+      });
+      return;
+    }
+
+    if (!data.price) {
+      toast.error("Price filed is required", {
+        description: "Please enter room price",
+      });
+      return;
+    }
+
+    if (editData) {
+      if (!editData.img) {
+        toast.error("Image filed is required", {
+          description: "Please upload an image",
+        });
+        return;
+      }
+    }
+
+    if (!editData && !image.files.length) {
+      toast.error("Image filed is required", {
+        description: "Please upload an image",
+      });
+      return;
+    }
     setIsLoading(true);
     try {
-      const image = document.querySelector("#img"); // taking image from input
       const formData = new FormData();
       formData.append("image", image.files[0]);
 
