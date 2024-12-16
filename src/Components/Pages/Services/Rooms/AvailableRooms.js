@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { MyContext } from "../../../Context/Context";
 import SingleAvailableRooms from "./SingleAvailableRooms";
 import { MdDateRange } from "react-icons/md";
 import { FaPersonCircleCheck } from "react-icons/fa6";

@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/firebase.init";
 import swal from "sweetalert";
+import { ImSpinner3 } from "react-icons/im";
+import { toast } from "sonner";
 
 const BookRoomPage = () => {
   const [user] = useAuthState(auth);
@@ -10,6 +12,7 @@ const BookRoomPage = () => {
   const [roomData, setRoomData] = useState({});
   const { roomId } = useParams();
   const navigate = useNavigate();
+  const [booking, setBooking] = useState(false);
   // const [loading, setLoading] = useState(false);
   console.log("roomData: ", roomData);
 
@@ -35,30 +38,35 @@ const BookRoomPage = () => {
       img: roomData?.img,
     };
 
-    fetch(
-      "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/order-room",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(order),
-      }
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        swal({
-          title: "Room Booking Successful",
-          text: "Check your email for confirmation!",
-          icon: "success",
-          button: "Ok",
+    try {
+      setBooking(true);
+      const res = await fetch(
+        "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/orders/order-room",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(order),
+        }
+      );
+
+      const result = await res.json();
+      if (Object.keys(result).length) {
+        toast.success("Room booking successful", {
+          description:
+            "Your room booking is successful. Check mail for details.",
         });
-        // event.target.reset();
-        navigate("/user/my-orders");
-      });
+      }
+      navigate("/user/my-orders");
+      console.log(`rx`, result);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setBooking(false);
+      localStorage.clear();
+    }
   };
-  console.log("day: ", startDate);
-  console.log("end:", endDate);
 
   useEffect(() => {
     fetch(
@@ -70,7 +78,7 @@ const BookRoomPage = () => {
 
   useEffect(() => {
     setSearchData(JSON.parse(localStorage.getItem("search")));
-  }, [searchData]);
+  }, []);
   return (
     <div className="w-11/12 xl:w-[1100px] mx-auto mt-4 flex flex-col xl:flex-row xl:items-start">
       <div>
@@ -163,50 +171,50 @@ const BookRoomPage = () => {
         </div>
       </div>
       {/* another div */}
-      <div className="w-11/12 mx-auto xl:w-[350px] h-auto bg-[#E3E3ED] p-4 rounded-md">
-        <div className="mt-4">
-          <p className="text-2xl font-bold text-center mb-2 text-blue-500">
+      <div className="w-11/12 mx-auto xl:w-[350px] h-auto bg-[#E3E3ED]  rounded-md p-3 pb-4">
+        <div className="">
+          <p className="text-xl font-medium text-center mb-2 text-[#000080] pb-0.5 border-b border-[#000080]">
             Order Summary
           </p>
-          <p className="text-xl mb-2 text">
+          <p className="text-lg font-medium mb-2 text">
             RoomID:
-            <span className="text-black italic border-2 border-cyan-50 ">
+            <span className="text-gray-700 font-normal underline italic ">
               {roomData?.roomId}
             </span>
           </p>
-          <p className="text-xl mb-2">
+          <p className="text-lg font-medium mb-2">
             Room Name:
-            <span className="text-black italic border-2 border-cyan-50 ">
+            <span className="text-gray-700 font-normal underline italic ">
               {roomData?.name}
             </span>
           </p>
-          <p className="text-xl mb-2">
+          <p className="text-lg font-medium mb-2">
             Price:{" "}
-            <span className="text-black italic border-2 border-cyan-50 ">
+            <span className="text-gray-700 font-normal underline italic ">
               {roomData?.price} BDT/day
             </span>
           </p>
-          <p className="text-xl mb-2">
+          <p className="text-lg font-medium mb-2">
             Check In Date:{" "}
-            <span className="text-black italic border-2 border-cyan-50 ">
+            <span className="text-gray-700 font-normal underline italic ">
               {searchData?.startDate}
             </span>
           </p>
-          <p className="text-xl mb-2">
+          <p className="text-lg font-medium mb-2">
             Check Out Date:{" "}
-            <span className="text-black italic border-2 border-cyan-50">
+            <span className="text-gray-700 font-normal underline italic">
               {searchData?.endDate}
             </span>
           </p>
-          <p className="text-xl mb-2">
+          <p className="text-lg font-medium mb-2">
             Total Person:{" "}
-            <span className="text-black italic border-2 border-cyan-50">
+            <span className="text-gray-700 font-normal underline italic">
               {searchData?.person || 1}
             </span>
           </p>
-          <p className="text-xl mb-2">
+          <p className="text-lg font-medium mb-2">
             Total Price:{" "}
-            <span className="text-black italic border-2 border-cyan-50 ">
+            <span className="text-gray-700 font-normal underline italic ">
               {daysDifference * roomData?.price} BDT
             </span>
           </p>
@@ -214,9 +222,15 @@ const BookRoomPage = () => {
         <div>
           <button
             onClick={handleBookRoom}
-            className="w-full h-10 rounded font-bold bg-blue-600 text-white mt-4"
+            className="w-full h-10 rounded font-medium flex items-center gap-1 justify-center bg-[#000080]/90 text-white mt-4"
           >
-            Confirm Order
+            {booking && (
+              <ImSpinner3
+                className="animate-spin"
+                style={{ fontSize: "18px" }}
+              />
+            )}
+            {booking ? "Confirming.." : "Confirm Order"}
           </button>
         </div>
       </div>

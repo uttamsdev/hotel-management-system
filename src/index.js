@@ -4,17 +4,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import { MyContextProvider } from "./Components/Context/Context";
 import { Toaster } from "sonner";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Toaster position="top-right" richColors/>
-      <MyContextProvider>
-        <App />
-      </MyContextProvider>
+      <Toaster position="top-right" richColors duration={5000} />
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );

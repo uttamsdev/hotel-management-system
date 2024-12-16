@@ -41,7 +41,7 @@ const MyFoodOrders = () => {
 
   useEffect(() => {
     getAllOrders();
-  }, [user.email]);
+  }, []);
 
   if (loading) {
     return <Loading></Loading>;
@@ -69,14 +69,10 @@ const MyFoodOrders = () => {
           </thead>
           <tbody>
             {/* row 1 */}
-            {orderData.map((order, index) => (
+            {tableData?.map((order, index) => (
               <FoodOrdersTable
-                key={order.foodId}
-                index={index}
+                key={index}
                 order={order}
-                orderData={orderData}
-                user={user}
-                setOrderData={setOrderData}
                 refetch={getAllOrders}
               ></FoodOrdersTable>
             ))}
