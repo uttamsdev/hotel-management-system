@@ -1,11 +1,10 @@
 import React, { Fragment, useState } from "react";
 import {
-  MdDashboard,
   MdDashboardCustomize,
   MdOutlinePhoneCallback,
 } from "react-icons/md";
 import { MdMarkEmailUnread } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../Firebase/firebase.init";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
@@ -13,17 +12,18 @@ import useAdmin from "../../Hooks/useAdmin";
 import UserImage from "../../assets/avatar.png";
 
 import {
-  BookOpenIcon,
   Bars3BottomRightIcon,
   XMarkIcon,
   ChevronDownIcon,
-  Cog8ToothIcon,
+
 } from "@heroicons/react/24/solid";
 import { Menu, Transition } from "@headlessui/react";
 import { BiLogOutCircle } from "react-icons/bi";
 
 const NavbarTwo = () => {
   let [open, setOpen] = useState(false);
+  const {pathname} = useLocation();
+  console.log(pathname)
   const [user, loading, error] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const NavbarTwo = () => {
     window.location.reload();
   };
   return (
-    <div className="sticky top-0 shadow-lg z-10">
+    <div className="sticky top-0 z-10">
       <div className="h-8 bg-[#0F3048] hidden xl:block text-sm">
         <div className="w-[1100px] mx-auto">
           <div className="custom-container h-8  flex mx-auto justify-between items-center">
@@ -54,7 +54,7 @@ const NavbarTwo = () => {
           </div>
         </div>
       </div>
-      <div className="bg-[#ECF0F4] shadow-md">
+      <div className="bg-[#fff] shadow-md backdrop-blur-3xl">
         {" "}
         {/*className='bg-[#ECF0F4]'*/}
         <div className=" text-white mx-auto xl:rounded-2xl lg:px-28 z-10 sticky top-0 shadow-none py-1">
@@ -79,25 +79,25 @@ const NavbarTwo = () => {
             >
               <li className="flex items-center gap-4 text-[17px] text-gray-800 flex-col xl:flex-row   lg:gap-8 text-center xl:text-left">
                 <Link
-                  className="hover:underline hover:text-blue-500 duration-150"
+                  className={`hover:underline hover:text-blue-600 duration-150 ${pathname==='/' && 'text-blue-600 '}`}
                   to="/"
                 >
                   Home
                 </Link>
                 <Link
-                  className="hover:underline hover:text-blue-500 duration-150"
+                  className={`hover:underline hover:text-blue-600 duration-150 ${pathname==='/food' && 'text-blue-600 '}`}
                   to="/food"
                 >
                   Foods
                 </Link>
                 <Link
-                  className="hover:underline hover:text-blue-500 duration-150"
+                  className={`hover:underline hover:text-blue-600 duration-150 ${pathname==='/rooms' && 'text-blue-600 '}`}
                   to="/rooms"
                 >
                   All Rooms
                 </Link>
                 <Link
-                  className="hover:underline hover:text-blue-500 duration-150"
+                  className={`hover:underline hover:text-blue-600 duration-150 ${pathname==='/contact' && 'text-blue-600 '}`}
                   to="/contact"
                 >
                   Contact

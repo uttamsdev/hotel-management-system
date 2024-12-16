@@ -70,7 +70,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="w-10/12 mx-auto xl:mx-0 xl:w-[866px] h-auto pb-4 bg-slate-100 rounded-md shadow relative z-[99]">
+      <div className="w-10/12 mx-auto xl:mx-0 xl:w-[866px] h-auto pb-4 bg-slate-100 rounded-md shadow relative">
         <div className="overlay_test">
           <div className="flex justify-between items-center">
             <p className="text-3xl xl:text-4xl font-bold ml-8 pt-4 mb-8">

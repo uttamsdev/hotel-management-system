@@ -11,7 +11,7 @@ const Footer = () => {
     <div className='bg-[#0E2737] h-[100px] xl:h-[70px] text-gray-300'>
         <dir className=" h-[100px] xl:h-[70px] flex flex-col xl:flex-row items-center justify-center gap-4 xl:gap-0 xl:justify-between xl:w-[1100px] mx-auto">
             <div>
-                <p>Copyright ©2023 All rights reserved</p>
+                <p>Copyright ©{new Date().getFullYear()} All rights reserved @uttamsaha</p>
             </div>
             <div className='flex gap-4'>
                 <Link className='hover:text-white'><SiFacebook/></Link>
