@@ -23,9 +23,46 @@ const AddEditFoodContent = ({ refetch, editData, setOpen, btnText }) => {
     let url;
     let img;
     let imageUp;
+    const image = document.querySelector("#img2"); // taking image from input
+
+    if (!data.foodId) {
+      toast.error("Food ID filed is required", {
+        description: "Please enter your Food ID",
+      });
+      return;
+    }
+
+    if (!data.name) {
+      toast.error("Name filed is required", {
+        description: "Please enter food name",
+      });
+      return;
+    }
+
+    if (!data.price) {
+      toast.error("Price filed is required", {
+        description: "Please enter food price",
+      });
+      return;
+    }
+
+    if (editData) {
+      if (!editData.img) {
+        toast.error("Image filed is required", {
+          description: "Please upload an image",
+        });
+        return;
+      }
+    }
+
+    if (!editData && !image.files.length) {
+      toast.error("Image filed is required", {
+        description: "Please upload an image",
+      });
+      return;
+    }
     setIsLoading(true);
     try {
-      const image = document.querySelector("#img2"); // taking image from input
       const formData = new FormData();
       formData.append("image", image.files[0]);
 
@@ -71,7 +108,7 @@ const AddEditFoodContent = ({ refetch, editData, setOpen, btnText }) => {
   useEffect(() => {
     if (editData) {
       setData({
-        roomId: editData.foodId,
+        foodId: editData.foodId,
         price: editData.price,
         img: editData.price,
         name: editData.name,
@@ -123,7 +160,7 @@ const AddEditFoodContent = ({ refetch, editData, setOpen, btnText }) => {
           </div>
         </div>
         <div className="w-full">
-          <ImageUploader existingImageUrl={editData?.img} selector={'img2'}/>
+          <ImageUploader existingImageUrl={editData?.img} selector={"img2"} />
         </div>
 
         <div className="flex justify-end">
