@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ShowSingleRoom from "../Services/Rooms/ShowSingleRoom";
 import { Link } from "react-router-dom";
+import SingleFood from "../Services/Food/SingleFood";
 
 const Foods = () => {
   const [foods, setFoods] = useState([]);
@@ -20,14 +21,14 @@ const Foods = () => {
           Foods we offer
         </p>
         <p>
-          <Link className="link link-error text-[18px]" to="/foods">
+          <Link className="link link-error text-[18px]" to="/food">
             Show All foods
           </Link>
         </p>
       </div>
       <div className="grid grid-cols-1 place-content-center place-items-center xl:grid-cols-3 gap-6">
         {foods?.map((room) => (
-          <ShowSingleRoom key={room?.roomId} room={room}></ShowSingleRoom>
+          <SingleFood key={room?.foodId} food={room}></SingleFood>
         ))}
       </div>
     </div>
