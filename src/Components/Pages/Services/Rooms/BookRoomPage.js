@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/firebase.init";
-import swal from "sweetalert";
 import { ImSpinner3 } from "react-icons/im";
 import { toast } from "sonner";
 

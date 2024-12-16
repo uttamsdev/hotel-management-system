@@ -2,9 +2,7 @@
 /* eslint-disable no-restricted-globals */
 import React, { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
-import swal from "sweetalert";
-import auth from "../../../Firebase/firebase.init";
-import Loading from "../../Shared/Loading";
+
 
 const SingleFood = ({ food }) => {
   const { foodId, img, name, price } = food;
