@@ -63,7 +63,7 @@ const BookRoomPage = () => {
       console.log(error);
     } finally {
       setBooking(false);
-      localStorage.clear();
+      // localStorage.clear();
     }
   };
 
