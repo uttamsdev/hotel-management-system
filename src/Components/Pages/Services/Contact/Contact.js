@@ -10,98 +10,138 @@ import { BiLogoGithub } from "react-icons/bi";
 
 const Contact = () => {
   return (
-    <div className=" mt-12 flex flex-col lg:flex-row justify-center gap-12 container mx-auto">
-      <div className="">
-        <p className="text-2xl text-center xl:text-left  xl:text-xl uppercase mb-6">
-          Contact Info
-        </p>
-        <div className="flex gap-4 mb-6 ml-12 xl:ml-0">
-          <div className="primary-bg shadow-xl rounded-md w-16 h-16 flex items-center">
-            <MdMarkEmailRead className="text-5xl mx-auto text-white" />
-          </div>
-          <div>
-            <p className="text-[#8B8B8B] uppercase font-bold">Email Us</p>
-            <p>mail@uttamsaha.com</p>
-            <p>uttamsdev@gmail.com</p>
-          </div>
+    <div className="w-full h-[calc(100vh_-_115px)] bg-gradient-to-br from-blue-50 to-indigo-50">
+      <div className="max-w-[1200px] mx-auto flex flex-col items-center py-14">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-800">
+            Get in Touch with Us
+          </h1>
+          <p className="text-gray-600 mt-4">
+            Have questions? We’d love to hear from you! Fill out the form below
+            or reach us through our contact details.
+          </p>
         </div>
-        <div className="flex gap-4 mb-6 ml-12 xl:ml-0">
-          <div className="primary-bg shadow-xl rounded-md w-16 h-16 flex items-center">
-            <PiPhoneCall className="text-5xl mx-auto text-white" />
-          </div>
-          <div>
-            <p className="text-[#8B8B8B] uppercase font-bold">Call Us</p>
-            <p>+8801400014416</p>
-            <p>+15654645555</p>
-          </div>
-        </div>
-        <div className="flex gap-4 mb-6 ml-12 xl:ml-0">
-          <div className="primary-bg shadow-xl rounded-md w-16 h-16 flex items-center">
-            <ImLocation2 className="text-5xl mx-auto text-white" />
-          </div>
-          <div>
-            <p className="text-[#8B8B8B] uppercase font-bold">Location</p>
-            <p>Mohakhali, Amtoli</p>
-            <p>Dhaka, Bangladesh</p>
-          </div>
-        </div>
-        <div>
-          <div className="">
-            <p className="text-xl uppercase mb-3 mt-8 text-center xl:text-left ">
-              Social Info
-            </p>
-            <div className="flex justify-center xl:justify-normal">
-              <div className="flex gap-4">
-                <Link className="text-2xl hover:scale-75 duration-500">
+
+        {/* Main Content */}
+        <div className="flex flex-col lg:flex-row gap-10 items-start container mx-auto px-8">
+          {/* Contact Info Section */}
+          <div className="bg-white shadow-lg rounded-lg p-8 lg:w-1/3 w-full">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+              Contact Information
+            </h2>
+            {/* Email Info */}
+            <div className="flex gap-4 items-center mb-6">
+              <div className="bg-blue-500 shadow-lg rounded-full w-14 h-14 flex items-center justify-center">
+                <MdMarkEmailRead className="text-3xl text-white" />
+              </div>
+              <div>
+                <p className="text-gray-600 uppercase font-semibold">
+                  Email Us
+                </p>
+                <p className="text-gray-800">mail@uttamsaha.com</p>
+                <p className="text-gray-800">uttamsdev@gmail.com</p>
+              </div>
+            </div>
+            {/* Phone Info */}
+            <div className="flex gap-4 items-center mb-6">
+              <div className="bg-blue-500 shadow-lg rounded-full w-14 h-14 flex items-center justify-center">
+                <PiPhoneCall className="text-3xl text-white" />
+              </div>
+              <div>
+                <p className="text-gray-600 uppercase font-semibold">Call Us</p>
+                <p className="text-gray-800">+8801400014416</p>
+                <p className="text-gray-800">+15654645555</p>
+              </div>
+            </div>
+            {/* Location Info */}
+            <div className="flex gap-4 items-center">
+              <div className="bg-blue-500 shadow-lg rounded-full w-14 h-14 flex items-center justify-center">
+                <ImLocation2 className="text-3xl text-white" />
+              </div>
+              <div>
+                <p className="text-gray-600 uppercase font-semibold">
+                  Location
+                </p>
+                <p className="text-gray-800">Mohakhali, Amtoli</p>
+                <p className="text-gray-800">Dhaka, Bangladesh</p>
+              </div>
+            </div>
+            {/* Social Links */}
+            <div className="mt-8 text-center">
+              <h3 className="text-xl font-semibold text-gray-700 mb-4">
+                Follow Us
+              </h3>
+              <div className="flex justify-center gap-4">
+                <Link
+                  to="#"
+                  className="text-blue-600 hover:text-blue-800 text-3xl transition-transform transform hover:scale-125"
+                >
                   <SiFacebook />
                 </Link>
-                <Link className="text-2xl hover:scale-75 duration-500">
+                <Link
+                  to="#"
+                  className="text-blue-600 hover:text-blue-800 text-3xl transition-transform transform hover:scale-125"
+                >
                   <RiInstagramLine />
                 </Link>
-                <Link className="text-2xl hover:scale-75 duration-500">
+                <Link
+                  to="#"
+                  className="text-blue-600 hover:text-blue-800 text-3xl transition-transform transform hover:scale-125"
+                >
                   <FaLinkedinIn />
                 </Link>
-                <Link className="text-2xl hover:scale-75 duration-500">
+                <Link
+                  to="#"
+                  className="text-blue-600 hover:text-blue-800 text-3xl transition-transform transform hover:scale-125"
+                >
                   <BiLogoGithub />
                 </Link>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div className="w-10/12 mx-auto xl:mx-0 xl:w-[866px] h-auto pb-4  rounded-md shadow-md border border-gray-100 relative">
-        <div className="overlay_test">
-          <div className="flex justify-between items-center">
-            <p className="text-3xl xl:text-[28px] font-bold ml-8 pt-4 mb-8">
-              Contact <span className="">Us</span>
-            </p>
-            <img src="icon2.webp" alt="" />
-          </div>
-          <div className="flex flex-col items-center ">
-            <input
-              className="bg-slate-50 w-10/12 xl:w-[770px] h-[50px] outline-none  rounded  mb-3 pl-3   "
-              type="text"
-              placeholder="Your name"
-            />
-            <input
-              className="bg-slate-50 w-10/12 xl:w-[770px] h-[50px] outline-none  rounded  mb-3 pl-3   "
-              type="text"
-              placeholder="Your email"
-            />
-            <input
-              className=" bg-slate-50 w-10/12 xl:w-[770px] h-[50px] outline-none  rounded  mb-3 pl-3    "
-              type="text"
-              placeholder="Your subject"
-            />
-            <textarea
-              className="bg-slate-50 w-10/12 xl:w-[770px] h-[150px] xl:h-[250px] outline-none border  rounded  mb-3 pl-3 pt-2 "
-              type="text"
-              placeholder="Your message"
-            />
-            <button className=" text-sm mr-2  active:scale-75 uppercase font-medium primary-bg text-white py-3 px-8 rounded-full hover:opacity-80 w-10/12 xl:w-[770px] mb-4  duration-500 mt-4">
-              Send message
-            </button>
+          {/* Contact Form Section */}
+          <div className="bg-white shadow-lg rounded-lg p-8 lg:w-2/3 w-full">
+            <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
+              Send Us a Message
+            </h2>
+            <form className="space-y-6">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full p-4 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full p-4 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Subject"
+                  className="w-full p-4 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+              </div>
+              <div>
+                <textarea
+                  rows="6"
+                  placeholder="Your Message"
+                  className="w-full p-4 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </div>
       </div>
