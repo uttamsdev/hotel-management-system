@@ -67,7 +67,7 @@ const Register = () => {
   }
   //   sendEmailVerification();
   return (
-    <div className="w-full h-[calc(100vh_-_115px)] bg-gradient-to-br from-blue-50 via-blue-50 to-blue-50 flex items-center justify-center">
+    <div className="w-full h-[calc(100vh_-_115px)] bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50 flex items-center justify-center">
       <div className="w-11/12 xl:w-[460px] bg-white shadow-2xl rounded-lg p-8">
         <form
           onSubmit={handleCreateAccount}

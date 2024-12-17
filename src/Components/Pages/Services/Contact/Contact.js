@@ -10,7 +10,7 @@ import { BiLogoGithub } from "react-icons/bi";
 
 const Contact = () => {
   return (
-    <div className="w-full h-[calc(100vh_-_115px)] bg-gradient-to-br from-blue-50 to-indigo-50">
+    <div className="w-full h-[calc(100vh_-_115px)] bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50">
       <div className="max-w-[1200px] mx-auto flex flex-col items-center py-14">
         {/* Header */}
         <div className="text-center mb-12">
