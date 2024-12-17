@@ -7,7 +7,7 @@ import { Skeleton } from "antd";
 const ViewOrders = () => {
   const [allOrderData, setAllOrderData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 11;
+  const itemsPerPage = 10;
 
   const getAllOrders = async () => {
     try {

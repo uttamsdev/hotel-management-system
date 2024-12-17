@@ -10,7 +10,7 @@ const MyFoodOrders = () => {
   const [user, loading] = useAuthState(auth);
   const [orderData, setOrderData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 11;
+  const itemsPerPage = 10;
 
   const getAllOrders = async () => {
     try {

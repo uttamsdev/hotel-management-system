@@ -10,7 +10,7 @@ import { MdOutlineAdd } from "react-icons/md";
 const AllFoods = () => {
   const [allFoods, setAllFoods] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 11;
+  const itemsPerPage = 10;
   const [modalTitle, setModalTitle] = useState(null);
   const [open, setOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
