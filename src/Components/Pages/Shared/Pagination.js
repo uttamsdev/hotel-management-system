@@ -4,14 +4,14 @@ import { Pagination } from "antd";
 const itemRender = (_, type, originalElement) => {
   if (type === "prev") {
     return (
-      <div className="text-sm text-pagination-btn px-3 py-[5px] border border-gray-100 rounded bg-[#25b0cf] text-white">
+      <div className="text-sm text-pagination-btn px-3 py-[5px] border border-gray-100 rounded bg-[#06b6d4] text-white">
         Previous
       </div>
     );
   }
   if (type === "next") {
     return (
-      <div className="text-sm text-pagination-btn px-3 py-[5px] border border-gray-100 rounded bg-[#25b0cf] text-white">
+      <div className="text-sm text-pagination-btn px-3 py-[5px] border border-gray-100 rounded bg-[#06b6d4] text-white">
         Next
       </div>
     );

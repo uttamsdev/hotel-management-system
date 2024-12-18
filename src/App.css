@@ -62,8 +62,8 @@
 }
 
 .ant-pagination-item-active a {
-  color: #25b0cf !important;
-  border: 1px solid #25b0cf;
+  color: #06b6d4 !important;
+  border: 1px solid #06b6d4;
   /* border: none !important; */
 }
 
@@ -107,7 +107,7 @@ textarea:focus {
 }
 
 .primary-bg {
-  background: #25b0cf;
+  background: #06b6d4;
 }
 
 /* Hide the arrows for number input */
