@@ -1,41 +1,62 @@
-import React from 'react'
-import { FaWifi } from "react-icons/fa";
-import { FaWater } from "react-icons/fa6";
-import { FaPhoneVolume } from "react-icons/fa";
+import React from 'react';
+import { FaWifi, FaWater, FaPhoneVolume } from "react-icons/fa";
 import { TbAirConditioning } from "react-icons/tb";
-
 
 const Facilities = () => {
   return (
-    <div className='w-full xl:w-[1100px] mx-auto text-[#5e6268] flex flex-col xl:flex-row gap-8 '>
-        <div className='w-[350px] xl:w-[540px] h-[175px] border border-gray-300 p-4 mx-auto'>
-            <h1 className='uppercase text-2xl text-center text-[#000080]'>Who we are!</h1>
-            <p className='text-lg mb-2'>Hotel Redison</p>
-            <p className='text-lg'>83-88 , Bir Uttom A.k Khandakar Sarak Mohakhali C/A, Dhaka-1212, Bangladesh</p>
+    <div className="w-full py-16 mt-[-170px] relative z-[99]">
+      <div className="max-w-[1200px] mx-auto px-6">
+        {/* Title Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-3xl font-bold text-gray-800 mb-4">
+            Discover Our Facilities
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+            Experience the best in comfort and convenience with top-notch facilities tailored to your needs.
+          </p>
         </div>
-        <div>
-          <p className='text-xl xl:text-2xl font-semibold text-[#000080] uppercase mb-2'>Facilities</p>
-          <div className='grid grid-cols-2 place-content-center place-items-center xl:flex gap-4'>
-            <div className='w-[113px] h-[105px] bg-[#fbe2e3de] flex flex-col justify-center items-center rounded'>
-              <FaWifi className='text-[#000080] text-3xl'/>
-              <p>Wifi</p>
+
+        {/* Facility Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+          {/* Wifi */}
+          <div className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 p-6 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-teal-500 to-blue-500 text-white flex items-center justify-center rounded-full">
+              <FaWifi className="text-2xl" />
             </div>
-            <div className='w-[113px] h-[105px] bg-[#fbe2e3de] flex flex-col justify-center items-center rounded'>
-              <FaWater className='text-[#000080] text-3xl'/>
-              <p>Hot Water</p>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Wifi</h3>
+            <p className="text-sm text-gray-600">Stay connected with high-speed internet available throughout the hotel.</p>
+          </div>
+
+          {/* Hot Water */}
+          <div className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 p-6 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-teal-500 to-blue-500 text-white flex items-center justify-center rounded-full">
+              <FaWater className="text-2xl" />
             </div>
-            <div className='w-[113px] h-[105px] bg-[#fbe2e3de] flex flex-col justify-center items-center rounded'>
-              <TbAirConditioning className='text-[#000080] text-3xl'/>
-              <p>Air Condition</p>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Hot Water</h3>
+            <p className="text-sm text-gray-600">Enjoy warm showers with our 24/7 hot water service.</p>
+          </div>
+
+          {/* Air Conditioning */}
+          <div className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 p-6 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-teal-500 to-blue-500 text-white flex items-center justify-center rounded-full">
+              <TbAirConditioning className="text-2xl" />
             </div>
-            <div className='w-[113px] h-[105px] bg-[#fbe2e3de] flex flex-col justify-center items-center rounded'>
-              <FaPhoneVolume className='text-[#000080] text-3xl'/>
-              <p>Intercom</p>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Air Conditioning</h3>
+            <p className="text-sm text-gray-600">Relax in perfectly climate-controlled rooms.</p>
+          </div>
+
+          {/* Intercom */}
+          <div className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 p-6 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-teal-500 to-blue-500 text-white flex items-center justify-center rounded-full">
+              <FaPhoneVolume className="text-2xl" />
             </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">Intercom</h3>
+            <p className="text-sm text-gray-600">Quick and easy communication with our intercom system.</p>
           </div>
         </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default Facilities;

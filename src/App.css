@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
 * {
-  font-family: "Roboto", sans-serif !important;
+  font-family: "Inter", serif;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -12,6 +12,9 @@
   }
 }
 
+body {
+  background: linear-gradient(to bottom, white, #ebf8ff);
+}
 .calc-height {
   min-height: calc(100vh - 70px);
 }
@@ -62,8 +65,8 @@
 }
 
 .ant-pagination-item-active a {
-  color: #06b6d4 !important;
-  border: 1px solid #06b6d4;
+  color: #0284c7 !important;
+  border: 1px solid #0284c7;
   /* border: none !important; */
 }
 
@@ -107,7 +110,7 @@ textarea:focus {
 }
 
 .primary-bg {
-  background: #06b6d4;
+  background: #0284c7;
 }
 
 /* Hide the arrows for number input */

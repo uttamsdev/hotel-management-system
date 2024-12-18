@@ -17,7 +17,7 @@ const Navbar = () => {
         navigate("/login");
     }
   return (
-    <div className='sticky top-0 shadow-lg !z-[999999] hidden xl:block'>
+    <div className='sticky top-0 shadow-lg z-[9999] hidden xl:block'>
         <div className='h-8 bg-[#0F3048] relative z-[99999]'>
             <div className='w-[1100px] mx-auto'>
             <div className='custom-container h-8  flex mx-auto justify-between items-center text-sm'>

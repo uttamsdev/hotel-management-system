@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.22.4",
     "firebase": "^10.7.1",
+    "framer-motion": "^11.15.0",
     "fslightbox-react": "^1.7.6",
     "react": "^18.2.0",
     "react-datepicker": "^4.23.0",

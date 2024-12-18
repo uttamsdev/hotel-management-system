@@ -10,21 +10,21 @@ import { BiLogoGithub } from "react-icons/bi";
 
 const Contact = () => {
   return (
-    <div className="w-full h-[calc(100vh_-_115px)] bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50">
-      <div className="max-w-[1200px] mx-auto flex flex-col items-center py-14">
+    <div className="w-full h-[calc(100vh_-_115px)] bg-gradient-to-br from-blue-900 via-purple-800 to-indigo-900 text-white flex items-center justify-center">
+      <div className="max-w-[1200px] w-full mx-auto flex flex-col items-center py-14 relative z-[999]">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-800">
+          <h1 className="text-4xl font-extrabold text-gray-200">
             Get in Touch with Us
           </h1>
-          <p className="text-gray-600 mt-4">
+          <p className="text-gray-400 mt-4">
             Have questions? We’d love to hear from you! Fill out the form below
             or reach us through our contact details.
           </p>
         </div>
 
         {/* Main Content */}
-        <div className="flex flex-col lg:flex-row gap-10 items-start container mx-auto px-8">
+        <div className="flex flex-col w-full lg:flex-row gap-10 items-start container mx-auto px-8">
           {/* Contact Info Section */}
           <div className="bg-white shadow-lg rounded-lg p-8 lg:w-1/3 w-full">
             <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
@@ -137,13 +137,23 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
+                className="w-full py-3 bg-gradient-to-r from-teal-500 to-blue-500 text-white font-semibold rounded-lg hover:from-teal-600 hover:to-blue-600 transition-transform transform hover:scale-105"
               >
                 Send Message
               </button>
             </form>
           </div>
         </div>
+      </div>
+
+      {/* Sharp Wave SVG */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
+          <path
+            fill="#ffffff"
+            d="M0,256L48,256C96,256,192,256,288,245.3C384,235,480,213,576,213.3C672,213,768,235,864,240C960,245,1056,235,1152,224C1248,213,1344,192,1392,186.7L1440,181.3V320H1392C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          ></path>
+        </svg>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ const NavbarTwo = () => {
     window.location.reload();
   };
   return (
-    <div className="sticky top-0 z-10">
+    <div className="sticky top-0  z-[9999999]">
       <div className="h-8 bg-[#0F3048] hidden xl:block text-sm">
         <div className="w-[1100px] mx-auto">
           <div className="custom-container h-8  flex mx-auto justify-between items-center">

@@ -42,7 +42,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                     ${
                       router.pathname === "/user"
                         ? "primary-bg text-white rounded-r-full"
-                        : "text-white hover:bg-[#06b6d4] hover:text-white rounded-r-full"
+                        : "text-white hover:bg-[#0284c7] hover:text-white rounded-r-full"
                     }`}
           >
             <div className="mr-2">
@@ -57,7 +57,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                     ${
                       router.pathname === "/user/my-orders"
                         ? "primary-bg text-white rounded-r-full"
-                        : "text-white hover:bg-[#06b6d4] hover:text-white rounded-r-full"
+                        : "text-white hover:bg-[#0284c7] hover:text-white rounded-r-full"
                     }`}
           >
             <div className="mr-2">
@@ -72,7 +72,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
                     ${
                       router.pathname === "/user/my-food-orders"
                         ? "primary-bg text-white rounded-r-full"
-                        : "text-white hover:bg-[#06b6d4] hover:text-white rounded-r-full"
+                        : "text-white hover:bg-[#0284c7] hover:text-white rounded-r-full"
                     }`}
           >
             <div className="mr-2">

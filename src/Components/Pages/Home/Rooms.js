@@ -12,22 +12,29 @@ const Rooms = () => {
       .then((res) => res.json())
       .then((data) => setRooms(data?.data.slice(0, 6)));
   }, []);
+
   return (
-    <div className="w-full xl:w-[1100px] mx-auto mt-12 border-t">
-      <div className="flex justify-between">
-        <p className="text-xl xl:text-2xl font-semibold text-[#000080] uppercase mt-3 mb-2">
-          Rooms we offer
-        </p>
-        <p>
-          <Link className="link link-error text-[18px]" to="/rooms">
+    <div className="py-6">
+      <div className="max-w-[1200px] mx-auto px-6">
+        {/* Title Section */}
+        <div className="flex justify-between items-center mb-4 00 pt-1">
+          <h2 className="text-2xl  font-bold text-gray-800">
+            Rooms We Offer
+          </h2>
+          <Link
+            to="/rooms"
+            className="text-teal-600 hover:text-teal-700 text-lg font-medium underline transition"
+          >
             Show All Rooms
           </Link>
-        </p>
-      </div>
-      <div className="grid grid-cols-1 place-content-center place-items-center xl:grid-cols-3 gap-6">
-        {rooms?.map((room) => (
-          <ShowSingleRoom key={room?.roomId} room={room}></ShowSingleRoom>
-        ))}
+        </div>
+
+        {/* Room Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {rooms?.map((room) => (
+            <ShowSingleRoom key={room?.roomId} room={room}></ShowSingleRoom>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -13,14 +13,12 @@ import { toast } from "sonner";
 const Register = () => {
   let userData = {};
 
-  //for creating account
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, error2] = useUpdateProfile(auth);
-
-  //for send email verification
   const [sendEmailVerification, sending, error1] =
     useSendEmailVerification(auth);
+
   let errorMessage;
   const navigate = useNavigate();
 
@@ -32,7 +30,7 @@ const Register = () => {
     );
   }
   if (loading || sending || updating) {
-    return <Loading></Loading>;
+    return <Loading />;
   }
 
   const handleCreateAccount = async (event) => {
@@ -56,19 +54,18 @@ const Register = () => {
         },
         body: JSON.stringify(userData),
       }
-    )
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    ).then((res) => res.json());
   };
+
   if (user) {
     navigate("/");
     sendEmailVerification();
-    toast.success("Registration Successful Check Email for Verify");
+    toast.success("Registration Successful! Check your email for verification.");
   }
-  //   sendEmailVerification();
+
   return (
-    <div className="w-full h-[calc(100vh_-_115px)] bg-[#F1F5F9] bg-gradient-to-r from-stone-100 to-blue-50 flex items-center justify-center">
-      <div className="w-11/12 xl:w-[460px] bg-white shadow-2xl rounded-lg p-8">
+    <div className="w-full h-[calc(100vh_-_115px)] bg-gradient-to-br from-blue-900 via-purple-800 to-indigo-900 text-white flex items-center justify-center">
+      <div className="w-11/12 xl:w-[460px] bg-white shadow-2xl rounded-lg p-8 relative z-[999]">
         <form
           onSubmit={handleCreateAccount}
           className="flex flex-col space-y-4"
@@ -78,7 +75,7 @@ const Register = () => {
             src="http://www.hotels.gov.bd/forntend/img/core-img/logo.png"
             alt="Logo"
           />
-          <h2 className="text-2xl font-bold text-center text-gray-800">
+          <h2 className="text-2xl font-extrabold text-center text-gray-800">
             Register New Account
           </h2>
           <p className="text-sm text-gray-600 text-center mb-4">
@@ -97,7 +94,7 @@ const Register = () => {
               name="name"
               type="text"
               placeholder="Enter your full name"
-              className="w-full h-12 px-4 rounded-lg border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+              className="w-full h-12 px-4 rounded-lg border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
             />
           </div>
 
@@ -113,7 +110,7 @@ const Register = () => {
               name="email"
               type="email"
               placeholder="Enter your email"
-              className="w-full h-12 px-4 rounded-lg border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+              className="w-full h-12 px-4 rounded-lg border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
             />
           </div>
 
@@ -129,7 +126,7 @@ const Register = () => {
               name="password"
               type="password"
               placeholder="Enter your password"
-              className="w-full h-12 px-4 rounded-lg border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none"
+              className="w-full h-12 px-4 rounded-lg border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none"
             />
           </div>
 
@@ -139,7 +136,7 @@ const Register = () => {
 
           <button
             type="submit"
-            className="w-full h-12 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+            className="w-full h-12 bg-gradient-to-r from-teal-500 to-blue-500 text-white font-semibold rounded-lg hover:from-teal-600 hover:to-blue-600 transition"
           >
             Create Account
           </button>
@@ -147,7 +144,7 @@ const Register = () => {
           <div className="text-center text-gray-600">
             <p>
               Already have an account?{" "}
-              <Link to="/login" className="text-blue-800 font-medium">
+              <Link to="/login" className="text-teal-500 font-medium hover:underline">
                 Login
               </Link>
             </p>
@@ -157,6 +154,16 @@ const Register = () => {
             <SocialLogin />
           </div>
         </form>
+      </div>
+
+      {/* Sharp Wave SVG */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="w-full">
+          <path
+            fill="#ffffff"
+            d="M0,192L48,192C96,192,192,192,288,181.3C384,171,480,149,576,149.3C672,149,768,171,864,186.7C960,203,1056,213,1152,202.7C1248,192,1344,160,1392,149.3L1440,139.3V320H1392C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          ></path>
+        </svg>
       </div>
     </div>
   );

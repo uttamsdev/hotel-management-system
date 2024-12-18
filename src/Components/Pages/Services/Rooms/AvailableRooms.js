@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SingleAvailableRooms from "./SingleAvailableRooms";
 import { MdDateRange } from "react-icons/md";
 import { FaPersonCircleCheck } from "react-icons/fa6";
+import ShowSingleRoom from "./ShowSingleRoom";
 
 const AvailableRooms = () => {
   const [searchData, setSearchData] = useState({});
@@ -41,7 +42,7 @@ const AvailableRooms = () => {
       </p>
       <div className="grid grid-cols-1 place-content-center place-items-center xl:grid-cols-3 gap-6">
         {JSON.parse(localStorage.getItem("rooms"))?.data?.map((room) => (
-          <SingleAvailableRooms room={room}></SingleAvailableRooms>
+          <ShowSingleRoom room={room} book={true}></ShowSingleRoom>
         ))}
       </div>
     </div>
