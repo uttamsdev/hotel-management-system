@@ -41,7 +41,10 @@ const TopBar = ({ showNav, setShowNav }) => {
             onClick={() => setShowNav(!showNav)}
           />
         </div>
-        <Link to="/" className=" flex items-center gap-1 border rounded-md text-sm py-1.5 px-2.5 bg-transparent text-gray-700 hover:text-white hover:bg-[#35bccf]">
+        <Link
+          to="/"
+          className=" flex items-center gap-1 border rounded-md text-sm py-1.5 px-2.5 bg-transparent text-gray-700 hover:text-white hover:bg-[var(--primary)]"
+        >
           <FaHome className="text-[18px]" />
           Back To Home
         </Link>

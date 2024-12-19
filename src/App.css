@@ -1,10 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+
 * {
   font-family: "Inter", serif;
+}
+
+:root {
+  --primary: #0284c7;
+}
+
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
 }
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

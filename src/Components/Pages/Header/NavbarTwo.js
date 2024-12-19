@@ -36,7 +36,7 @@ const NavbarTwo = () => {
   return (
     <div className="sticky top-0  z-[9999999]">
       <div className="h-8 bg-[#0F3048] hidden xl:block text-sm">
-        <div className="w-[1100px] mx-auto">
+        <div className="container">
           <div className="custom-container h-8  flex mx-auto justify-between items-center">
             <div className="text-white">
               <p>Hotel Management System</p>
@@ -141,7 +141,7 @@ const NavbarTwo = () => {
                       leaveFrom="transform scale-100"
                       leaveTo="transform scale-95"
                     >
-                      <Menu.Items className="absolute right-0 w-56 z-50 mt-2 origin-top-right bg-white rounded shadow-sm">
+                      <Menu.Items className="absolute right-0 w-56 z-50 mt-2 origin-top-right bg-white rounded shadow-lg">
                         <div className="p-1">
                           <Menu.Item>
                             <Link
