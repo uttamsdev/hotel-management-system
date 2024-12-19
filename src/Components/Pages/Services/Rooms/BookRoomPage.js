@@ -4,37 +4,35 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/firebase.init";
 import { ImSpinner3 } from "react-icons/im";
 import { toast } from "sonner";
+import { FaAirFreshener, FaUtensils, FaTv, FaWifi, FaClock } from 'react-icons/fa';
 
-const BookRoomPage = () => {
+
+const BookRoomPage= () => {
   const [user] = useAuthState(auth);
   const [searchData, setSearchData] = useState(null);
-  const [roomData, setRoomData] = useState({});
+  const [roomData, setRoomData] = useState(null);
   const { roomId } = useParams();
   const navigate = useNavigate();
   const [booking, setBooking] = useState(false);
-  // const [loading, setLoading] = useState(false);
-  console.log("roomData: ", roomData);
 
-  const startDate = new Date(searchData?.startDate);
-  const endDate = new Date(searchData?.endDate);
+  const startDate = searchData?.startDate ? new Date(searchData.startDate) : null;
+  const endDate = searchData?.endDate ? new Date(searchData.endDate) : null;
 
-  // Calculate the difference in milliseconds
-  const timeDifference = endDate - startDate;
-
-  // Calculate the number of days
-  let daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)) + 1;
-
-  //! order confirm hole search result localstorage clear korbo search,rooms
+  const daysDifference = startDate && endDate
+    ? Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1
+    : 0;
 
   const handleBookRoom = async () => {
+    if (!roomData || !searchData || !user) return;
+
     const order = {
-      roomId: roomData?.roomId,
-      email: user?.email,
-      name: roomData?.name,
-      startDate: searchData?.startDate,
-      endDate: searchData?.endDate,
-      price: daysDifference * roomData?.price,
-      img: roomData?.img,
+      roomId: roomData.roomId,
+      email: user.email,
+      name: roomData.name,
+      startDate: searchData.startDate,
+      endDate: searchData.endDate,
+      price: daysDifference * roomData.price,
+      img: roomData.img,
     };
 
     try {
@@ -53,188 +51,125 @@ const BookRoomPage = () => {
       const result = await res.json();
       if (Object.keys(result).length) {
         toast.success("Room booking successful", {
-          description:
-            "Your room booking is successful. Check mail for details.",
+          description: "Your room booking is successful. Check mail for details.",
         });
       }
       navigate("/user/my-orders");
-      console.log(`rx`, result);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error("Booking failed", {
+        description: "There was an error while booking your room. Please try again.",
+      });
     } finally {
       setBooking(false);
-      // localStorage.clear();
     }
   };
 
   useEffect(() => {
-    fetch(
-      `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/${roomId}`
-    )
-      .then((res) => res.json())
-      .then((data) => setRoomData(data.data[0]));
+    const fetchRoomData = async () => {
+      try {
+        const res = await fetch(
+          `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/${roomId}`
+        );
+        const data = await res.json();
+        setRoomData(data.data[0]);
+      } catch (error) {
+        console.error("Error fetching room data:", error);
+      }
+    };
+
+    fetchRoomData();
   }, [roomId]);
 
   useEffect(() => {
-    setSearchData(JSON.parse(localStorage.getItem("search")));
+    const storedSearchData = localStorage.getItem("search");
+    if (storedSearchData) {
+      setSearchData(JSON.parse(storedSearchData));
+    }
   }, []);
+
+  if (!roomData) {
+    return <div className="flex justify-center items-center h-screen">
+      <ImSpinner3 className="animate-spin text-4xl text-blue-600" />
+    </div>;
+  }
+
   return (
-    <div className="w-11/12 xl:w-[1100px] mx-auto mt-4 flex flex-col xl:flex-row xl:items-start">
-      <div>
-        <div className="mb-6">
+    <div className="max-w-[1200px] mx-auto px-4 py-8">
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="lg:w-2/3">
           <img
-            className="w-11/12 mx-auto h-[200px] xl:w-[710px] xl:h-[430px] rounded"
-            src={roomData?.img}
-            alt=""
+            className="w-full h-[300px] lg:h-[400px] object-cover rounded-lg shadow-lg"
+            src={roomData.img}
+            alt={roomData.name}
           />
-        </div>
-
-        <div className="flex ml-2">
-          <div className="w-[235px] h-[140px] bg-[#414159] flex items-center justify-center mr-[1px]">
-            <div className="text-center">
-              <p className="text-md xl:text-xl font-bold text-white">Size:</p>
-              <p className="text-md xl:text-xl text-[#EDDFBA]">400 Sq-ft</p>
-            </div>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <RoomFeature title="Size" value="400 Sq-ft" />
+            <RoomFeature title="Capacity" value="02 Adult & 02 Childs (below 10 Years)" />
+            <RoomFeature title="Bed" value="Double" />
           </div>
-          <div className="w-[235px] h-[140px] bg-[#414159] flex items-center justify-center mr-[1px]">
-            <div className="text-center">
-              <p className="text-md xl:text-xl font-bold text-white">
-                Capacity:
-              </p>
-              <p className="text-md xl:text-xl text-[#EDDFBA]">
-                02 Adult & 02 Childs (below 10 Years)
-              </p>
-            </div>
-          </div>
-          <div className="w-[235px] h-[140px] bg-[#414159] flex items-center justify-center">
-            <div className="text-center">
-              <p className="text-md xl:text-xl font-bold text-white">Bed:</p>
-              <p className="text-md xl:text-xl text-[#EDDFBA]">Double</p>
+          <div className="mt-8">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Room Services</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <RoomService icon={<FaAirFreshener />} text="Air Conditioning" />
+              <RoomService icon={<FaUtensils />} text="Restaurant Quality" />
+              <RoomService icon={<FaTv />} text="Cable TV" />
+              <RoomService icon={<FaWifi />} text="Unlimited Wifi" />
+              <RoomService icon={<FaClock />} text="Service 24/7" />
             </div>
           </div>
         </div>
-
-        <div className="w-11/12 xl:w-[730px] mb-6 xl:mb-0">
-          <div>
-            <p className="text-2xl font-semibold text-gray-900 mb-4 mt-4">
-              Room Services
-            </p>
+        <div className="lg:w-1/3">
+          <div className="bg-white shadow-lg rounded-lg p-6">
+            <h2 className="text-2xl font-semibold text-center mb-6 text-blue-800 border-b pb-2">Order Summary</h2>
+            <SummaryItem label="Room ID" value={roomData.roomId} />
+            <SummaryItem label="Room Name" value={roomData.name} />
+            <SummaryItem label="Price" value={`${roomData.price} BDT/day`} />
+            <SummaryItem label="Check In Date" value={searchData?.startDate || 'N/A'} />
+            <SummaryItem label="Check Out Date" value={searchData?.endDate || 'N/A'} />
+            <SummaryItem label="Total Person" value={searchData?.person?.toString() || '1'} />
+            <SummaryItem label="Total Price" value={`${daysDifference * roomData.price} BDT`} isTotal />
+            <button
+              onClick={handleBookRoom}
+              disabled={booking}
+              className="w-full py-3 px-4 bg-blue-600 text-white rounded-lg font-medium mt-6 hover:bg-blue-700 transition duration-300 ease-in-out flex items-center justify-center"
+            >
+              {booking ? (
+                <>
+                  <ImSpinner3 className="animate-spin mr-2" />
+                  Confirming...
+                </>
+              ) : (
+                'Confirm Order'
+              )}
+            </button>
           </div>
-          <div className="grid grid-cols-2 xl:grid-cols-3 gap-6">
-            <div className="flex items-center gap-3">
-              <div>
-                <img
-                  src="http://www.hotels.gov.bd/forntend/img/core-img/icon1.png"
-                  alt=""
-                />
-              </div>
-              <p>Air Conditioning</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div>
-                <img
-                  src="http://www.hotels.gov.bd/forntend/img/core-img/icon3.png"
-                  alt=""
-                />
-              </div>
-              <p> Restaurant quality </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div>
-                <img
-                  src="http://www.hotels.gov.bd/forntend/img/core-img/icon4.png"
-                  alt=""
-                />
-              </div>
-              <p>Cable TV</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div>
-                <img
-                  src="http://www.hotels.gov.bd/forntend/img/core-img/icon5.png"
-                  alt=""
-                />
-              </div>
-              <p>Unlimited Wifi</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div>
-                <img
-                  src="http://www.hotels.gov.bd/forntend/img/core-img/icon6.png"
-                  alt=""
-                />
-              </div>
-              <p>Service 24/7</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* another div */}
-      <div className="w-11/12 mx-auto xl:w-[350px] h-auto bg-[#E3E3ED]  rounded-md p-3 pb-4">
-        <div className="">
-          <p className="text-xl font-medium text-center mb-2 text-[#000080] pb-0.5 border-b border-[#000080]">
-            Order Summary
-          </p>
-          <p className="text-lg font-medium mb-2 text">
-            RoomID:
-            <span className="text-gray-700 font-normal underline italic ">
-              {roomData?.roomId}
-            </span>
-          </p>
-          <p className="text-lg font-medium mb-2">
-            Room Name:
-            <span className="text-gray-700 font-normal underline italic ">
-              {roomData?.name}
-            </span>
-          </p>
-          <p className="text-lg font-medium mb-2">
-            Price:{" "}
-            <span className="text-gray-700 font-normal underline italic ">
-              {roomData?.price} BDT/day
-            </span>
-          </p>
-          <p className="text-lg font-medium mb-2">
-            Check In Date:{" "}
-            <span className="text-gray-700 font-normal underline italic ">
-              {searchData?.startDate}
-            </span>
-          </p>
-          <p className="text-lg font-medium mb-2">
-            Check Out Date:{" "}
-            <span className="text-gray-700 font-normal underline italic">
-              {searchData?.endDate}
-            </span>
-          </p>
-          <p className="text-lg font-medium mb-2">
-            Total Person:{" "}
-            <span className="text-gray-700 font-normal underline italic">
-              {searchData?.person || 1}
-            </span>
-          </p>
-          <p className="text-lg font-medium mb-2">
-            Total Price:{" "}
-            <span className="text-gray-700 font-normal underline italic ">
-              {daysDifference * roomData?.price} BDT
-            </span>
-          </p>
-        </div>
-        <div>
-          <button
-            onClick={handleBookRoom}
-            className="w-full h-10 rounded font-medium flex items-center gap-1 justify-center bg-[#000080]/90 text-white mt-4"
-          >
-            {booking && (
-              <ImSpinner3
-                className="animate-spin"
-                style={{ fontSize: "18px" }}
-              />
-            )}
-            {booking ? "Confirming.." : "Confirm Order"}
-          </button>
         </div>
       </div>
     </div>
   );
 };
 
+const RoomFeature = ({ title, value }) => (
+  <div className="bg-gray-100 p-4 rounded-lg">
+    <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
+    <p className="text-gray-600">{value}</p>
+  </div>
+);
+
+const RoomService = ({ icon, text }) => (
+  <div className="flex items-center space-x-3">
+    <div className="text-blue-500 text-xl">{icon}</div>
+    <p className="text-gray-700">{text}</p>
+  </div>
+);
+
+const SummaryItem = ({ label, value, isTotal }) => (
+  <div className={`flex justify-between items-center mb-2 ${isTotal ? 'font-semibold text-lg' : ''}`}>
+    <span className="text-gray-600">{label}:</span>
+    <span className={isTotal ? 'text-blue-600' : 'text-gray-800'}>{value}</span>
+  </div>
+);
+
 export default BookRoomPage;
+

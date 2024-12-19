@@ -3,7 +3,6 @@ import ReactPagination from "../../../Shared/Pagination";
 import { MdFastfood } from "react-icons/md";
 import FoodOrdersTable from "../../UserRole/Pages/FoodOrdersTable";
 
-
 const ViewFoodOrders = () => {
   const [allOrderData, setAllOrderData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -53,7 +52,7 @@ const ViewFoodOrders = () => {
       </div>
       <div className="overflow-x-auto bg-white pb-5 mx-6 rounded  shadow-sm">
         <table className="table w-full mx-auto">
-          <thead className="bg-[#25b0cf] text-white text-sm">
+          <thead className="bg-[#0284c7] text-white text-sm">
             <tr>
               <th>Image</th>
               <th>Food ID</th>

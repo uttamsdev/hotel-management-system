@@ -44,8 +44,8 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${
                       router.pathname === "/admin"
-                        ? "bg-[#25b0cf] text-white rounded-r-full"
-                        : "text-white hover:bg-[#25b0cf] hover:text-white rounded-r-full"
+                        ? "bg-[#0284c7] text-white rounded-r-full"
+                        : "text-white hover:bg-[#0284c7] hover:text-white rounded-r-full"
                     }`}
           >
             <div className="mr-2">
@@ -59,8 +59,8 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${
                       router.pathname === "/admin/view-orders"
-                        ? "bg-[#25b0cf] text-white rounded-r-full"
-                        : "text-white hover:bg-[#25b0cf] hover:text-white rounded-r-full"
+                        ? "bg-[#0284c7] text-white rounded-r-full"
+                        : "text-white hover:bg-[#0284c7] hover:text-white rounded-r-full"
                     }`}
           >
             <div className="mr-2">
@@ -74,8 +74,8 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${
                       router.pathname === "/admin/view-food-orders"
-                        ? "bg-[#25b0cf] text-white rounded-r-full"
-                        : "text-white hover:bg-[#25b0cf] hover:text-white rounded-r-full"
+                        ? "bg-[#0284c7] text-white rounded-r-full"
+                        : "text-white hover:bg-[#0284c7] hover:text-white rounded-r-full"
                     }`}
           >
             <div className="mr-2">
@@ -90,8 +90,8 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${
                       router.pathname === "/admin/all-room"
-                        ? "bg-[#25b0cf] text-white rounded-r-full"
-                        : "text-white hover:bg-[#25b0cf] hover:text-white rounded-r-full"
+                        ? "bg-[#0284c7] text-white rounded-r-full"
+                        : "text-white hover:bg-[#0284c7] hover:text-white rounded-r-full"
                     }`}
           >
             <div className="mr-2">
@@ -105,8 +105,8 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${
                       router.pathname === "/admin/all-food"
-                        ? "bg-[#25b0cf] text-white rounded-r-full"
-                        : "text-white hover:bg-[#25b0cf] hover:text-white rounded-r-full"
+                        ? "bg-[#0284c7] text-white rounded-r-full"
+                        : "text-white hover:bg-[#0284c7] hover:text-white rounded-r-full"
                     }`}
           >
             <div className="mr-2">
@@ -120,8 +120,8 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             className={`pl-6 py-3 mx-5 rounded text-center cursor-pointer mb-3 flex items-center transition-colors
                     ${
                       router.pathname === "/admin/manage-users"
-                        ? "bg-[#25b0cf] text-white rounded-r-full"
-                        : "text-white hover:bg-[#25b0cf] hover:text-white rounded-r-full"
+                        ? "bg-[#0284c7] text-white rounded-r-full"
+                        : "text-white hover:bg-[#0284c7] hover:text-white rounded-r-full"
                     }`}
           >
             <div className="mr-2">

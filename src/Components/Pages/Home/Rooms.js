@@ -4,33 +4,58 @@ import { Link } from "react-router-dom";
 
 const Rooms = () => {
   const [rooms, setRooms] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(
       "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms"
     )
       .then((res) => res.json())
-      .then((data) => setRooms(data?.data.slice(0, 6)));
+      .then((data) => {
+        setRooms(data?.data.slice(0, 6));
+        setIsLoading(false);
+      })
+      .catch(() => setIsLoading(false));
   }, []);
+
   return (
-    <div className="w-full xl:w-[1100px] mx-auto mt-12 border-t">
-      <div className="flex justify-between">
-        <p className="text-xl xl:text-2xl font-semibold text-[#000080] uppercase mt-3 mb-2">
-          Rooms we offer
-        </p>
-        <p>
-          <Link className="link link-error text-[18px]" to="/rooms">
-            Show All Rooms
+    <section className="py-8 ">
+      <div className="container mx-auto ">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl font-bold text-gray-800 tracking-tight">
+            Rooms We Offer
+          </h2>
+          <Link
+            to="/rooms"
+            className="text-[var(--primary)] hover:text-primary-dark text-lg font-medium transition-colors hover:underline  "
+          >
+            Show All Rooms →
           </Link>
-        </p>
+        </div>
+
+        {/* Room Cards */}
+        {isLoading ? (
+          <div className="flex justify-center items-center py-20">
+            <p className="text-lg text-gray-500 animate-pulse ">
+              Loading rooms...
+            </p>
+          </div>
+        ) : rooms?.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
+            {rooms?.map((room) => (
+              <ShowSingleRoom key={room?.roomId} room={room} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20">
+            <p className="text-xl text-gray-600">No rooms available at the moment.</p>
+          </div>
+        )}
       </div>
-      <div className="grid grid-cols-1 place-content-center place-items-center xl:grid-cols-3 gap-6">
-        {rooms?.map((room) => (
-          <ShowSingleRoom key={room?.roomId} room={room}></ShowSingleRoom>
-        ))}
-      </div>
-    </div>
+    </section>
   );
 };
 
 export default Rooms;
+  

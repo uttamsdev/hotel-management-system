@@ -56,7 +56,7 @@ const MyFoodOrders = () => {
       <div className="overflow-x-auto  bg-white pb-5 mx-6 rounded  shadow-sm">
         <table className="table w-full   mx-auto">
           {/* head */}
-          <thead className="bg-[#25b0cf] text-white text-s">
+          <thead className="bg-[#0284c7] text-white text-s">
             <tr>
               <th>Image</th>
               <th>Food ID</th>

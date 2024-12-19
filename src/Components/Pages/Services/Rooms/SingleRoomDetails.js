@@ -4,23 +4,23 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "sonner";
 import { ImSpinner3 } from "react-icons/im";
+import { FaBed, FaUsers, FaRulerCombined, FaCalendarAlt, FaUserFriends } from "react-icons/fa";
+import { MdAir, MdRestaurant, MdTv, MdWifi, MdSupportAgent } from "react-icons/md";
 
 const SingleRoomDetails = () => {
   const { roomId } = useParams();
-  const [roomData, setRoomData] = useState({});
+  const [roomData, setRoomData] = useState({ img: "", name: "", description: "" });
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("1");
   const navigate = useNavigate();
 
-  const dateObjectStartDate = new Date(startDate);
-  const dateObjectEndDate = new Date(endDate);
-  const formattedStartDate = dateObjectStartDate.toISOString().split("T")[0];
-  const formattedEndDate = dateObjectEndDate.toISOString().split("T")[0];
+  const formattedStartDate = startDate.toISOString().split("T")[0];
+  const formattedEndDate = endDate.toISOString().split("T")[0];
   const [checking, setChecking] = useState(false);
   const [booking, setBooking] = useState(false);
+
   const handleInputChange = (event) => {
-    // Update the state with the new input value
     setInputValue(event.target.value);
   };
 
@@ -45,28 +45,25 @@ const SingleRoomDetails = () => {
     setChecking(true);
     const isAvailable = await checkRoomIsAvailable();
     if (!isAvailable?.data?.length) {
-      toast.success(`Congratulation room available`, {
+      toast.success(`Congratulations, room is available`, {
         description: `This room is available from ${formattedStartDate} to ${formattedEndDate}`,
         duration: 6000,
       });
     } else {
       toast.error("Room is not available", {
-        description: `Sorry! this room is not available from ${formattedStartDate} to ${formattedEndDate}`,
+        description: `Sorry! This room is not available from ${formattedStartDate} to ${formattedEndDate}`,
         duration: 6000,
       });
     }
-
     setChecking(false);
   };
-
-  //handle room book:
 
   const handleBookRoom = async () => {
     setBooking(true);
     const isAvailable = await checkRoomIsAvailable();
     if (isAvailable?.data?.length) {
       toast.error("Room is not available", {
-        description: `Sorry! this room is not available from ${formattedStartDate} to ${formattedEndDate}`,
+        description: `Sorry! This room is not available from ${formattedStartDate} to ${formattedEndDate}`,
         duration: 6000,
       });
       setBooking(false);
@@ -78,7 +75,7 @@ const SingleRoomDetails = () => {
       JSON.stringify({
         startDate: formattedStartDate,
         endDate: formattedEndDate,
-        person: inputValue ? inputValue : 1,
+        person: inputValue,
       })
     );
 
@@ -87,6 +84,7 @@ const SingleRoomDetails = () => {
       `/book-room/${roomId}?startDate=${formattedStartDate}&endDate=${formattedEndDate}`
     );
   };
+
   useEffect(() => {
     fetch(
       `https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/products/rooms/${roomId}`
@@ -94,163 +92,133 @@ const SingleRoomDetails = () => {
       .then((res) => res.json())
       .then((data) => setRoomData(data.data[0]));
   }, [roomId]);
+
   return (
-    <div className="max-w-[1100px] w-full mx-auto mt-4 grid grid-cols-6 place-items-start">
-      <div className="mx-auto max-w-[700px] w-full col-span-4">
-        <div className="mb-6">
+    <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2">
           <img
-            className="w-[300px] h-[200px] xl:w-[710px] xl:h-[430px] rounded-md"
+            className="w-full h-96 object-cover rounded-lg shadow-lg mb-8"
             src={roomData?.img}
-            alt=""
+            alt={roomData?.name}
           />
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">{roomData?.name}</h1>
+          <p className="text-gray-600 mb-8">{roomData?.description}</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+            <div className="bg-blue-50 p-4 rounded-lg shadow">
+              <div className="flex items-center justify-center mb-2">
+                <FaRulerCombined className="text-3xl text-blue-500" />
+              </div>
+              <p className="text-center font-semibold">Size</p>
+              <p className="text-center text-gray-600">400 Sq-ft</p>
+            </div>
+            <div className="bg-blue-50 p-4 rounded-lg shadow">
+              <div className="flex items-center justify-center mb-2">
+                <FaUsers className="text-3xl text-blue-500" />
+              </div>
+              <p className="text-center font-semibold">Capacity</p>
+              <p className="text-center text-gray-600">02 Adults & 02 Children</p>
+            </div>
+            <div className="bg-blue-50 p-4 rounded-lg shadow">
+              <div className="flex items-center justify-center mb-2">
+                <FaBed className="text-3xl text-blue-500" />
+              </div>
+              <p className="text-center font-semibold">Bed</p>
+              <p className="text-center text-gray-600">Double</p>
+            </div>
+          </div>
+
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">Room Services</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            <div className="flex flex-col items-center">
+              <MdAir className="text-3xl text-blue-500 mb-2" />
+              <p className="text-center text-sm">Air Conditioning</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <MdRestaurant className="text-3xl text-blue-500 mb-2" />
+              <p className="text-center text-sm">Restaurant Quality</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <MdTv className="text-3xl text-blue-500 mb-2" />
+              <p className="text-center text-sm">Cable TV</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <MdWifi className="text-3xl text-blue-500 mb-2" />
+              <p className="text-center text-sm">Unlimited Wifi</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <MdSupportAgent className="text-3xl text-blue-500 mb-2" />
+              <p className="text-center text-sm">Service 24/7</p>
+            </div>
+          </div>
         </div>
 
-        <div className="flex gap-4 xl:gap-0 xl:ml-2 flex-col justify-center items-center xl:justify-normal xl:flex-row">
-          <div className="w-[235px] h-[140px] bg-[#414159] flex items-center justify-center mr-[1px]">
-            <div className="text-center">
-              <p className="text-xl font-bold text-white">Size:</p>
-              <p className="text-xl text-[#EDDFBA]">400 Sq-ft</p>
+        <div className="lg:col-span-1">
+          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div className="bg-blue-600 text-white p-6">
+              <h2 className="text-2xl font-semibold mb-2 text-center">Check Availability</h2>
+              <p className="text-center text-blue-100">Find your perfect stay</p>
             </div>
-          </div>
-          <div className="w-[235px] h-[140px] bg-[#414159] flex items-center justify-center mr-[1px]">
-            <div className="text-center">
-              <p className="text-xl font-bold text-white">Capacity:</p>
-              <p className="text-xl text-[#EDDFBA]">
-                02 Adult & 02 Childs (below 10 Years)
-              </p>
-            </div>
-          </div>
-          <div className="w-[235px] h-[140px] bg-[#414159] flex items-center justify-center">
-            <div className="text-center">
-              <p className="text-xl font-bold text-white">Bed:</p>
-              <p className="text-xl text-[#EDDFBA]">Double</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="w-full mb-4">
-          <div>
-            <p className="text-2xl font-semibold text-gray-900 mb-4 mt-4">
-              Room Services
-            </p>
-          </div>
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-            <div className="flex items-center gap-3">
-              <div>
-                <img
-                  src="http://www.hotels.gov.bd/forntend/img/core-img/icon1.png"
-                  alt=""
-                />
+            <div className="p-6 space-y-6">
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">Check In - Check Out</label>
+                <div className="flex items-center bg-gray-100 p-2 rounded-md">
+                  <FaCalendarAlt className="text-gray-400 mr-2" />
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    selectsStart
+                    startDate={startDate}
+                    endDate={endDate}
+                    minDate={new Date()}
+                    className="bg-transparent w-full focus:outline-none"
+                    placeholderText="Select date range"
+                  />
+                  <span className="mx-2 text-gray-400">-</span>
+                  <DatePicker
+                    selected={endDate}
+                    onChange={(date) => setEndDate(date)}
+                    selectsEnd
+                    startDate={startDate}
+                    endDate={endDate}
+                    minDate={startDate}
+                    className="bg-transparent w-full focus:outline-none"
+                    placeholderText="Select date range"
+                  />
+                </div>
               </div>
-              <p>Air Conditioning</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div>
-                <img
-                  src="http://www.hotels.gov.bd/forntend/img/core-img/icon3.png"
-                  alt=""
-                />
+              <div className="space-y-2">
+                <label className="block text-sm font-medium text-gray-700">Guests</label>
+                <div className="flex items-center bg-gray-100 p-2 rounded-md">
+                  <FaUserFriends className="text-gray-400 mr-2" />
+                  <select
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    className="bg-transparent w-full focus:outline-none"
+                  >
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                  </select>
+                </div>
               </div>
-              <p> Restaurant quality </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div>
-                <img
-                  src="http://www.hotels.gov.bd/forntend/img/core-img/icon4.png"
-                  alt=""
-                />
-              </div>
-              <p>Cable TV</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div>
-                <img
-                  src="http://www.hotels.gov.bd/forntend/img/core-img/icon5.png"
-                  alt=""
-                />
-              </div>
-              <p>Unlimited Wifi</p>
-            </div>
-            <div className="flex items-center gap-3">
-              <div>
-                <img
-                  src="http://www.hotels.gov.bd/forntend/img/core-img/icon6.png"
-                  alt=""
-                />
-              </div>
-              <p>Service 24/7</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="max-w-[400px] w-full col-span-2 bg-[#E3E3ED] h-auto mx-auto flex-col flex justify-center rounded-md">
-        <div className="p-4">
-          <div className="mb-2">
-            <p className="text-2xl mb-6 text-gray-600 font-bold pt-1 text-center">
-              Check Room Availability
-            </p>
-          </div>
-          <div className="flex flex-col items-center gap-4">
-            <div className="flex gap-4">
-              <div>
-                <p className="text-black">Check In</p>
-                <DatePicker
-                  className="h-10  text-center outline-none rounded"
-                  selected={startDate}
-                  minDate={new Date()} // Set minDate to today's date
-                  onChange={(date) => setStartDate(date)}
-                />
-              </div>
-              <div>
-                <p className="text-black">Check Out</p>
-                <DatePicker
-                  className="h-10 text-center outline-none rounded "
-                  selected={endDate}
-                  minDate={new Date()} // Set minDate to today's date
-                  onChange={(date) => setEndDate(date)}
-                />
-              </div>
-            </div>
-            <div className="w-full">
-              <p className="text-black">Persons</p>
-              <select
-                name=""
-                id=""
-                className="h-10 w-full bg-white text-center rounded outline-none"
-                value={inputValue}
-                defaultValue={1}
-                onChange={handleInputChange}
-              >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-            <div className="flex items-center  w-full gap-2.5">
               <button
                 onClick={handleCheckAvailableRoom}
-                className="bg-[#000080f1] hover:bg-[#000080]/80 flex gap-1 items-center justify-center text-white h-10 w-[200px] mt-2 p-2 rounded-full"
+                className="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 transition duration-300 flex items-center justify-center"
+                disabled={checking}
               >
-                {checking && (
-                  <ImSpinner3
-                    className="animate-spin"
-                    style={{ fontSize: "18px" }}
-                  />
-                )}
-                {checking ? "Checking" : "Check Availability"}
+                {checking && <ImSpinner3 className="animate-spin mr-2" />}
+                {checking ? "Checking..." : "Check Availability"}
               </button>
               <button
                 onClick={handleBookRoom}
-                className="bg-[#000080f1] flex items-center gap-1 justify-center hover:bg-[#000080]/80 text-white h-10 w-[200px] mt-2 p-2 rounded-full"
+                className="w-full bg-green-600 text-white py-3 px-4 rounded-md hover:bg-green-700 transition duration-300 flex items-center justify-center"
+                disabled={booking}
               >
-                {booking && (
-                  <ImSpinner3
-                    className="animate-spin"
-                    style={{ fontSize: "18px" }}
-                  />
-                )}
-                {booking ? "Booking..." : "Book room"}
+                {booking && <ImSpinner3 className="animate-spin mr-2" />}
+                {booking ? "Booking..." : "Book Now"}
               </button>
             </div>
           </div>
@@ -261,3 +229,4 @@ const SingleRoomDetails = () => {
 };
 
 export default SingleRoomDetails;
+
