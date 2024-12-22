@@ -64,7 +64,7 @@ const Register = () => {
   }
 
   return (
-    <div className="w-full h-[calc(100vh_-_115px)] bg-gradient-to-br from-blue-900 via-purple-800 to-indigo-900 text-white flex items-center justify-center">
+    <div className="w-full h-[calc(100vh_-_115px)] bg-gradient-to-br from-blue-900 via-purple-800 to-indigo-900 text-gray-950 flex items-center justify-center">
       <div className="w-11/12 xl:w-[460px] bg-white shadow-2xl rounded-lg p-8 relative z-[999]">
         <form
           onSubmit={handleCreateAccount}

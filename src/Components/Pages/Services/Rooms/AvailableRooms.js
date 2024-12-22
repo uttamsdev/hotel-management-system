@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { MdDateRange } from "react-icons/md";
 import { FaPersonCircleCheck } from "react-icons/fa6";
 import ShowSingleRoom from "./ShowSingleRoom";
+import { useNavigate } from "react-router-dom";
 
 const AvailableRooms = () => {
   const [searchData, setSearchData] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     setSearchData(JSON.parse(localStorage.getItem("search")));
@@ -26,7 +28,7 @@ const AvailableRooms = () => {
               </p>
             </div>
           </div>
-          <button className="text-cyan-600 text-sm font-medium hover:underline">
+          <button onClick={() => navigate('/')} className="text-cyan-600 text-sm font-medium hover:underline">
             Edit
           </button>
         </div>
@@ -44,7 +46,7 @@ const AvailableRooms = () => {
               </p>
             </div>
           </div>
-          <button className="text-cyan-600 text-sm font-medium hover:underline">
+          <button onClick={() => navigate('/')} className="text-cyan-600 text-sm font-medium hover:underline">
             Edit
           </button>
         </div>
@@ -62,7 +64,7 @@ const AvailableRooms = () => {
               </p>
             </div>
           </div>
-          <button className="text-cyan-600 text-sm font-medium hover:underline">
+          <button onClick={() => navigate('/')} className="text-cyan-600 text-sm font-medium hover:underline">
             Edit
           </button>
         </div>

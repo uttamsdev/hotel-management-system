@@ -56,7 +56,7 @@ const Banner = () => {
         className="absolute inset-0 bg-cover bg-center opacity-60"
         style={{
           backgroundImage:
-            "url('https://media.radissonhotels.net/image/radisson-blu-hotel-dhaka-water-garden/meeting-room/16256-113891-f63612804_3xl.jpg')",
+            "url('https://i.ibb.co.com/b7K3fWq/16256-113891-f63612804-3xl.jpg')",
         }}
       ></div>
       <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
