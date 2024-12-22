@@ -111,28 +111,28 @@ const Contact = () => {
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="w-full p-4 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
               </div>
               <div>
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="w-full p-4 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
               </div>
               <div>
                 <input
                   type="text"
                   placeholder="Subject"
-                  className="w-full p-4 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
               </div>
               <div>
                 <textarea
                   rows="6"
                   placeholder="Your Message"
-                  className="w-full p-4 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 ></textarea>
               </div>
               <button

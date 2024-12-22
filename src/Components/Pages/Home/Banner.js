@@ -51,12 +51,12 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-blue-900 via-purple-800 to-indigo-900 text-white h-[750px] overflow-hidden">
+    <div className="relative bg-gradient-to-br from-black via-gray-800 to-gray-900 text-white h-[750px] overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-40"
+        className="absolute inset-0 bg-cover bg-center opacity-60"
         style={{
           backgroundImage:
-            "url('https://source.unsplash.com/1600x900/?luxury,hotel')",
+            "url('https://media.radissonhotels.net/image/radisson-blu-hotel-dhaka-water-garden/meeting-room/16256-113891-f63612804_3xl.jpg')",
         }}
       ></div>
       <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
@@ -70,9 +70,9 @@ const Banner = () => {
           </p>
         </div>
 
-        <div className="bg-white rounded-lg shadow-2xl p-6 md:p-8 max-w-4xl mx-auto relative z-20">
+        <div className="bg-white rounded-lg shadow-2xl p-6 md:p-8 max-w-4xl mx-auto relative z-[9999]">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="space-y-2">
+            <div className="space-y-2 relative z-50">
               <label className="block text-sm font-medium text-gray-700">
                 Check In
               </label>

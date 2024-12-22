@@ -104,10 +104,10 @@ input:focus {
   background: #88b9f92f;
 }
 
-.react-datepicker-wrapper input:focus {
+/* .react-datepicker-wrapper input:focus {
   background: white !important;
   border-color: gainsboro !important;
-}
+} */
 
 textarea:focus {
   border: 1px solid #dcdcdd;
@@ -131,4 +131,9 @@ input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.react-datepicker__month-container {
+  position: relative;
+  z-index: 999999 !important;
 }

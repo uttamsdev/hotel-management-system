@@ -95,7 +95,7 @@ const BookRoomPage= () => {
   }
 
   return (
-    <div className="max-w-[1200px] mx-auto px-4 py-8">
+    <div className="max-w-[1200px] mx-auto px-4 py-8 h-[calc(100vh_-_115px)]">
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="lg:w-2/3">
           <img
@@ -103,7 +103,7 @@ const BookRoomPage= () => {
             src={roomData.img}
             alt={roomData.name}
           />
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 ">
             <RoomFeature title="Size" value="400 Sq-ft" />
             <RoomFeature title="Capacity" value="02 Adult & 02 Childs (below 10 Years)" />
             <RoomFeature title="Bed" value="Double" />
@@ -151,7 +151,7 @@ const BookRoomPage= () => {
 };
 
 const RoomFeature = ({ title, value }) => (
-  <div className="bg-gray-100 p-4 rounded-lg">
+  <div className="bg-state-400 p-4 rounded-lg shadow-md">
     <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
     <p className="text-gray-600">{value}</p>
   </div>

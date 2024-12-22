@@ -4,7 +4,7 @@ import { TbAirConditioning } from "react-icons/tb";
 
 const Facilities = () => {
   return (
-    <div className="w-full py-16 mt-[-170px] relative z-[99]">
+    <div className="w-full pb-16 mt-[-105px] relative z-[999]">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Title Section */}
         <div className="text-center mb-12">

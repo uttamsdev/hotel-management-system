@@ -63,7 +63,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             <div className="mr-2">
               <FaHome className="w-5 h-5" />
             </div>
-            <p>My Room Orders</p>
+            <p>Room Orders</p>
           </div>
         </Link>
         <Link to="/user/my-food-orders">
@@ -78,7 +78,7 @@ const SideBar = forwardRef(({ showNav }, ref) => {
             <div className="mr-2">
               <IoFastFoodSharp className="w-5 h-5" />
             </div>
-            <p>My Food Orders</p>
+            <p>Food Orders</p>
           </div>
         </Link>
       </div>

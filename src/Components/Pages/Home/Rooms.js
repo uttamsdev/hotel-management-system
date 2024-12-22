@@ -19,7 +19,7 @@ const Rooms = () => {
   }, []);
 
   return (
-    <section className="py-8 ">
+    <section className="pb-8 ">
       <div className="container mx-auto ">
         {/* Header */}
         <div className="flex justify-between items-center mb-4">

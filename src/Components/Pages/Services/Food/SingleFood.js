@@ -46,7 +46,7 @@ const SingleFood = ({ food, book = false }) => {
           onClick={() => handleOrderFood(foodId)}
           className="w-full py-2 px-4 primary-bg text-white font-medium rounded-md shadow-md hover:from-teal-700 hover:via-cyan-600 hover:to-blue-700 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
         >
-          {book ? "Order Food" : "Food Details"}
+          Order food
         </button>
       </div>
     </div>

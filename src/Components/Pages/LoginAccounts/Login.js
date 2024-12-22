@@ -48,7 +48,7 @@ const Login = () => {
   }
 
   return (
-    <div className="w-full h-[calc(100vh_-_115px)] pt-20 bg-gradient-to-br from-blue-900 via-purple-800 to-indigo-900 text-white ">
+    <div className="w-full h-[calc(100vh_-_115px)] pt-20 bg-gradient-to-br from-blue-900 via-purple-800 to-indigo-900 text-gray-800 ">
       <div className="flex items-center justify-center">
         <form
           onSubmit={handleEmailPasswordLogin}

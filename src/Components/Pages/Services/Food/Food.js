@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from "react";
 import SingleFood from "./SingleFood";
+import Skeleton from "../../../utils/Skeleton";
 
 const Food = () => {
   const [foods, setFoods] = useState([]);
-  console.log("foods: ", foods);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    fetch(
+  const handleGetFoods = async () => {
+    setLoading(true);
+    const res = await fetch(
       "https://hotel-app-radison-87fec3b45a39.herokuapp.com/api/v1/foods/all-foods"
-    )
-      .then((res) => res.json())
-      .then((data) => setFoods(data));
+    );
+    const data = await res.json();
+    setFoods(data);
+    setLoading(false);
+  };
+  useEffect(() => {
+    handleGetFoods();
   }, []);
+
+  if (loading) {
+    return <Skeleton />;
+  }
   return (
     <div className="w-ull xl:w-[1100px] mx-auto xl:min-h-[100vh_-_115px] pb-6">
       <div>
