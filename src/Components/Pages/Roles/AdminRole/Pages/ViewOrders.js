@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ViewOrderTable from "./ViewOrderTable";
 import { TbHomeBolt } from "react-icons/tb";
 import ReactPagination from "../../../Shared/Pagination";
-import { Skeleton } from "antd";
 
 const ViewOrders = () => {
   const [allOrderData, setAllOrderData] = useState([]);
