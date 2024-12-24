@@ -23,7 +23,7 @@ const Food = () => {
     return <Skeleton />;
   }
   return (
-    <div className="w-ull xl:w-[1100px] mx-auto xl:min-h-[100vh_-_115px] pb-6">
+    <div className="w-full xl:w-[1100px] mx-auto xl:min-h-[100vh_-_115px] pb-6">
       <div>
         <p className="uppercase text-[#000080] text-xl xl:text-2xl mt-8 font-bold mb-2">
           Available Foods

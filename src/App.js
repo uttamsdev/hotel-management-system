@@ -26,6 +26,7 @@ import SingleRoomDetails from "./Components/Pages/Services/Rooms/SingleRoomDetai
 import RequireAdmin from "./Components/Pages/RequireAuth/RequireAdmin";
 import NavbarTwo from "./Components/Pages/Header/NavbarTwo";
 import ViewFoodOrders from "./Components/Pages/Roles/AdminRole/Pages/FoodOrders";
+import Footer from "./Components/Pages/Home/Footer";
 
 function App() {
   const location = useLocation();
@@ -164,6 +165,7 @@ function App() {
         ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
+      {!hideNavbar && <Footer />}
     </div>
   );
 }

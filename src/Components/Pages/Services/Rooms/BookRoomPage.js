@@ -99,7 +99,7 @@ const BookRoomPage= () => {
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="lg:w-2/3">
           <img
-            className="w-full h-[300px] lg:h-[400px] object-cover rounded-lg shadow-lg"
+            className="w-full h-[300px] lg:h-[400px] object-cover rounded shadow-lg"
             src={roomData.img}
             alt={roomData.name}
           />
@@ -151,7 +151,7 @@ const BookRoomPage= () => {
 };
 
 const RoomFeature = ({ title, value }) => (
-  <div className="bg-state-400 p-4 rounded-lg shadow-md">
+  <div className="bg-state-500 p-4 rounded-lg shadow-md">
     <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
     <p className="text-gray-600">{value}</p>
   </div>

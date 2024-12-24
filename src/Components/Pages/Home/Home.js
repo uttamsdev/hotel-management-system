@@ -18,7 +18,6 @@ const Home = () => {
       <Foods />
       <ResturantAndBar></ResturantAndBar>
       <PhotoGallery></PhotoGallery>
-      <Footer />
     </div>
   );
 };
